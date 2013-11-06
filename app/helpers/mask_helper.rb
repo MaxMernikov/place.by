@@ -1,0 +1,2 @@
+module MaskHelper
+end

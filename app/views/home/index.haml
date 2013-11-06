@@ -1,0 +1,10 @@
+.wrap
+  .grid
+    .unit.whole
+      %h1 Place.by
+
+    - Category.main.each do |category|
+      .unit.whole
+        %h3= category.title
+        - category.categories.each do |sub_category|
+          = sub_category.title

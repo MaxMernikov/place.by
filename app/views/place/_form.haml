@@ -1,0 +1,21 @@
+= form_for @place, url: { controller: :place, action: action } do |f|
+  .grid
+    .unit.w-1-2
+      .grid
+        = f.label :title
+        = f.text_field :title
+
+      .grid
+        = f.label :address
+        = f.text_field :address
+
+      .grid
+        = f.label :overview
+        = f.text_area :overview
+
+      = f.fields_for :detail, OpenStruct.new(@place.detail) do |d|
+        .grid
+          = d.label :how_to_catch
+          = d.text_area :how_to_catch
+      .grid
+        = f.submit 'Сохранить'
