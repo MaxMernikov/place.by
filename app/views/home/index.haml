@@ -8,3 +8,16 @@
         %h3= category.title
         - category.categories.each do |sub_category|
           = sub_category.title
+    .unit.while
+      / %script{id: "search_result.html", type: "text/ng-template"}
+      /   = render partial: 'place/search_result'
+
+      / %script{id: "search_detail.html", type: "text/ng-template"}
+      /   = render partial: 'place/search_detail'
+
+      / %div{'ng-view' => true}
+      
+
+  .grid
+    .unit.whole
+      / # =render 'test'

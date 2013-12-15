@@ -1,0 +1,17 @@
+%div{ 'ng:controller' => 'CategoriesListCtrl' }
+  category list
+  categoryId: {{category_id}}
+  View: {{view}}
+  Test: {{test}}
+  %button{ 'ng-click' => 'testPlus()' } +1
+  %button{ 'ng-click' => 'testController()' } +1
+  
+  %ul
+    - Category.main.each do |main_category|
+      %li
+        = link_to main_category.title, main_category.slug
+        %ul
+          - main_category.categories.each do |category|
+            %li= link_to category.title, category.slug
+
+/ = render 'place_list'

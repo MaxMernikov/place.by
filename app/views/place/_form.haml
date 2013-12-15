@@ -10,12 +10,28 @@
         = f.text_field :address
 
       .grid
-        = f.label :overview
-        = f.text_area :overview
+        = f.label :description
+        = f.text_area :description
+
+      .grid
+        = f.label :category_id
+        = f.select :category_id, Category.all.map{|c| [c.title, c.id]}
 
       = f.fields_for :detail, OpenStruct.new(@place.detail) do |d|
         .grid
           = d.label :how_to_catch
           = d.text_area :how_to_catch
+
+        .grid
+          = d.label :room_count
+          = d.text_field :room_count
+
+        .grid
+          = d.label :wifi
+          = d.check_box :wifi
+
+        .grid
+          = d.label :wash_mashine
+          = d.check_box :wash_mashine
       .grid
         = f.submit 'Сохранить'

@@ -1,0 +1,11 @@
+{{category_id}}
+%a{ 'ng:click' => '$back()' } Назад
+.right_bar{'ng:controller' => 'PlaceListCtrl', 'ng:class' => '{show:showResultList}'}
+  {{showResultList}}
+  _place: {{view}}
+  %ul
+    %li{ 'ng:repeat' => 'place in places'}
+      = link_to '{{place.title}}', '{{category_id}}/{{place.id}}'
+
+  %b pop {{}}
+  %button{ 'ng-click' => 'change_view()' } +1

@@ -1,42 +1,45 @@
 .wrap
   .grid
     .unit.whole
-      %h1= @place.title
-  .grid
-    .unit.w-1-2
-      .grid
-        %h3 Описание
-        - if @place.overview
-          %p= @place.overview
-        - else
-          %p
-            %i описание '#{ @place.title }' отсутствует
-          %p
-            вы можете добавить описание на странице
-            = link_to 'редактирования', edit_place_path(@place)
+      = @place.inspect
+  / .grid
+  /   .unit.whole
+  /     %h1= @place.title
+  / .grid
+  /   .unit.w-1-2
+  /     .grid
+  /       %h3 Описание
+  /       - if @place.overview
+  /         %p= @place.overview
+  /       - else
+  /         %p
+  /           %i описание '#{ @place.title }' отсутствует
+  /         %p
+  /           вы можете добавить описание на странице
+  /           = link_to 'редактирования', edit_place_path(@place)
 
-    .unit.w-1-2
-      .grid
-        %h3 Расположение
-        - if @place.address
-          = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{ @place.latitude }%2C#{ @place.longitude }&language=RU"
-          %p
-            адрес:
-            = @place.address_with_country
-        - else
-          %p
-            %i aдрес '#{ @place.title }' отсутствует
-          %p
-            вы можете добавить aдрес на странице
-            = link_to 'редактирования', edit_place_path(@place)
+  /   .unit.w-1-2
+  /     .grid
+  /       %h3 Расположение
+  /       - if @place.address
+  /         = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{ @place.latitude }%2C#{ @place.longitude }&language=RU"
+  /         %p
+  /           адрес:
+  /           = @place.address_with_country
+  /       - else
+  /         %p
+  /           %i aдрес '#{ @place.title }' отсутствует
+  /         %p
+  /           вы можете добавить aдрес на странице
+  /           = link_to 'редактирования', edit_place_path(@place)
 
-      - @place.description.each do |key, value|
-        .grid
-          %h3= key
-          %p= value
+  /     - @place.detail.each do |key, value|
+  /       .grid
+  /         %h3= key
+  /         %p= value
 
 
-  .grid
-    %h3 Изменения
-    = link_to 'Изменения', place_mask_path(@place, nil)
-    @place
+  / .grid
+  /   %h3 Изменения
+  /   = link_to 'Изменения', place_mask_path(@place, nil)
+  /   @place

@@ -1,3 +1,4 @@
+@import 'bourbon'
 // @import url(http://fonts.googleapis.com/css?family=PT+Serif&subset=latin,cyrillic)
 @font-face
   font-family: 'PT Serif'
@@ -18,6 +19,13 @@ body
   font-size: 14px
   line-height: 20px
   color: #444
+  overflow-x: hidden
+  height: 100%
+  margin: 0px
+  padding: 0px
+  section
+    border-spacing: 0 !important
+
 
 h1, h2, h3
   font-family: 'PT Sans', sans
@@ -41,3 +49,63 @@ input[type='submit']
   text-transform: uppercase
   &:hover
     color: #888
+
+.block
+  background: #fff
+  border: 1px solid #ccc
+  padding: 8px 16px
+  overflow: scroll
+
+.animate_opst
+  @include transition (top .1s linear 1s)
+  top: -100%
+  &.show
+    @include transition (top .1s linear 0s)
+    top: 0
+    &>div
+      opacity: 1
+  &>div
+    opacity: 0
+    @include transition (opacity .2s linear .1s)
+
+.animate_filter
+  opacity: 0
+  @include transition (opacity .2s linear .1s)
+  &.show
+    @include transition (opacity .2s linear 2s)
+    opacity: 1
+
+.animate_rslide
+  @include transition (right .6s linear)
+  right: -640px
+  &.show
+    right: 0
+
+.main_wrap
+  bottom: 0px
+  left: 0
+  position: absolute
+  right: 0
+  top: 80px
+
+.sub_wrapper
+  height: 100%
+  position: absolute
+  left: 0
+  right: 0
+  @include transition (right .1s linear 0s)
+  &.short
+    @include transition (right .1s linear 3s)
+    right: 460px
+
+
+
+
+.icon
+  width: 32px
+  height: 32px
+  opacity: 0.4
+  background-image: url('sprite.png')
+  @include transition (opacity .4s linear)
+  &:hover
+    opacity: 1

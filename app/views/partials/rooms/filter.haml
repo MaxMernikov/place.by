@@ -1,0 +1,11 @@
+.wrap.block
+  Name only
+  {{pop}}
+  %form{ 'ng:submit' => "submitwe()" }
+    %input{ 'ng:model' => "pop" }
+  / %input{ 'ng:model' => "search.id" }
+  / %input{ 'ng:model' => "search.rooms_count" }
+  / %input{ type: 'checkbox', 'ng:model' => "search.smoke" }
+  {{search}}
+  %br
+  {{rooms[0]}}

@@ -1,0 +1,11 @@
+.grid.wrap.block.index
+  %div{'ng:controller' => 'LocationController'}
+    %h1 Place.by
+    Укажите ваше расположение
+    %form{ name:'currentLocation', 'ng:submit' => 'getCoordinateAddress()' }
+      %input{ name: 'address', 'ng:model' => 'currentAddress' }
+    %button{ 'ng:show' => 'showCoordinateGeo', 'ng:click' => 'getCoordinateGeo()' } O_o
+    %button{ 'ng:click' => 'clicsds()' } O_o
+    Location: {{coordinate}}
+    = link_to 'rooms', '/rooms'
+    = link_to 'add room', '/rooms/new'

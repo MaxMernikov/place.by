@@ -12,4 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+
+//= require angular/angular.js
+//= require_tree ./angular
+//= require_tree ./lib
+//= require app.js
+
+//=  require_tree .
+

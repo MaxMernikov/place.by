@@ -1,0 +1,61 @@
+// PlaceApp.controller(
+//   'RoomsController',
+//   function ($rootScope, $scope, $http, $routeParams) {
+
+//     // создаем сущность
+//     $scope.roomCreate = function(){
+//       $http.post('/rooms', {'room': $scope.room } ).success(function (data, status, headers, config) {
+//         console.log(data)
+//       }).error(function (data, status, headers, config) {
+//         $scope.status = status;
+//       });
+//     };
+
+//     // получаем стандартную выборку
+//     $scope.get_rooms = function(){
+//       $http.get('/rooms.json').success(function(data) {
+//         $scope.rooms = data;
+//         maps_json = _.map(data, function(elem){
+//           res = {
+//             id: elem.id,
+//             rooms_count: elem.rooms_count,
+//             position: new google.maps.LatLng(elem.longitude, elem.latitude)
+//           };
+//           return res;
+//         })
+//         $rootScope.map_markers = maps_json;
+//         $rootScope.show_view = 'viewResult';
+//       });
+//     };
+
+//     // получаем квартиру по id
+//     $scope.get_room = function(){
+//       $http.get('/rooms/'+ $routeParams.id + '.json').success(function(data) {
+//         $scope.room = data;
+//         $rootScope.show_view = 'viewDetail';
+//       });
+//     };
+
+
+
+//     // $scope.orderProp = 'age';
+
+//     // после загрузки страницы вызываем методы
+//     var init = function(){
+//       switch($scope.view){
+//         case 'home#index': render_home(); break;
+//         // case 'rooms#index': $scope.get_rooms(); break;
+//         // case 'rooms#show': $scope.get_room(); break;
+//       };
+//     }
+//     $scope.$on('$viewContentLoaded', init());
+
+//     // $scope.roomForms = {
+//     //   0: 'нет комнат',
+//     //   one: '{} комната',
+//     //   few: '{} комнаты',
+//     //   many: '{} комнат',
+//     //   other: '{} комнат'
+//     // };
+//   }
+// );

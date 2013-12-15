@@ -1,0 +1,20 @@
+.wrap.results.block
+  = link_to 'root', '/'
+  {{search}}
+  %input{ 'ng:model' => "pop" }
+  {{pop}}
+
+  %h2 Rooms
+  .rooms{ 'ng:repeat' => 'room in rooms | filter:search' }
+    .grid
+      = link_to '/rooms/{{room.id}}' do
+        .unit.w-1-6
+          .price
+            ${{room.price}}
+        .unit.w-4-6
+          .address
+            {{room.address}}
+          .rooms_count
+            %ng-pluralize{ count: "room.rooms_count", when: "roomForms"}
+        .unit.w-1-6
+          .icon{ title: 'добавить в закладки'}

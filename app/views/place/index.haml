@@ -1,0 +1,11 @@
+%div{'ng-app' => 'placeApp'}
+  %script{id: "search_result.html", type: "text/ng-template"}
+    = render partial: 'search_result'
+
+  %script{id: "search_detail.html", type: "text/ng-template"}
+    = render partial: 'search_detail'
+
+  %div{'ng-view' => true}
+    
+
+

@@ -1,0 +1,27 @@
+!!!
+%html{'ng-app' => 'PlaceApp', 'ng:controller' => 'ApplicationController'}
+  %head
+    %title PlaceBy
+    = stylesheet_link_tag    "application", media: "all"
+    %script{ src: 'http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&language=ru' }
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .header
+      я хидер
+    / .loading{ 'ng:show' => 'loading' } Loading...
+    / = link_to 'restaurants', '/restaurants'
+    / %button{ 'ng:click' => 'setMain()'} setMain
+    .main_wrap{'ng:controller' => 'RoomsController'}
+      .sub_wrapper{ 'ng:class' => 'sub_wrapper_class' }
+        = render 'map'
+        %section.animate_filter.bottom{ 'ng:include' => 'view_partial.filter', 'ng:class' => '{ show: view_show.filter }' }
+      %section.animate_opst.main{ 'ng:include' => 'view_partial.index', 'ng:class' => '{ show: view_show.index }' }
+      %section.animate_opst.main{ 'ng:include' => 'view_partial.main', 'ng:class' => '{ show: view_show.main }'}
+
+      %section.animate_rslide.right{  'ng:include' =>'view_partial.result', 'ng:class' =>'{ show: view_show.result }' }
+      %section.animate_rslide.right{  'ng:include' =>'view_partial.detail', 'ng:class' =>'{ show: view_show.detail }' }
+
+      / %section.bottom{ 'ng:include' => 'viewSubFooter.partial', 'ng:class' => '{show: viewSubFooter.show}' }
+    / .footer
+    /   я футер

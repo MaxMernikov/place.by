@@ -1,9 +1,31 @@
 PlaceBy::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  get '/search' => 'place#search'
+
+  resources :rooms do
+    collection do
+      get :parse
+    end
+  end
+
+  resources :service, only: [] do
+    collection do
+      get :coordinate
+    end
+  end
+
   resources :place do
     resources :mask, only: [:show, :index]
+    get :test, on: :collection
+    get :test2, on: :collection
   end
+
+  resources :category, path: '', only: [:show] do
+    resources :place, path: '', only: [:show]
+  end
+
+  get 'partials/:model/:view' => 'partial#show', as: :partial
 
   root 'home#index'
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131104211110) do
+ActiveRecord::Schema.define(version: 20131124192217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,33 @@ ActiveRecord::Schema.define(version: 20131104211110) do
     t.decimal  "category_id", precision: 4, scale: 0
     t.decimal  "pos",         precision: 3, scale: 0
     t.hstore   "detail"
+    t.boolean  "show"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contacts", force: true do |t|
+    t.integer  "contact_type"
+    t.string   "num"
+    t.string   "comment"
+    t.integer  "contactable_id"
+    t.string   "contactable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "hours_services", force: true do |t|
+    t.boolean  "monday"
+    t.boolean  "tuesday"
+    t.boolean  "wednesday"
+    t.boolean  "thursday"
+    t.boolean  "friday"
+    t.boolean  "saturday"
+    t.boolean  "sunday"
+    t.time     "start_at"
+    t.time     "end_at"
+    t.string   "text"
+    t.integer  "place_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -38,12 +65,33 @@ ActiveRecord::Schema.define(version: 20131104211110) do
   create_table "places", force: true do |t|
     t.string   "title"
     t.hstore   "detail"
+    t.string   "region"
     t.string   "address"
-    t.string   "string"
+    t.string   "address_comment"
     t.float    "latitude"
     t.float    "longitude"
     t.text     "description"
-    t.decimal  "category_id", precision: 4, scale: 0
+    t.decimal  "category_id",     precision: 4, scale: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rooms", force: true do |t|
+    t.hstore   "details"
+    t.integer  "rooms_count"
+    t.boolean  "diurnal",         default: false
+    t.integer  "price"
+    t.string   "region"
+    t.string   "address"
+    t.string   "address_comment"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "temps", force: true do |t|
+    t.hstore   "detail"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

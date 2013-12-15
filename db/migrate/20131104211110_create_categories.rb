@@ -6,6 +6,7 @@ class CreateCategories < ActiveRecord::Migration
       t.decimal :category_id, precision: 4, scale: 0
       t.decimal :pos, precision: 3, scale: 0
       t.hstore :detail
+      t.boolean :show
 
       t.timestamps
     end

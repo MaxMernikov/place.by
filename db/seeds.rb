@@ -21,23 +21,3 @@
 #   шашлык, пицца, суши, паста
 
 # заведения питания
-[
-  { title: 'Общественное питание', slug: '', subcategory: [
-    { title: 'Рестораны', slug: '', pos: 1 },
-    { title: 'Закусочные', slug: '', pos: 2 },
-    { title: 'Бары', slug: '', pos: 3 },
-    { title: 'Кафе', slug: '', pos: 4 },
-    { title: 'Кофейни', slug: '', pos: 5 },
-    { title: 'Столовые', slug: '', pos: 6 }
-  ]},
-  { title: 'Магазины', slug: '', subcategory: [
-    { title: 'Продукты питания', slug: '', pos: 1 },
-    { title: 'Бытовая химия', slug: '', pos: 2 },
-    { title: 'Одежда', slug: '', pos: 2 }
-  ]}
-].each do |category|
-  cat = Category.create(title: category[:title], pos: category[:pos])
-  category[:subcategory].each do |sub|
-    cat.categories.create(title: sub[:title], pos: sub[:pos])
-  end
-end

@@ -5,6 +5,7 @@ gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
 gem 'pg'
+gem 'hstore_attribute_support'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -26,6 +27,7 @@ gem 'jquery-rails'
 
 gem 'haml'
 gem 'sass'
+gem 'bourbon'
 
 gem 'thin'
 
@@ -35,6 +37,9 @@ gem 'geocoder'                # получение координат
 gem 'concerned_with'          # разделение моделей на части
 
 gem 'diffy'                   # выявление изменений
+
+gem 'nokogiri'
+gem 'multi_logger'            # логирование действий
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
