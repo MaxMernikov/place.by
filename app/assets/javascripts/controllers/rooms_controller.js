@@ -1,9 +1,11 @@
 PlaceApp.controller(
   'RoomsController',
-  function( $locale, $http, $rootScope, $scope, $route, $routeParams ){
-    $scope.view_partial = {}
-    $scope.view_show = {}
-    // $scope.sub_wrapper_class = null;
+  function( $locale, $http, $rootScope, $scope, $route, $routeParams, $filter ){
+    $scope.view_partial = {};
+    $scope.view_show = {};
+    $scope.room_filter = {};
+    $scope.sub_wrapper_class = null;
+    $scope.menu = {};
 
     hide_all = function(array){
       if(array == undefined){
@@ -15,10 +17,11 @@ PlaceApp.controller(
 
     // сжатый или нет блок с картой
     sub_wrapper_class_set = function(){
-      if($scope.view_show.result != true || $scope.view_show.detail != true){
+      if( !$scope.view_show.result && !$scope.view_show.detail){
         $scope.sub_wrapper_class = null
       }
     };
+
 
     // главная страница
     home_index = function(){
@@ -42,7 +45,7 @@ PlaceApp.controller(
         $scope.view_partial.filter = getView('rooms#filter');
 
         $http.get('/rooms.json').success(function(data) {
-          $scope.rooms = data;
+          $scope.rooms = $scope.filtered_rooms = data;
           maps_json = _.map(data, function(elem){
             res = {
               id: elem.id,
@@ -56,6 +59,7 @@ PlaceApp.controller(
         $scope.view_show.result = true;
         $scope.view_show.filter = true;
         $scope.sub_wrapper_class = 'short';
+        console.log($scope.sub_wrapper_class)
       };
     };
 
@@ -69,13 +73,19 @@ PlaceApp.controller(
       });
     };
 
-
-
     // // прорисовщик вьюх, сделано для анимации
     // $rootScope.$watch('show_view', function () {
     //   console.log('show_view = ' + $rootScope.show_view);
     //   $rootScope.show_view != undefined ? $scope[$rootScope.show_view]['show'] = true : null;
     // });
+
+    $scope.$watch('room_filter', function(){
+      $scope.filtered_rooms = $filter('filter')($scope.rooms, $scope.room_filter)
+    }, true);
+
+    $scope.toggleSelected = function(type){
+      $scope.room_filter[type] == undefined ? $scope.room_filter[type] = true : $scope.room_filter[type] = undefined
+    }
 
     // роутинг
     $scope.$on(
@@ -94,6 +104,12 @@ PlaceApp.controller(
       var partial = view.split( '#' );
       return '/partials/' + partial[0] + '/' + partial[1] + '.html';
     };
+
+    $scope.open_menu = function(partial){
+      _.each($scope.menu, function(num, key){ partial == key ? null : $scope.menu[key] = false });
+      // console.log($scope.menu);
+      $scope.menu[partial] = !$scope.menu[partial];
+    }
 
     $scope.roomForms = {
       0: 'нет комнат',

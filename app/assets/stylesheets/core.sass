@@ -53,7 +53,6 @@ input[type='submit']
 .block
   background: #fff
   border: 1px solid #ccc
-  padding: 8px 16px
   overflow: scroll
 
 .animate_opst
@@ -99,13 +98,16 @@ input[type='submit']
     right: 460px
 
 
-
-
 .icon
   width: 32px
   height: 32px
   opacity: 0.4
   background-image: url('sprite.png')
   @include transition (opacity .4s linear)
+  display: inline-block
   &:hover
     opacity: 1
+
+
+.half
+  width: 460px

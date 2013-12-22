@@ -1,11 +1,37 @@
-.wrap.block
-  Name only
-  {{pop}}
-  %form{ 'ng:submit' => "submitwe()" }
-    %input{ 'ng:model' => "pop" }
-  / %input{ 'ng:model' => "search.id" }
-  / %input{ 'ng:model' => "search.rooms_count" }
-  / %input{ type: 'checkbox', 'ng:model' => "search.smoke" }
-  {{search}}
-  %br
-  {{rooms[0]}}
+.filter.block
+  .grid.menu_control.half
+    .unit.w-1-4{ 'ng-class' => '{ active: menu.room }', 'ng-click' => "open_menu('room')" }
+      Комнаты
+    .unit.w-1-4{ 'ng-class' => '{ active: menu.facilities }', 'ng-click' => "open_menu('facilities')" }
+      Удобства
+    .unit.w-1-4{ 'ng-class' => '{ active: menu.cost }', 'ng-click' => "open_menu('cost')" }
+      Стоимость
+    .unit.w-1-4{ 'ng-class' => '{ active: menu.sort }', 'ng-click' => "open_menu('sort')" }
+      Сортировка
+  .grid.block.half.menu_shield{ 'ng-class' => '{ active: menu.room }' }
+    .unit.w-1-1
+      %h1 room
+  .grid.block.half.menu_shield{ 'ng-class' => '{ active: menu.facilities }' }
+    .unit.w-1-1
+      %form
+        - %w[washing_machine vacuum_cleaner microwave electric_iron dishes fridge deep_freeze tv furniture intenet phone protection cable_tv dishwasher air_conditioning].each_slice(3) do |block|
+          .grid
+            - block.each do |option|
+              .unit.w-1-3
+                %button.toggleSelected{ 'ng-click' => "toggleSelected('#{option}')", 'ng-class' => "{ active: room_filter.#{option} }"}
+                  %i.icon
+                  %span= option
+  .grid.half.menu_shield{ 'ng-class' => '{ active: menu.cost }' }
+    .unit.w-1-2.block
+      %h1 cost
+      %form
+        = input :min_cost
+        = input :max_cost
+  .grid.block.half.menu_shield{ 'ng-class' => '{ active: menu.sort }' }
+    .unit.w-1-1
+      %h1 sort
+  .grid.half.menu_shadow
+    .unit.w-1-4{ 'ng-class' => '{ active: menu.room }' }
+    .unit.w-1-4{ 'ng-class' => '{ active: menu.facilities }' }
+    .unit.w-1-4.cost{ 'ng-class' => '{ active: menu.cost }' }
+    .unit.w-1-4{ 'ng-class' => '{ active: menu.sort }' }

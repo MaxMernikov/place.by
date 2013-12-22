@@ -1,7 +1,6 @@
 var PlaceApp = angular.module('PlaceApp', [
   'ngRoute',
-  'ngAnimate',
-  'roomFilters'
+  'ngAnimate'
 ]);
 
 PlaceApp.config(['$httpProvider',

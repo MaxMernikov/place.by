@@ -1,11 +1,12 @@
 .wrap.results.block
   = link_to 'root', '/'
-  {{search}}
-  %input{ 'ng:model' => "pop" }
-  {{pop}}
+  {{room_filter}}
+  %input{ 'ng:model' => "name" }
 
   %h2 Rooms
-  .rooms{ 'ng:repeat' => 'room in rooms | filter:search' }
+  size: {{filtered_rooms.length}}
+
+  .rooms{ 'ng:repeat' => 'room in filtered_rooms' }
     .grid
       = link_to '/rooms/{{room.id}}' do
         .unit.w-1-6
