@@ -1,6 +1,33 @@
-.wrap.block
+.wrap.block.room_detail
   = link_to 'X', '/rooms'
-  %h2 Room
-  {{room}}
-  / .detail_bar{ 'ng:class' => '{show: showDetail}' }
-  /   %h2 Detail
+  .grid.menu
+    .unit.w-1-3.price
+      ${{room.price}}
+    .unit.w-1-3
+      %button.unstyle
+        %i.icon
+        %span Добавить в закладки
+    .unit.w-1-3
+      %button.unstyle
+        %i.icon
+        %span Оставить жалобу
+  .grid
+    .unit.w-1-1
+      .subtitle 3-х комнатная квартира
+      .title {{room.address}}
+  .grid
+    .unit.w-1-1
+      .subtitle В квартире есть:
+  .grid
+    - 3.times do
+      .unit.w-1-3
+        микроволновая печь
+  .grid
+    .unit.w-1-1
+      .subtitle Дополнительное описание:
+      {{room.details.detail_info}}
+
+  .grid
+    .unit.w-1-1
+      .subtitle Контакты:
+      + 375 29 769 7887 (mts)
