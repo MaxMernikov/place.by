@@ -1,5 +1,5 @@
+= link_to '', '/rooms', class: 'link_to_room'
 .wrap.block.room_detail
-  = link_to 'X', '/rooms'
   .grid.menu
     .unit.w-1-3.price
       ${{room.price}}
@@ -17,17 +17,27 @@
       .title {{room.address}}
   .grid
     .unit.w-1-1
-      .subtitle В квартире есть:
-  .grid
-    - 3.times do
-      .unit.w-1-3
-        микроволновая печь
-  .grid
-    .unit.w-1-1
-      .subtitle Дополнительное описание:
       {{room.details.detail_info}}
 
   .grid
     .unit.w-1-1
-      .subtitle Контакты:
+      .title В квартире:
+  .grid.features
+    %i
+    .unit.w-1-1
+      %span.subtitle Спальных мест:
+      6
+    - %w[washing_machine vacuum_cleaner microwave electric_iron dishes fridge deep_freeze tv furniture intenet phone protection cable_tv dishwasher air_conditioning].each do |option|
+      .unit.w-1-3{ 'ng-show' => "room.details.#{option}" }
+        %i.icon
+        %span
+          = option
+
+  .grid
+    .unit.w-1-1
+      .title Контакты:
+  .grid
+    .unit.w-1-1
       + 375 29 769 7887 (mts)
+      .subtitle
+        Сергей Игоревич, звонить до 1900

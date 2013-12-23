@@ -58,8 +58,24 @@
     font-size: 14px
 
 
+.link_to_room
+  bottom: 0
+  position: absolute
+  top: 0
+  left: -40px
+  width: 40px
+  background: #888
+  opacity: 0.6
+  @include transition (background-color .2s linear)
+  &:hover
+    background: #444
+
 .room_detail
   color: #444
+  bottom: 0
+  position: absolute
+  top: 0
+
 
   .price
     font-size: 22px
@@ -88,9 +104,27 @@
     font-size: 22px
   .subtitle
     color: #888
+  .features
+    padding-left: 10px
+    .unit
+      i
+        display: inline-block
+        vertical-align: middle
+      span
+        padding-left: 4px
+        width: 78px
+        display: inline-block
+        font-size: 9px
+        line-height: 14px
+        text-transform: uppercase
+        vertical-align: middle
+        &.subtitle
+          width: auto
+          padding: 0
 
 
-.unstyle
-  background: none
-  border: none
-  padding: 0
+button
+  &.unstyle
+    background: none
+    border: none
+    padding: 0

@@ -7,8 +7,8 @@
   size: {{filtered_rooms.length}}
 
   .rooms{ 'ng:repeat' => 'room in filtered_rooms' }
-    .grid
-      = link_to '/rooms/{{room.id}}' do
+    = link_to '/rooms/{{room.id}}' do
+      .grid
         .unit.w-1-6
           .price
             ${{room.price}}
