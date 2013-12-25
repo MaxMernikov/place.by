@@ -59,10 +59,10 @@ PlaceApp.controller(
           $rootScope.map_markers = maps_json;
         });
         $scope.view_show.result = true;
-        $scope.view_show.filter = true;
-        $scope.sub_wrapper_class = 'short';
-        console.log($scope.sub_wrapper_class)
       };
+      $scope.view_show.filter = true;
+      $scope.sub_wrapper_class = 'short';
+      console.log($scope.sub_wrapper_class)
     };
 
     // одна комната
@@ -109,7 +109,6 @@ PlaceApp.controller(
 
     $scope.open_menu = function(partial){
       _.each($scope.menu, function(num, key){ partial == key ? null : $scope.menu[key] = false });
-      // console.log($scope.menu);
       $scope.menu[partial] = !$scope.menu[partial];
     }
 
