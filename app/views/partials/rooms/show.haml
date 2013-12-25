@@ -1,8 +1,9 @@
 = link_to '', '/rooms', class: 'link_to_room'
-.wrap.block.room_detail
+.wrap.block.room_detail{ 'bindonce' => 'room'}
   .grid.menu
     .unit.w-1-3.price
-      ${{room.price}}
+      $
+      %span{ 'bo-text' => 'room.price' }
     .unit.w-1-3
       %button.unstyle
         %i.icon
@@ -14,10 +15,11 @@
   .grid
     .unit.w-1-1
       .subtitle 3-х комнатная квартира
-      .title {{room.address}}
+      .title
+        %span{ 'bo-text' => 'room.address' }
   .grid
     .unit.w-1-1
-      {{room.details.detail_info}}
+      %span{ 'bo-text' => 'room.details.detail_info' }
 
   .grid
     .unit.w-1-1

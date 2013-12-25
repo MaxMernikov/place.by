@@ -37,6 +37,20 @@ PlaceApp.controller(
       $scope.view_show.main = true;
     };
 
+    // создание маркеров
+    create_markers = function(data){
+      maps_json = _.map(data, function(elem){
+        res = {
+          id: elem.id,
+          rooms_count: elem.rooms_count,
+          position: new google.maps.LatLng(elem.longitude, elem.latitude),
+          price: elem.price
+        };
+        return res;
+      });
+      $rootScope.map_markers = maps_json;
+    }
+
     // все комнаты
     rooms_index = function(){
       hide_all(['result']);
@@ -46,24 +60,16 @@ PlaceApp.controller(
 
         $http.get('/rooms.json').success(function(data) {
           $scope.rooms = $scope.filtered_rooms = data;
-
-          maps_json = _.map(data, function(elem){
-            res = {
-              id: elem.id,
-              rooms_count: elem.rooms_count,
-              position: new google.maps.LatLng(elem.longitude, elem.latitude),
-              price: elem.price
-            };
-            return res;
-          });
-          $rootScope.map_markers = maps_json;
+          create_markers(data);
         });
         $scope.view_show.result = true;
       };
       $scope.view_show.filter = true;
       $scope.sub_wrapper_class = 'short';
-      console.log($scope.sub_wrapper_class)
+
+      console.log( 'rooms ' + _.size($.cache) )
     };
+
 
     // одна комната
     rooms_show = function(){
@@ -73,6 +79,8 @@ PlaceApp.controller(
         $scope.room = data;
         $scope.view_show.detail = true;
       });
+      console.log( 'room ' + _.size($.cache) )
+      console.log( $.cache )
     };
 
     // // прорисовщик вьюх, сделано для анимации
@@ -83,6 +91,7 @@ PlaceApp.controller(
 
     $scope.$watch('room_filter', function(){
       $scope.filtered_rooms = $filter('filter')($scope.rooms, $scope.room_filter)
+      create_markers($scope.filtered_rooms);
     }, true);
 
     $scope.toggleSelected = function(type){
@@ -119,6 +128,5 @@ PlaceApp.controller(
       many: '{} комнат',
       other: '{} комнат'
     };
-
   }
 );

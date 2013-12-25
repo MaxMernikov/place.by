@@ -1,6 +1,7 @@
 var PlaceApp = angular.module('PlaceApp', [
   'ngRoute',
-  'ngAnimate'
+  'ngAnimate',
+  'pasvaz.bindonce'
 ]);
 
 PlaceApp.config(['$httpProvider',
