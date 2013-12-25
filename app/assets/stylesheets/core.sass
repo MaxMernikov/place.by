@@ -85,7 +85,8 @@ input[type='submit']
   left: 0
   position: absolute
   right: 0
-  top: 80px
+  &.body
+    top: 80px
 
 .sub_wrapper
   height: 100%
@@ -97,7 +98,6 @@ input[type='submit']
     @include transition (right .1s linear 3s)
     right: 460px
 
-
 .icon
   width: 32px
   height: 32px
@@ -108,6 +108,24 @@ input[type='submit']
   &:hover
     opacity: 1
 
-
 .half
   width: 460px
+
+.infogram
+  color: #444
+  text-decoration: none
+  i
+    vertical-align: middle
+  span
+    display: inline-block
+    font-size: 9px
+    line-height: 14px
+    padding-left: 4px
+    text-transform: uppercase
+    vertical-align: middle
+    width: 78px
+
+.h_an
+  @include transition (background-color .2s linear)
+  &:hover
+    background: #f8f8f8

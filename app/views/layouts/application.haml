@@ -7,21 +7,49 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    .header
-      я хидер
-    / .loading{ 'ng:show' => 'loading' } Loading...
-    / = link_to 'restaurants', '/restaurants'
-    / %button{ 'ng:click' => 'setMain()'} setMain
-    .main_wrap{'ng:controller' => 'RoomsController'}
-      .sub_wrapper{ 'ng:class' => 'sub_wrapper_class' }
-        = render 'map'
-        %section.animate_filter.bottom{ 'ng:include' => 'view_partial.filter', 'ng:class' => '{ show: view_show.filter }' }
-      %section.animate_opst.main{ 'ng:include' => 'view_partial.index', 'ng:class' => '{ show: view_show.index }' }
-      %section.animate_opst.main{ 'ng:include' => 'view_partial.main', 'ng:class' => '{ show: view_show.main }'}
+    .we{'ng:controller' => 'RoomsController'}
+      .main_wrap.header
+        .sub_wrapper.short
+          .grid.half
+            .unit.w-3-4
+              = link_to 'аренда квартир', rooms_path, class: 'current_menu'
+              %h1.logo
+                = link_to 'Place.by', root_path
+        .second_header
+          .grid.half
+            .unit.w-1-3.add_room
+              = link_to new_room_path, class: 'infogram' do
+                %i.icon
+                %span добавить объявление
+            .u
 
-      %section.animate_rslide.right{  'ng:include' =>'view_partial.result', 'ng:class' =>'{ show: view_show.result }' }
-      %section.animate_rslide.right{  'ng:include' =>'view_partial.detail', 'ng:class' =>'{ show: view_show.detail }' }
+          .grid.half
+            .unit.w-1-3
+              Избранное
+            .unit.w-1-3
+              Результаты
+            .unit.w-1-3
+              Катя Петрова
+              %br
+              %ul
+                - %w[настройки выйти].each do |menu_info|
+                  %li= link_to menu_info, '#'
 
-      / %section.bottom{ 'ng:include' => 'viewSubFooter.partial', 'ng:class' => '{show: viewSubFooter.show}' }
-    / .footer
-    /   я футер
+
+
+      / .loading{ 'ng:show' => 'loading' } Loading...
+      / = link_to 'restaurants', '/restaurants'
+      / %button{ 'ng:click' => 'setMain()'} setMain
+      .main_wrap.body
+        .sub_wrapper{ 'ng:class' => 'sub_wrapper_class' }
+          = render 'map'
+          %section.animate_filter.bottom{ 'ng:include' => 'view_partial.filter', 'ng:class' => '{ show: view_show.filter }' }
+        %section.animate_opst.main{ 'ng:include' => 'view_partial.index', 'ng:class' => '{ show: view_show.index }' }
+        %section.animate_opst.main{ 'ng:include' => 'view_partial.main', 'ng:class' => '{ show: view_show.main }'}
+
+        %section.animate_rslide.right{  'ng:include' =>'view_partial.result', 'ng:class' =>'{ show: view_show.result }' }
+        %section.animate_rslide.right{  'ng:include' =>'view_partial.detail', 'ng:class' =>'{ show: view_show.detail }' }
+
+        / %section.bottom{ 'ng:include' => 'viewSubFooter.partial', 'ng:class' => '{show: viewSubFooter.show}' }
+      / .footer
+      /   я футер

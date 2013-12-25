@@ -46,11 +46,13 @@ PlaceApp.controller(
 
         $http.get('/rooms.json').success(function(data) {
           $scope.rooms = $scope.filtered_rooms = data;
+
           maps_json = _.map(data, function(elem){
             res = {
               id: elem.id,
               rooms_count: elem.rooms_count,
-              position: new google.maps.LatLng(elem.longitude, elem.latitude)
+              position: new google.maps.LatLng(elem.longitude, elem.latitude),
+              price: elem.price
             };
             return res;
           });

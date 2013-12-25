@@ -4,15 +4,52 @@
 
 .labels
   // cursor: pointer
-  border: 1px solid #ccc
+  // / border: 1px solid #ccc
   margin-top: 8px
-  background: #fff
-  padding: 5px
-  display: block
-  &:hover
-    background: #ccc
-  &.active
-    background: red
+  opacity: 1 !important
+  // / background: #fff
+  // / padding: 5px
+  // / display: block
+  // / &:hover
+  //   / background: #ccc
+  // / &.active
+  //   / background: red
 
 .sumap
   width: 100%
+
+.mp_l
+  overflow: visible !important
+  opacity: 1
+  &:after
+    background: none repeat scroll 0 0 highlight
+    bottom: 9px
+    content: ""
+    height: 30px
+    left: 50%
+    margin-left: -20px
+    position: absolute
+    top: 20px
+    width: 45px
+
+.mkr_o
+  border: 1px solid #ccc
+  background: #fff
+  padding: 5px
+  color: #444
+  width: 80px
+  display: inline-block
+  position: relative
+  span
+    font-size: 16px
+    display: inline-block
+    vertical-align: middle
+    &.b
+      font-size: 18px
+  i
+    vertical-align: middle
+    margin-left: 4px
+    margin-right: 4px
+    background: blue
+    width: 16px
+    height: 16px

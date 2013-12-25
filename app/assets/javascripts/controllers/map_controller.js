@@ -55,13 +55,13 @@ PlaceApp.controller(
       var markers = [];
 
       _.each($rootScope.map_markers, function(marker){
-        // console.log(marker);
+        console.log(marker);
         marker = new MarkerWithLabel({
           position: marker.position,
           // position: new google.maps.LatLng(53.877332 + marker.id/5000, 27.5341),
-          labelContent: '<div>' + marker.rooms_count + ' комнат за $433 </div>',
+          labelContent: '<a href="/rooms/' + marker.id + '"class = "h_an mkr_o"><span class = "b">' + marker.rooms_count + '</span><i class ="icon"></i><span>$' + marker.price + '</span></a>',
           labelAnchor: new google.maps.Point(22, 20),
-          labelClass: "labels",
+          labelClass: "mp_l",
           icon: {}
         });
 
