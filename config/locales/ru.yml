@@ -1,1 +1,21 @@
 ru:
+  activerecord:
+    attributes:
+      room:
+        gas_oven: Газовая плита
+        electric_oven: Электрическая плита
+        washing_machine: Стиральная машина
+        vacuum_cleaner: Пылесос
+        microwave: Микроволновая печь
+        electric_iron: Утюг
+        dishes: Посуда
+        fridge: Холодильник
+        deep_freeze: Морозильник
+        tv: Телевизор
+        furniture: Мебель
+        intenet: Интернет
+        phone: Телефон
+        protection: Охранна
+        cable_tv: Кабельное телевидение
+        dishwasher: Посудомоечная машина
+        air_conditioning: Кондиционер

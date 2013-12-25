@@ -20,7 +20,7 @@
               .unit.w-1-3
                 %button.toggleSelected{ 'ng-click' => "toggleSelected('#{option}')", 'ng-class' => "{ active: room_filter.#{option} }"}
                   %i.icon
-                  %span= option
+                  %span= I18n.t("activerecord.attributes.room.#{option}")
   .grid.half.menu_shield{ 'ng-class' => '{ active: menu.cost }' }
     .unit.w-1-2.block
       %h1 cost
