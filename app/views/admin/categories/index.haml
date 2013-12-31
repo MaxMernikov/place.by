@@ -1,0 +1,8 @@
+.row
+  .col-xs-8
+    %h2
+      Категории
+      %small= link_to 'Добавить категорию', new_admin_category_path
+
+.categories_list
+  = render 'categories_field', categories: @categories

@@ -1,37 +1,44 @@
-.filter.block
-  .grid.menu_control.half
-    .unit.w-1-4{ 'ng-class' => '{ active: menu.room }', 'ng-click' => "open_menu('room')" }
-      Комнаты
-    .unit.w-1-4{ 'ng-class' => '{ active: menu.facilities }', 'ng-click' => "open_menu('facilities')" }
-      Удобства
-    .unit.w-1-4{ 'ng-class' => '{ active: menu.cost }', 'ng-click' => "open_menu('cost')" }
-      Стоимость
-    .unit.w-1-4{ 'ng-class' => '{ active: menu.sort }', 'ng-click' => "open_menu('sort')" }
-      Сортировка
-  .grid.block.half.menu_shield{ 'ng-class' => '{ active: menu.room }' }
-    .unit.w-1-1
-      %h1 room
-  .grid.block.half.menu_shield{ 'ng-class' => '{ active: menu.facilities }' }
-    .unit.w-1-1
-      %form
-        - %w[washing_machine vacuum_cleaner microwave electric_iron dishes fridge deep_freeze tv furniture intenet phone protection cable_tv dishwasher air_conditioning].each_slice(3) do |block|
-          .grid
-            - block.each do |option|
-              .unit.w-1-3
-                %button.toggleSelected{ 'ng-click' => "toggleSelected('#{option}')", 'ng-class' => "{ active: room_filter.#{option} }"}
-                  %i.icon
-                  %span= I18n.t("activerecord.attributes.room.#{option}")
-  .grid.half.menu_shield{ 'ng-class' => '{ active: menu.cost }' }
-    .unit.w-1-2.block
-      %h1 cost
-      %form
-        / = input :min_cost
-        / = input :max_cost
-  .grid.block.half.menu_shield{ 'ng-class' => '{ active: menu.sort }' }
-    .unit.w-1-1
-      %h1 sort
-  .grid.half.menu_shadow
-    .unit.w-1-4{ 'ng-class' => '{ active: menu.room }' }
-    .unit.w-1-4{ 'ng-class' => '{ active: menu.facilities }' }
-    .unit.w-1-4.cost{ 'ng-class' => '{ active: menu.cost }' }
-    .unit.w-1-4{ 'ng-class' => '{ active: menu.sort }' }
+.grid.menu_control.half
+  .unit.w-1-4{ 'ng-class' => '{ active: menu.room }', 'ng-click' => "open_menu('room')" }
+    Комнаты
+  .unit.w-1-4{ 'ng-class' => '{ active: menu.facilities }', 'ng-click' => "open_menu('facilities')" }
+    Удобства
+  .unit.w-1-4{ 'ng-class' => '{ active: menu.cost }', 'ng-click' => "open_menu('cost')" }
+    Стоимость
+  .unit.w-1-4{ 'ng-class' => '{ active: menu.sort }', 'ng-click' => "open_menu('sort')" }
+    Сортировка
+.grid.block.half.menu_shield{ 'ng-class' => '{ active: menu.room }' }
+  .unit.w-1-1
+    %h1 room
+    %input{ type: 'checkbox', value: 'null'} 1 комната
+    %input{ type: 'checkbox'} 2 комнаты
+    %input{ type: 'checkbox'} исключить
+    %input{ type: 'radio'} квартира целиком
+    %input{ type: 'radio'} комната
+    %input{ type: 'radio'} все объявления
+.grid.half.menu_shield{ 'ng-class' => '{ active: menu.facilities }' }
+  .unit.w-1-1.block
+    %form
+      - %w[washing_machine vacuum_cleaner microwave electric_iron dishes fridge deep_freeze tv furniture intenet phone protection cable_tv dishwasher air_conditioning].each_slice(3) do |block|
+        .grid
+          - block.each do |option|
+            .unit.w-1-3
+              %button.toggleSelected{ 'ng-click' => "toggleSelected('#{option}')", 'ng-class' => "{ active: room_filter.#{option} }"}
+                %i.icon
+                %span= I18n.t("activerecord.attributes.room.#{option}")
+.grid.half.menu_shield{ 'ng-class' => '{ active: menu.cost }' }
+  .unit.w-3-4.block
+    %h1 cost
+    .grid
+      .unit.w-1-2
+        ползунки
+        .slider
+          %span.min $340
+          %div{ slider: true }
+          %span.max $5600
+      .unit.w-1-2
+        Перемещайте ползунки что бы изменить ценовой диапазон за аренду квартир
+
+.grid.half.menu_shield{ 'ng-class' => '{ active: menu.sort }' }
+  .unit.w-1-1.block
+    %h1 sort

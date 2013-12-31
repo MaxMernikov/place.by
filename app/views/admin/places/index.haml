@@ -1,0 +1,31 @@
+.row
+  .col-xs-8
+    %h2
+      Список мест
+      %small= link_to 'Добавить место', new_admin_place_path
+%table.table
+  %thead
+    %tr
+      %th category
+      %th title
+      %th address
+      %th state
+      %th
+  %tbody.table-hover
+    - @places.each do |place|
+      %tr
+        %td= place.category.title
+        %td= place.title
+        %td= place.address
+        %td
+          %span.glyphicon{ class: "#{ 'glyphicon-globe' if place.latitude }" }
+          %span.glyphicon.glyphicon-calendar
+          %span.glyphicon{ class: "#{ 'glyphicon-phone-alt' if place.contacts.present? }" }
+        %td
+          = link_to 'Show', place
+          = link_to 'Edit', edit_admin_place_path(place)
+          = link_to 'Destroy', admin_place_path(place), method: :delete, data: { confirm: 'Are you sure?' }
+    %tr
+      = @places.last.inspect
+    %tr
+      = Place.new.inspect

@@ -9,6 +9,7 @@ class Room < ActiveRecord::Base
       pet smoke
       gas_oven electric_oven
       washing_machine vacuum_cleaner microwave electric_iron dishes fridge deep_freeze tv furniture intenet phone protection cable_tv dishwasher air_conditioning
+      part_apartment
     ],
     integer: %w[bed_count],
     string: %w[diurnal_name detail_info]

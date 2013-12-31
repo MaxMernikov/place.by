@@ -3,48 +3,33 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-# Use sqlite3 as the database for Active Record
-gem 'pg'
-gem 'hstore_attribute_support'
-
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
-
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
-
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-# gem 'turbolinks'
-
-
 # content
 gem 'russian'
+gem 'redcarpet'               # markdown
+gem 'geocoder'                # получение координат
+gem 'diffy'                   # выявление изменений
+gem 'nokogiri'
+gem 'ancestry', '~> 2.0.0'
+gem 'cocoon'
 
 # assets
 gem 'haml'
+gem 'haml-rails'
 gem 'sass'
+gem 'sass-rails', '~> 4.0.0'
 gem 'bourbon'
+gem 'uglifier', '>= 1.3.0'        # Use Uglifier as compressor for JavaScript assets
+gem 'coffee-rails', '~> 4.0.0'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'bootstrap-sass', '~> 3.0.3.0'
 
+# system
+gem 'pg'
+gem 'hstore_attribute_support'
+gem 'concerned_with'              # разделение моделей на части
+gem 'multi_logger'                # логирование действий
 gem 'thin'
-
-gem 'redcarpet'               # markdown
-
-gem 'geocoder'                # получение координат
-gem 'concerned_with'          # разделение моделей на части
-
-gem 'diffy'                   # выявление изменений
-
-gem 'nokogiri'
-gem 'multi_logger'            # логирование действий
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'

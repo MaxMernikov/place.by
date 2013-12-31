@@ -1,6 +1,12 @@
 PlaceBy::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  namespace :admin do
+    resources :dashboards, path: '', except: [:show]
+    resources :categories
+    resources :places
+  end
+
   get '/search' => 'place#search'
 
   resources :rooms do

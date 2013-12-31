@@ -1,0 +1,8 @@
+.we{'ng-controller' => 'PlaceController'}
+  = render 'header'
+
+  .main_wrap.body
+    .sub_wrapper{ 'ng:class' => 'sub_wrapper_class' }
+      = render 'map'
+
+    %section.animate_opst.main{ 'ng:include' => 'view_partial.index', 'ng:class' => '{ show: view_show.index }' }

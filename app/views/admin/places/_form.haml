@@ -1,0 +1,48 @@
+= form_for([:admin, @place], html: { role: 'form' })  do |f|
+  - if @place.errors.any?
+    #error_explanation.thumbnail
+      .caption
+        .lead
+          = I18n.t(:errors_prohibited_this_record_from_being_saved, count: @place.errors.count)
+        %ul
+          - @place.errors.full_messages.each do |msg|
+            %li= msg
+
+  .row
+    .col-xs-6
+      .form-group
+        = f.label :category_id
+        = f.select :category_id, options_from_collection_for_select(Category.by_title, :id, :title), { include_blank: '' }, class: 'form-control'
+
+      .form-group
+        сеть привязанная к категории?
+
+      .form-group
+        = f.label :title
+        = f.text_field :title, class: 'form-control'
+
+      .form-group
+        = f.label :address
+        = f.text_field :address, class: 'form-control'
+
+      .form-group
+        = f.label :address_comment
+        = f.text_area :address_comment, class: 'form-control'
+
+      карта
+
+      граффик работы
+
+      .form-group
+        = f.label :description
+        = f.text_area :description, class: 'form-control'
+
+      #contacts
+        = f.fields_for :contacts do |contacts|
+          = render 'contact_fields', :f => contacts
+        .links
+          = link_to_add_association 'add contacts', f, :contacts, class: 'btn btn-default'
+
+      %br
+      = f.submit 'Сохранить', class: 'btn btn-primary'
+      = link_to 'Назад', admin_categories_path, class: 'btn btn-default'

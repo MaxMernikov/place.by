@@ -6,7 +6,7 @@
   %h2 Rooms
   size: {{filtered_rooms.length}}
 
-  .rooms{ 'ng:repeat' => 'room in filtered_rooms' }
+  .rooms{ 'ng-animate' => "'animate'", 'ng-repeat' => 'room in filtered_rooms' }
     = link_to '/rooms/{{room.id}}' do
       .grid
         .unit.w-1-6

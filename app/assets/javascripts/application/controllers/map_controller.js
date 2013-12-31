@@ -72,7 +72,7 @@ PlaceApp.controller(
       // console.log(markers);
       if(!_.isUndefined(markerCluster)){
         markerCluster.clearMarkers()
-        console.log(_.isUndefined(markerCluster));
+        // console.log(_.isUndefined(markerCluster));
       // }else{
       //   var markerCluster
       }

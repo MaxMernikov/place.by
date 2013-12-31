@@ -1,0 +1,26 @@
+.main_wrap.header
+  .sub_wrapper.short
+    .grid.half
+      .unit.w-3-4
+        = link_to 'аренда квартир', rooms_path, class: 'current_menu'
+        %h1.logo
+          = link_to 'Place.by', root_path
+  .second_header
+    .grid.half
+      .unit.w-1-3.add_room
+        = link_to new_room_path, class: 'infogram' do
+          %i.icon
+          %span добавить объявление
+      .u
+
+    .grid.half
+      .unit.w-1-3
+        Избранное
+      .unit.w-1-3
+        Результаты
+      .unit.w-1-3
+        Катя Петрова
+        %br
+        %ul
+          - %w[настройки выйти].each do |menu_info|
+            %li= link_to menu_info, '#'

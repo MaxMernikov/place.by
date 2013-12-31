@@ -1,0 +1,36 @@
+= form_for([:admin, @category], html: { role: 'form' })  do |f|
+  - if @category.errors.any?
+    #error_explanation.thumbnail
+      .caption
+        .lead
+          = I18n.t(:errors_prohibited_this_record_from_being_saved, count: @category.errors.count)
+        %ul
+          - @category.errors.full_messages.each do |msg|
+            %li= msg
+
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+
+  .form-group
+    = f.label :ancestry_id
+    = f.select :ancestry_id, options_from_collection_for_select(Category.by_title, :id, :title), { include_blank: '' }, class: 'form-control'
+
+  .form-group
+    = f.label :slug
+    = f.text_field :slug, class: 'form-control'
+
+  .form-group
+    = f.label :pos
+    = f.text_field :pos, class: 'form-control'
+
+  .form-group
+    = f.label :detail
+    = f.text_area :detail, class: 'form-control'
+
+  .form-group
+    = f.label :show
+    = f.text_area :show, class: 'form-control'
+
+  = f.submit 'Сохранить', class: 'btn btn-primary'
+  = link_to 'Назад', admin_categories_path, class: 'btn btn-default'

@@ -22,21 +22,6 @@ PlaceApp.controller(
       }
     };
 
-
-    // главная страница
-    home_index = function(){
-      hide_all();
-      $scope.view_partial.index = getView('home#index');
-      $scope.view_show.index = true;
-    };
-
-    // создание объявления
-    rooms_new = function(){
-      hide_all();
-      $scope.view_partial.main = getView('rooms#form');
-      $scope.view_show.main = true;
-    };
-
     // создание маркеров
     create_markers = function(data){
       maps_json = _.map(data, function(elem){
@@ -50,6 +35,14 @@ PlaceApp.controller(
       });
       $rootScope.map_markers = maps_json;
     }
+
+    // создание объявления
+    rooms_new = function(){
+      hide_all();
+      $scope.view_partial.main = getView('rooms#form');
+      $scope.view_show.main = true;
+    };
+
 
     // все комнаты
     rooms_index = function(){
@@ -70,7 +63,6 @@ PlaceApp.controller(
       console.log( 'rooms ' + _.size($.cache) )
     };
 
-
     // одна комната
     rooms_show = function(){
       hide_all(['result']);
@@ -79,16 +71,16 @@ PlaceApp.controller(
         $scope.room = data;
         $scope.view_show.detail = true;
       });
-      console.log( 'room ' + _.size($.cache) )
-      console.log( $.cache )
     };
 
-    // // прорисовщик вьюх, сделано для анимации
-    // $rootScope.$watch('show_view', function () {
-    //   console.log('show_view = ' + $rootScope.show_view);
-    //   $rootScope.show_view != undefined ? $scope[$rootScope.show_view]['show'] = true : null;
-    // });
 
+    // menu
+    $scope.open_menu = function(partial){
+      _.each($scope.menu, function(num, key){ partial == key ? null : $scope.menu[key] = false });
+      $scope.menu[partial] = !$scope.menu[partial];
+    }
+
+    // filter toogle
     $scope.$watch('room_filter', function(){
       $scope.filtered_rooms = $filter('filter')($scope.rooms, $scope.room_filter)
       create_markers($scope.filtered_rooms);
@@ -99,28 +91,26 @@ PlaceApp.controller(
     }
 
     // роутинг
+    // http://www.sitepoint.com/call-javascript-function-string-without-using-eval/
+    changeRoute = function(){
+      window[$route.current.action]();
+      sub_wrapper_class_set();
+
+      if($route.current.controller != 'rooms'){
+        create_markers()
+      }
+    }
+
+    changeRoute();
+
     $scope.$on(
       '$routeChangeSuccess',
       function( $currentRoute, $previousRoute ){
-        // http://www.sitepoint.com/call-javascript-function-string-without-using-eval/
-        window[$route.current.action]();
-        sub_wrapper_class_set();
+        changeRoute();
       }
     );
 
-
-    // метод для получения линка до вьюхи
-    var getView = function(view) {
-      $scope.view = view;
-      var partial = view.split( '#' );
-      return '/partials/' + partial[0] + '/' + partial[1] + '.html';
-    };
-
-    $scope.open_menu = function(partial){
-      _.each($scope.menu, function(num, key){ partial == key ? null : $scope.menu[key] = false });
-      $scope.menu[partial] = !$scope.menu[partial];
-    }
-
+    // localize
     $scope.roomForms = {
       0: 'нет комнат',
       one: '{} комната',
@@ -130,3 +120,4 @@ PlaceApp.controller(
     };
   }
 );
+

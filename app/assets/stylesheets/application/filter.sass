@@ -1,0 +1,98 @@
+@import 'bourbon'
+@import 'variable.sass'
+
+.filter
+  bottom: 2px
+  left: 2px
+  right: 0
+  position: absolute
+  box-shadow: -2px 2px 0px 0px white
+  .menu_control
+    &:after
+      background: $gray_color
+      width: 50%
+      content: ""
+      height: 96%
+      display: inline-block
+      position: absolute
+      border-bottom: 1px solid $gray_border_color
+      border-top: 1px solid $gray_border_color
+      bottom: 0
+    .unit
+      background: $gray_color
+      border: 1px solid $gray_border_color
+      border-left: 0px
+      text-align: center
+      cursor: pointer
+      @include transition (background-color .2s linear)
+      &:hover
+        background: $gray_hover_color
+      &.active
+        border-top: 1px solid #FFF
+        background: #FFF
+        @include transition (background-color 0.0s linear !important)
+        &:hover
+          background: #fff
+      &:first-child
+        border-left: 1px solid $gray_border_color
+
+  .menu_shield
+    position: absolute
+    bottom: 42px
+    display: none
+    .block
+      border-bottom: 0px
+    &.active
+      display: block
+    &>div
+    .cost
+      margin-left: 37.5%
+
+  .toggleSelected
+    text-align: left
+    border: 1px solid #DDD
+    background: #fff
+    border-radius: 4px
+    width: 100%
+    padding: 4px
+    @include transition (background-color .2s linear)
+    cursor: pointer
+    &:hover
+      border: 1px solid #BBB
+    &.active
+      background: #f8f8f8
+    i
+      vertical-align: middle
+    span
+      padding-left: 4px
+      display: inline-block
+      vertical-align: middle
+      width: 72px
+
+  .slider
+    height: 300px
+    text-align: center
+    span
+      font-size: 12px
+      color: $hint_color
+    .ui-slider
+      border-radius: 2px
+      height: 250px
+      margin: 0 auto
+      background: $gray_color
+      border: 1px solid $gray_border_color
+
+      .ui-slider-range
+        background: $gray_hover_color
+
+      .ui-slider-handle
+        width: 24px
+        height: 24px
+        left: -6px
+        border-radius: 13px
+        background: #fff
+        cursor: pointer
+        border: 1px solid $hint_color
+        &:hover
+          border: 1px solid $main_color
+

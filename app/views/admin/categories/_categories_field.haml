@@ -1,0 +1,12 @@
+- categories.each do |cat|
+  .child
+    .row
+      .col-xs-9
+        %span.lead= cat.title
+        = cat.slug
+
+      .col-xs-3
+        = link_to 'Edit', edit_admin_category_path(cat)
+        = link_to 'Destroy', admin_category_path(cat), method: :delete, data: { confirm: 'Are you sure?' }
+
+    = render 'categories_field', categories: cat.children
