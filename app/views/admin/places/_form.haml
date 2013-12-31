@@ -12,10 +12,11 @@
     .col-xs-6
       .form-group
         = f.label :category_id
-        = f.select :category_id, options_from_collection_for_select(Category.by_title, :id, :title), { include_blank: '' }, class: 'form-control'
+        = f.select :category_id, Category.by_title.map{|d| [d.title, d.id] }, { include_blank: '' }, class: 'form-control'
 
       .form-group
-        сеть привязанная к категории?
+        = f.label :network
+        = f.text_field :network, class: 'form-control'
 
       .form-group
         = f.label :title
@@ -29,9 +30,9 @@
         = f.label :address_comment
         = f.text_area :address_comment, class: 'form-control'
 
-      карта
-
-      граффик работы
+      .form-group
+        = f.label :time_work
+        = f.text_area :time_work, class: 'form-control'
 
       .form-group
         = f.label :description
@@ -39,9 +40,14 @@
 
       #contacts
         = f.fields_for :contacts do |contacts|
-          = render 'contact_fields', :f => contacts
+          = render 'contact_fields', f: contacts
         .links
           = link_to_add_association 'add contacts', f, :contacts, class: 'btn btn-default'
+      #services
+        = f.fields_for :services do |services|
+          = render 'service_fields', f: services
+        .links
+          = link_to_add_association 'add service', f, :services, class: 'btn btn-default'
 
       %br
       = f.submit 'Сохранить', class: 'btn btn-primary'

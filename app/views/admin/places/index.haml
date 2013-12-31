@@ -19,7 +19,7 @@
         %td= place.address
         %td
           %span.glyphicon{ class: "#{ 'glyphicon-globe' if place.latitude }" }
-          %span.glyphicon.glyphicon-calendar
+          %span.glyphicon{ class: "#{ 'glyphicon-calendar' if place.time_work }" }
           %span.glyphicon{ class: "#{ 'glyphicon-phone-alt' if place.contacts.present? }" }
         %td
           = link_to 'Show', place

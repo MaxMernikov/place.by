@@ -45,7 +45,7 @@ private
   end
 
   def place_params
-    params.require(:place).permit(:category_id, :title, :address, :address_comment, :description, contacts_attributes: [:contact_type, :num, :comment])
+    params.require(:place).permit(:category_id, :title, :address, :address_comment, :description, :network, :time_work, contacts_attributes: [:contact_type, :num, :comment], services_attributes: [:title, :cost])
   end
 
 end
