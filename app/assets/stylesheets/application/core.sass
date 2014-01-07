@@ -1,4 +1,6 @@
 @import 'bourbon'
+@import 'variable.sass'
+
 // @import url(http://fonts.googleapis.com/css?family=PT+Serif&subset=latin,cyrillic)
 @font-face
   font-family: 'PT Serif'
@@ -14,8 +16,12 @@
   font-weight: 400
   src: local('PT Sans'), local('PTSans-Regular'), url(http://themes.googleusercontent.com/static/fonts/ptsans/v5/oOt0DNfso2UXZt7DYCiN2gLUuEpTyoUstqEm5AMlJo4.woff) format('woff')
 
-
-$border_color: #E4E4E4
+// http://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin,cyrillic-ext
+@font-face
+  font-family: 'Open Sans'
+  font-style: normal
+  font-weight: 300
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/DXI1ORHCpsQm3Vp6mXoaTVMBBrntOh5tSEdJ1aeglyY.woff) format('woff')
 
 body
   font-family: 'PT Serif', Georgia, 'Times New Roman', Times, serif
@@ -29,6 +35,9 @@ body
   section
     border-spacing: 0 !important
 
+.check
+  font-family: 'Open Sans', sans
+  font-size: 13px
 
 h1, h2, h3
   font-family: 'PT Sans', sans
@@ -54,13 +63,13 @@ input[type='submit']
     color: #888
 
 .block
-  background: #fff
-  border: 1px solid #E4E4E4
+  background: $main
+  border: 1px solid $gray_2_1
   overflow: scroll
 
 .animate_opst
   @include transition (top .1s linear 1s)
-  top: -100%
+  top: -150%
   &.show
     @include transition (top .1s linear 0s)
     top: 0
@@ -105,7 +114,7 @@ input[type='submit']
   width: 32px
   height: 32px
   opacity: 0.4
-  background-image: url('sprite.png')
+  background-image: url('/assets/sprite.png')
   @include transition (opacity .4s linear)
   display: inline-block
   &:hover
@@ -115,8 +124,17 @@ input[type='submit']
   width: 460px
 
 .infogram
-  color: #444
+  @include transition (border-color .35s linear)
+  border: 1px solid $main
+  font-family: 'Open Sans', sans
+  border-radius: 2px
+  color: #444444
+  cursor: pointer
+  display: inline-block
+  padding: 4px
   text-decoration: none
+  &:hover
+    border: 1px solid $gray_2_1
   i
     vertical-align: middle
   span
@@ -126,7 +144,15 @@ input[type='submit']
     padding-left: 4px
     text-transform: uppercase
     vertical-align: middle
-    width: 78px
+    width: 72px
+    text-align: left
+
+a.infogram
+  height: 32px
+
+button.infogram
+  padding: 2px
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0)
 
 .h_an
   @include transition (background-color .2s linear)

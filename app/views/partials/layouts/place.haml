@@ -6,3 +6,7 @@
       = render 'map'
 
     %section.animate_opst.main{ 'ng:include' => 'view_partial.index', 'ng:class' => '{ show: view_show.index }' }
+
+
+    %section.animate_rslide.right{ 'ng:include' =>'view_partial.result', 'ng:class' =>'{ show: view_show.result }' }
+    %section.animate_rslide.right{ 'ng:include' =>'view_partial.detail', 'ng:class' =>'{ show: view_show.detail }' }

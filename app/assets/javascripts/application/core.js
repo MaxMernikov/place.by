@@ -3,11 +3,24 @@ var getView = function(view){
   return '/partials/' + partial[0] + '/' + partial[1] + '.html';
 };
 
-hide_all = function(view_show, array){
+// метод для скрытия вьюх
+hide_all_view = function(view_show, array){
   if(array == undefined){
     _.each(view_show, function(num, key){ view_show[key] = false; });
   } else {
     _.each(view_show, function(num, key){ _.include(array, key) ? null : view_show[key] = false; });
   }
-  view_show
-};
+  return view_show;
+}
+
+// создание маркеров
+create_place_markers = function(data){
+  maps_json = _.map(data, function(elem){
+    res = {
+      id: elem.id,
+      position: new google.maps.LatLng(elem.longitude, elem.latitude),
+    };
+    return res;
+  });
+  return maps_json;
+}

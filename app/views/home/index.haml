@@ -3,10 +3,11 @@
     .unit.whole
       %h1 Place.by
 
-    - Category.main.each do |category|
+    = Category.count
+    - Category.roots.each do |category|
       .unit.whole
         %h3= category.title
-        - category.categories.each do |sub_category|
+        - category.children.each do |sub_category|
           = sub_category.title
     .unit.while
       / %script{id: "search_result.html", type: "text/ng-template"}

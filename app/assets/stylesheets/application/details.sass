@@ -1,4 +1,6 @@
 @import 'bourbon'
+@import 'variable.sass'
+
 .rooms_form
   position: absolute
   top: 20px
@@ -71,58 +73,52 @@
   &:hover
     background: #444
 
-.room_detail
+.details
   color: #444
   bottom: 0
   position: absolute
   top: 0
 
-
-  .price
-    font-size: 22px
-    margin-top: 8px
-
   .menu
-    border-bottom: 1px solid #ddd
-    button
-      &:hover
-        cursor: pointer
-        color: #888
-        i
-          opacity: 0.2
-      i
-        vertical-align: middle
-      span
-        display: inline-block
-        font-size: 11px
-        text-transform: uppercase
-        vertical-align: middle
-        width: 74px
-        text-align: left
-        padding-left: 4px
+    border-bottom: 1px solid $gray_2_1
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.95)
+    position: fixed
+
+  .after_menu
+    margin-top: 70px
 
   .title
     font-size: 22px
   .subtitle
+    text-transform: uppercase
+  .hint
     color: #888
-  .features
-    padding-left: 10px
-    .unit
-      i
-        display: inline-block
-        vertical-align: middle
-      span
-        padding-left: 4px
-        width: 78px
-        display: inline-block
-        font-size: 9px
-        line-height: 14px
-        text-transform: uppercase
-        vertical-align: middle
-        &.subtitle
-          width: auto
-          padding: 0
 
+  &.place
+    .grid
+      margin-bottom: 12px
+
+  &.room
+    .price
+      font-size: 22px
+      margin-top: 8px
+    .features
+      padding-left: 10px
+      .unit
+        i
+          display: inline-block
+          vertical-align: middle
+        span
+          padding-left: 4px
+          width: 78px
+          display: inline-block
+          font-size: 9px
+          line-height: 14px
+          text-transform: uppercase
+          vertical-align: middle
+          &.subtitle
+            width: auto
+            padding: 0
 
 button
   &.unstyle

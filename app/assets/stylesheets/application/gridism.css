@@ -61,6 +61,7 @@
 .grid .w-3-5 { width: 60%; }
 .grid .w-4-5 { width: 80%; }
 .grid .w-1-6 { width: 16.6665%; }
+.grid .w-5-6 { width: 83.3332%; }
 
 .grid .golden-small,   .grid .w-g-s { width: 38.2716%; } /* Golden section: smaller piece */
 .grid .golden-large,   .grid .w-g-l { width: 61.7283%; } /* Golden section: larger piece */

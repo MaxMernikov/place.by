@@ -6,7 +6,7 @@
   left: 2px
   right: 0
   position: absolute
-  box-shadow: -2px 2px 0px 0px white
+  box-shadow: -2px 2px 0px 0px $main
   .menu_control
     &:after
       background: $gray_color
@@ -28,8 +28,8 @@
       &:hover
         background: $gray_hover_color
       &.active
-        border-top: 1px solid #FFF
-        background: #FFF
+        border-top: 1px solid $main
+        background: $main
         @include transition (background-color 0.0s linear !important)
         &:hover
           background: #fff
@@ -74,7 +74,7 @@
     text-align: center
     span
       font-size: 12px
-      color: $hint_color
+      color: $hint_text
     .ui-slider
       border-radius: 2px
       height: 250px
@@ -92,7 +92,7 @@
         border-radius: 13px
         background: #fff
         cursor: pointer
-        border: 1px solid $hint_color
+        border: 1px solid $hint_text
         &:hover
-          border: 1px solid $main_color
+          border: 1px solid $main_text
 

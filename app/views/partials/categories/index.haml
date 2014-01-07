@@ -1,0 +1,21 @@
+.wrap.results.block
+  .grid.menu
+    = link_to '/', class: 'first' do
+      .unit.w-1-3 на главную
+    .unit.w-1-3{'ng-click' => 'scroll_to_root()'}
+      %h2
+        %ng-pluralize{ count: "places.length", when: "placeForms"}
+    .unit.w-1-3.cap
+    / = link_to '/', class: 'last' do
+    /   .unit.w-1-3 закладки
+
+  .rooms{ 'ng-repeat' => 'place in places' }
+    = link_to '/{{categoryId}}/{{place.id}}' do
+      .grid
+        .unit.w-5-6
+          .rooms_count
+            {{place.address}}
+          .address
+            {{place.title}}
+        .unit.w-1-6
+          .icon{ title: 'добавить в закладки'}

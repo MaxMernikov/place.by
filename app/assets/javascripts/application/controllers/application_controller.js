@@ -5,7 +5,8 @@ PlaceApp.controller(
     $scope.$on(
       '$routeChangeSuccess',
       function( $currentRoute, $previousRoute ){
-        $scope.controller = getView('layouts#' + $route.current.controller);
+        controller = $route.current.controller || 'place'
+        $scope.controller = getView('layouts#' + controller);
       }
     );
 

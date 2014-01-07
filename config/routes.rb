@@ -27,11 +27,12 @@ PlaceBy::Application.routes.draw do
     get :test2, on: :collection
   end
 
-  resources :category, path: '', only: [:show] do
+  get 'partials/:model/:view' => 'partial#show', as: :partial
+
+  resources :categories, path: '', only: [:show] do
     resources :place, path: '', only: [:show]
   end
 
-  get 'partials/:model/:view' => 'partial#show', as: :partial
 
   root 'home#index'
 

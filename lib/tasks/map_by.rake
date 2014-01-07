@@ -8,7 +8,7 @@ task map_by: :environment do
   page_count = 4
   category_id = Category.find_by(title: 'Бассейн').id
 
-  (1..page_count).take(1).each do |page_num|
+  (1..page_count).each do |page_num|
     page = url + counter(page_num)
     doc = Nokogiri::HTML(open(page))
     doc.css('.comshot').each do |block|

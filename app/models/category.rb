@@ -3,7 +3,7 @@ class Category < ActiveRecord::Base
   attr_accessor :ancestry_id
   has_many :places
 
-  validates :title, uniqueness: true
+  validates :title, :slug, uniqueness: true
   before_save :set_ancestry
 
   scope :by_title, -> { order('title ASC') }

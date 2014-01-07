@@ -16,4 +16,6 @@ class Place < ActiveRecord::Base
   def address_with_country
     address + ', г. Минск, Беларусь' if address
   end
+
+
 end
