@@ -5,7 +5,7 @@ PlaceApp.controller(
 
     mcOptions = {
       imagePath: {},
-      styles: [{ width: 57, height: 57 }],
+      styles: [{ width: 57, height: 57}],
       gridSize: 55
     }
 

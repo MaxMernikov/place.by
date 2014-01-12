@@ -19,3 +19,9 @@ ru:
         cable_tv: Кабельное телевидение
         dishwasher: Посудомоечная машина
         air_conditioning: Кондиционер
+
+  places:
+    one: место
+    few: места
+    many: мест
+    other: мест

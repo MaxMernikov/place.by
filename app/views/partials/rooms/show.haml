@@ -6,11 +6,11 @@
       %span{ 'bo-text' => 'room.price' }
     .unit.w-1-3
       %button.unstyle
-        %i.icon
+        %i.big_icon
         %span Добавить в закладки
     .unit.w-1-3
       %button.unstyle
-        %i.icon
+        %i.big_icon
         %span Оставить жалобу
   .grid
     .unit.w-1-1
@@ -31,7 +31,7 @@
       6
     - %w[washing_machine vacuum_cleaner microwave electric_iron dishes fridge deep_freeze tv furniture intenet phone protection cable_tv dishwasher air_conditioning].each do |option|
       .unit.w-1-3{ 'ng-show' => "room.details.#{option}" }
-        %i.icon
+        %i.big_icon
         %span
           = I18n.t("activerecord.attributes.room.#{option}")
 

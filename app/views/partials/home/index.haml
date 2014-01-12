@@ -10,13 +10,19 @@
 /     = link_to 'rooms', '/rooms'
 /     = link_to 'add room', '/rooms/new'
 
-.wrap.block.index
-  .grid
+.wrap.block.index.full
+  .grid.head
     .unit.w-1-1
-      Выберите категорию
-  .grid
+      В каталоге
+      = Place.count
+      = I18n.t(:places, count: Place.count)
+  .grid.promo.check
+    .unit.w-1-1
+      Мы собрали для вас наиболее полезные места оказания услуг и времяпрепровождения
+  .grid.list_styled
+    .q
     - Category.roots.each do |category|
-      .unit.w-1-3
+      .unit.w-main
         .title= category.title
         - category.children.each do |sub_category|
           = link_to sub_category.title, category_path(sub_category.slug), class: 'subtitle'

@@ -1,6 +1,6 @@
 PlaceApp.controller(
   'PlaceController',
-  function ( $location, $scope, $http, $route, $rootScope, $routeParams ) {
+  function ( $location, $scope, $http, $route, $rootScope, $routeParams, $templateCache, $cacheFactory ) {
     init_map();
     $scope.view_partial = {};
     $scope.view_show = {};
@@ -53,6 +53,9 @@ PlaceApp.controller(
     place_show = function(){
       hide_all(['result']);
       $scope.view_partial.detail = getView('place#show');
+      // $http(getView('place#show')).then(function (result) {
+      //   $templateCache.put('my-dynamic-template', result);
+      // });
 
       $http.get('/' + $routeParams.categoryId + '/'+ $routeParams.placeId + '.json').success(function(data) {
         $scope.place = data;
@@ -63,27 +66,35 @@ PlaceApp.controller(
           $rootScope.map_markers = create_place_markers([data]);
           map.setZoom(17);
           map.panTo(new google.maps.LatLng(data.longitude, data.latitude));
-          // map.panBy(300, 0);
 
         } else if($rootScope.view_from_map != true){
           map.setZoom(17);
           map.panTo(new google.maps.LatLng(data.longitude, data.latitude));
-          // map.panBy(300, 0);
         }
 
         $scope.view_show.detail = true;
       });
 
       if($scope.view_show.detail != true){
-        $scope.sub_wrapper_class = 'short';
         $scope.view_show.detail = true;
+        $scope.sub_wrapper_class = 'short';
       }
     };
+
+    $scope.edit = function(){
+      $scope.view_partial.detail = getView('place#edit');
+      // $scope.view_show.detail = false;
+      // $scope.view_show.detail = ;
+      // $scope.$apply()
+    }
+
+    $scope.back = function(){
+      $scope.view_partial.detail = getView('place#show');
+    }
 
     // роутинг
     // http://www.sitepoint.com/call-javascript-function-string-without-using-eval/
     changeRoute = function(){
-      $scope.categoryId = $routeParams.categoryId
       window[$route.current.action]();
       sub_wrapper_class_set();
     }
@@ -98,8 +109,7 @@ PlaceApp.controller(
     );
 
     $scope.$watch('sub_wrapper_class', function(){
-      n = 0;
-      test()
+      initialize_center();
     });
 
     $scope.scroll_to_root = function(){

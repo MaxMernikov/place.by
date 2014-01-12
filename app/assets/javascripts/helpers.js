@@ -68,11 +68,9 @@ init_map = function(){
   if(window.map == undefined){
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
   }
-
-  var centerPosition = map.getCenter();  //get the center position
-  google.maps.event.trigger(map, 'resize');
-  map.setCenter(centerPosition);
-  console.log(map.changed)
+  google.maps.event.addDomListener(window, "resize", function() {
+    initialize_center();
+  });
 }
 
 // сдвигаем все в центр
@@ -85,14 +83,14 @@ map_scroll_to_root = function(){
 initialize_center = function(){
   var center = map.getCenter();
   google.maps.event.trigger(map, "resize");
-  map.setCenter(center);
-  console.log('centred')
+  map.setCenter(center)
 }
 
-var n = 0;
-test = function(){
-  console.log(n)
-  n += 1
-  initialize_center()
-  if(n < 40) setTimeout('test()', 100);
+// локализация меню
+translate = function(category){
+  switch(category){
+    case 'pool': return 'бассейны'; break;
+    default:
+      return undefined; console.log(category);
+  }
 }

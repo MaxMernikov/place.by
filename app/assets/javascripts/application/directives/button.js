@@ -8,7 +8,27 @@ PlaceApp.directive(
   }
 );
 
-PlaceApp.directive(
+PlaceApp.directive("partial", ["$compile", '$http', '$templateCache', '$parse', function ($compile, $http, $templateCache, $parse) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attrs) {
+
+      scope.$watch(attrs.template, function (value) {
+        if (value) {
+          loadTemplate(value);
+        }
+      });
+
+      function loadTemplate(template) {
+        $http.get(template, { cache: $templateCache })
+          .success(function(templateContent) {
+            element.html($compile(templateContent)(scope));
+          });
+        }
+      }
+    }
+  }]
+).directive(
   'slider',
   function () {
     return {

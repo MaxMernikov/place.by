@@ -16,7 +16,6 @@
 
 .right
   position: absolute
-  width: 460px
   height: 100%
   top: 0
   bottom: 0
@@ -53,7 +52,6 @@
     color: #444
 
   .address
-    color: #444
     font-size: 18px
 
   .rooms_count
@@ -67,11 +65,42 @@
   top: 0
   left: -40px
   width: 40px
-  background: #888
-  opacity: 0.6
+  background: $gray_2_1
+  opacity: 0.8
   @include transition (background-color .2s linear)
   &:hover
-    background: #444
+    background: $gray_2_2
+  &:after
+    background: url("/assets/sprite.png") repeat scroll -32px -32px rgba(0, 0, 0, 0)
+    content: ""
+    display: block
+    height: 32px
+    left: 3px
+    position: relative
+    top: 50%
+    width: 32px
+    margin-top: -16px
+
+.link_to_room_xs
+  top: 0
+  left: 60px
+  width: 60px
+  height: 60px
+  display: block
+  position: absolute
+  background: $gray_2_1
+  @include transition (background-color .2s linear)
+  &:hover
+    background: $gray_2_2
+  &:after
+    background: url("/assets/sprite.png") repeat scroll -32px -32px rgba(0, 0, 0, 0)
+    content: ""
+    display: block
+    height: 32px
+    left: 12px
+    position: relative
+    top: 12px
+    width: 32px
 
 .details
   color: #444
@@ -83,9 +112,10 @@
     border-bottom: 1px solid $gray_2_1
     background: none repeat scroll 0 0 rgba(255, 255, 255, 0.95)
     position: fixed
+    height: 60px
 
   .after_menu
-    margin-top: 70px
+    margin-top: 68px
 
   .title
     font-size: 22px

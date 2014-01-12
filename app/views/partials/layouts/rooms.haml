@@ -1,8 +1,8 @@
-.we{'ng:controller' => 'RoomsController'}
+.we{'ng-controller' => 'RoomsController'}
   = render 'header'
 
   .main_wrap.body
-    .sub_wrapper{ 'ng:class' => 'sub_wrapper_class' }
+    .sub_wrapper{'ng-class' => 'sub_wrapper_class'}
       = render 'map'
       %section.animate_filter.filter{ 'ng:include' => 'view_partial.filter', 'ng:class' => '{ show: view_show.filter }' }
     %section.animate_opst.main{ 'ng:include' => 'view_partial.index', 'ng:class' => '{ show: view_show.index }' }

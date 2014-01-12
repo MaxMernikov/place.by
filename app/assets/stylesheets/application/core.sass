@@ -32,6 +32,7 @@ body
   height: 100%
   margin: 0px
   padding: 0px
+  cursor: default
   section
     border-spacing: 0 !important
 
@@ -87,41 +88,129 @@ input[type='submit']
     opacity: 1
 
 .animate_rslide
-  @include transition (right .6s linear)
-  right: -640px
+  @include transition (right .6s linear, opacity .2s linear)
+  right: -680px
+  opacity: 1
   &.show
     right: 0
 
+a, .link
+  color: $link
+  @include transition (color .2s linear)
+  &:hover
+    color: #444
+
 .main_wrap
+  @include transition (left .2s linear, right .2s linear)
   bottom: 0px
   left: 0
   position: absolute
   right: 0
   &.body
     top: 80px
+  &.open_menu
+    left: 300px
+    right: -300px
+
+.main
+  left: 0
+  margin: 0 auto
+  position: absolute
+  right: 0
+  width: 920px
+  height: 100%
 
 .sub_wrapper
   height: 100%
   position: absolute
   left: 0
   right: 0
-  @include transition (right .1s linear 0s)
-  &.short
-    @include transition (right .1s linear 3s)
-    right: 460px
 
-.icon
-  width: 32px
-  height: 32px
-  opacity: 0.4
-  background-image: url('/assets/sprite.png')
-  @include transition (opacity .4s linear)
-  display: inline-block
-  &:hover
-    opacity: 1
+.xs-show
+  display: none !important
+.xs-hide
+  display: inherit !important
 
 .half
-  width: 460px
+  float: left
+
+.map_control
+  display: none
+
+@media screen and (min-width: 920px)
+  .full
+    width: 920px
+  .half
+    width: 460px
+  .sub_wrapper
+    &.short
+      right: 460px
+  .w-main
+    width: 25% !important
+
+
+
+@media screen and (max-width: 920px)
+  .full
+    width: 640px
+  .half
+    width: 320px
+  .sub_wrapper
+    &.short
+      right: 320px
+
+  .header
+    .logo
+      font-size: 28px !important
+      margin-top: 0 !important
+  .second_header
+    top: 0 !important
+
+  .big_icon
+    display: none !important
+
+  .main_wrap.body
+    top: 60px
+
+  .w-main
+    width: 50% !important
+
+@media screen and (max-width: 640px)
+  .main
+    width: 92%!important
+  .full
+    width: 100%
+  .half
+    width: 100%
+  .xs-show
+    display: inherit !important
+  .xs-hide
+    display: none !important
+  .details.wrap.half
+    top: -60px
+  .sub_wrapper.short
+    right: 0
+
+  .map_control
+    display: block
+    position: absolute
+    background: $contrast
+    color: $main
+    bottom: 0
+    right: 0
+    span
+      cursor: pointer
+      padding: 16px
+      display: inline-block
+      @include transition (background .2s linear)
+      &.active
+        background: $contrast_2
+      &:hover
+        background: $contrast_2
+
+  .w-main
+    width: 100% !important
+
 
 .infogram
   @include transition (border-color .35s linear)
