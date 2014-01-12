@@ -3,10 +3,11 @@ class CreateCategories < ActiveRecord::Migration
     create_table :categories do |t|
       t.string :title
       t.string :slug
-      t.decimal :category_id, precision: 4, scale: 0
-      t.decimal :pos, precision: 3, scale: 0
+      t.integer :pos
       t.hstore :detail
       t.boolean :show
+      t.string :ancestry
+      t.index :ancestry
 
       t.timestamps
     end
