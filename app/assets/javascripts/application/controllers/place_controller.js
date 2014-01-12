@@ -30,7 +30,7 @@ PlaceApp.controller(
         $http.get('/' + $route.current.params.categoryId + '.json').success(function(data) {
           $scope.places = data;
           $rootScope.maker_type = 'place';
-          $rootScope.map_markers = create_place_markers(data);
+          // $rootScope.map_markers = create_place_markers(data);
         });
         $scope.view_show.result = true;
       };
