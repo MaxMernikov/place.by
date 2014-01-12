@@ -22,10 +22,10 @@ development:
   username:
   password:
 
-stage:
+staging:
   adapter: postgresql
   encoding: utf8
-  database: place_by_stage
+  database: place_by_staging
   pool: 5
   username: root
   password: oz4z2koPBu
