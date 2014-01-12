@@ -27,8 +27,9 @@ stage:
   encoding: utf8
   database: place_by_stage
   pool: 5
-  username: plce
+  username: root
   password: oz4z2koPBu
+
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
