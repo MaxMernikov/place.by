@@ -3,8 +3,8 @@
   / = render 'header'
 
   .main_wrap.body{'ng-class' => '{open_menu: open_collapse}'}
-    / .sub_wrapper{ 'ng:class' => 'sub_wrapper_class' }
-    /   = render 'map'
+    .sub_wrapper{ 'ng:class' => 'sub_wrapper_class' }
+      = render 'map'
 
     / %section.animate_opst.main.full{ 'ng:include' => 'view_partial.index', 'ng:class' => '{ show: view_show.index }' }
     %section.animate_opst{'partial' => '', template: 'view_partial.index', 'ng:class' => '{ show: view_show.index }'}
