@@ -1,23 +1,23 @@
 - link = "{{category}}"
 .shroud{'ng-click' => 'openCollapse()', 'ng-class' => '{show: open_collapse}'}
-.main_wrap.header
-  .xs-show.block
-    .nav-bar{'ng-click' => 'openCollapse()'}
-    .navbar-collapse{'ng-class' => '{open: open_collapse}'}
-      .grid.half{'ng-click' => 'openCollapse()'}
-        .unit.w-1-1
-          .current_menu
-            = raw('<a ng-href="/' + link + '">{{translate(category)}}</a>')
-          %h1.logo
-            = link_to 'Place.by', root_path
-      .grid.half{'ng-click' => 'openCollapse()'}
-        = link_to root_path do
-          .unit.w-1-1 на главную
-        = link_to '#' do
-          .unit.w-1-1 добавить место
-        = link_to '#' do
-          .unit.w-1-1 сообщить об ошибке
-  .xs-hide
+.xs-show
+  .nav-bar{'ng-click' => 'openCollapse()'}
+  .navbar-collapse{'ng-class' => '{open: open_collapse}'}
+    .grid.half{'ng-click' => 'openCollapse()'}
+      .unit.w-1-1
+        .current_menu
+          = raw('<a ng-href="/' + link + '">{{translate(category)}}</a>')
+        %h1.logo
+          = link_to 'Place.by', root_path
+    .grid.half{'ng-click' => 'openCollapse()'}
+      = link_to root_path do
+        .unit.w-1-1 на главную
+      = link_to '#' do
+        .unit.w-1-1 добавить место
+      = link_to '#' do
+        .unit.w-1-1 сообщить об ошибке
+.xs-hide
+  .main_wrap.header
     .sub_wrapper.short
       .grid.half
         .unit.w-2-3
