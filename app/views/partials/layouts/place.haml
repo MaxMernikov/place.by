@@ -1,19 +1,19 @@
 #media-width-detection-element
 .we{'ng-controller' => 'PlaceController'}
-  = render 'header'
+  / = render 'header'
 
   .main_wrap.body{'ng-class' => '{open_menu: open_collapse}'}
-    .sub_wrapper{ 'ng:class' => 'sub_wrapper_class' }
-      = render 'map'
+    / .sub_wrapper{ 'ng:class' => 'sub_wrapper_class' }
+    /   = render 'map'
 
     / %section.animate_opst.main.full{ 'ng:include' => 'view_partial.index', 'ng:class' => '{ show: view_show.index }' }
     %section.animate_opst{'partial' => '', template: 'view_partial.index', 'ng:class' => '{ show: view_show.index }'}
 
 
-    %section.animate_rslide.right.half{ 'ng:include' =>'view_partial.result', 'ng:class' =>'{ show: view_show.result }' }
-    / %section.animate_rslide.right.half{ 'ng:include' =>'view_partial.detail', 'ng:class' =>'{ show: view_show.detail }' }
-    %section.animate_rslide.right.half{'partial' => '', template: 'view_partial.detail', 'ng-class' =>'{ show: view_show.detail }'}
+  /   %section.animate_rslide.right.half{ 'ng:include' =>'view_partial.result', 'ng:class' =>'{ show: view_show.result }' }
 
-  .map_control
-    %span{'ng-class' =>'{ active: map_control }', 'ng-click' =>'mapControl()'} карта
-    %span{'ng-class' =>'{ active: !map_control }', 'ng-click' =>'mapControl()'} инфо
+  /   %section.animate_rslide.right.half{'partial' => '', template: 'view_partial.detail', 'ng-class' =>'{ show: view_show.detail }'}
+
+  / .map_control
+  /   %span{'ng-class' =>'{ active: map_control }', 'ng-click' =>'mapControl()'} карта
+  /   %span{'ng-class' =>'{ active: !map_control }', 'ng-click' =>'mapControl()'} инфо

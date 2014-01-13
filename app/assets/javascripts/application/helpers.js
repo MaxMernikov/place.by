@@ -65,12 +65,12 @@ var mapOptions = {
 };
 
 init_map = function(){
-  if(window.map == undefined){
-    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-  }
-  google.maps.event.addDomListener(window, "resize", function() {
-    initialize_center();
-  });
+  // if(window.map == undefined){
+  //   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  // }
+  // google.maps.event.addDomListener(window, "resize", function() {
+  //   initialize_center();
+  // });
 }
 
 // сдвигаем все в центр
