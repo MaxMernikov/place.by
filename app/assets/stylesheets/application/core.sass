@@ -38,7 +38,7 @@ body
 
 .check
   font-family: 'Open Sans', sans
-  font-size: 13px
+  // font-size: 13px
 
 h1, h2, h3
   font-family: 'PT Sans', sans
@@ -69,8 +69,9 @@ input[type='submit']
   overflow: scroll
 
 .animate_opst
+  position: relative
   @include transition (top .1s linear 1s)
-  top: -150%
+  top: 150%
   &.show
     @include transition (top .1s linear 0s)
     top: 0
