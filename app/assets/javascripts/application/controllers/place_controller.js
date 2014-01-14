@@ -15,6 +15,7 @@ PlaceApp.controller(
 
     // главная страница
     home_index = function(){
+      if(true) disableMovement(true);
       $scope.view_show = hide_all_view($scope.view_show);
       $scope.view_partial.index = getView('home#index');
       $scope.view_show.index = true;

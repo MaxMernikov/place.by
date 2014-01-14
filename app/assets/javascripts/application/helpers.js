@@ -93,4 +93,26 @@ translate = function(category){
     default:
       return undefined; console.log(category);
   }
-}
+};
+
+function disableMovement(disable) {
+  var mapOptions;
+  if (disable) {
+    mapOptions = {
+      draggable: false,
+      scrollwheel: false,
+      disableDoubleClickZoom: true,
+      zoomControl: false
+    };
+  } else {
+    mapOptions = {
+      draggable: true,
+      scrollwheel: true,
+      disableDoubleClickZoom: false,
+      zoomControl: true
+    };
+  }
+  map.setOptions(mapOptions);
+};
+
+// (function(){var d=$(document.getElementsByTagName("body")),b=[],c=function(a){a.data().hasOwnProperty("$scope")&&angular.forEach(a.data().$scope.$$watchers,function(a){b.push(a)});angular.forEach(a.children(),function(a){c($(a))})};c(d);console.log(b.length)})();
