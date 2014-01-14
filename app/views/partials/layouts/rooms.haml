@@ -4,12 +4,12 @@
   .main_wrap.body
     .sub_wrapper{'ng-class' => 'sub_wrapper_class'}
       = render 'map'
-      %section.animate_filter.filter{ 'ng:include' => 'view_partial.filter', 'ng:class' => '{ show: view_show.filter }' }
-    %section.animate_opst.main{ 'ng:include' => 'view_partial.index', 'ng:class' => '{ show: view_show.index }' }
-    %section.animate_opst.main{ 'ng:include' => 'view_partial.main', 'ng:class' => '{ show: view_show.main }'}
+      %section.animate_filter.filter{ 'ng:include' => 'partial.filter', 'ng:class' => '{ show: view_show.filter }' }
+    %section.animate_opst.main{ 'ng:include' => 'partial.index', 'ng:class' => '{ show: view_show.index }' }
+    %section.animate_opst.main{ 'ng:include' => 'partial.main', 'ng:class' => '{ show: view_show.main }'}
 
-    %section.animate_rslide.right{ 'ng:include' =>'view_partial.result', 'ng:class' =>'{ show: view_show.result }' }
-    %section.animate_rslide.right{ 'ng:include' =>'view_partial.detail', 'ng:class' =>'{ show: view_show.detail }' }
+    %section.animate_rslide.right{ 'ng:include' =>'partial.result', 'ng:class' =>'{ show: view_show.result }' }
+    %section.animate_rslide.right{ 'ng:include' =>'partial.detail', 'ng:class' =>'{ show: view_show.detail }' }
 
     / %section.bottom{ 'ng:include' => 'viewSubFooter.partial', 'ng:class' => '{show: viewSubFooter.show}' }
   / .footer

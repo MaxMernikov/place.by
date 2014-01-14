@@ -68,18 +68,17 @@ input[type='submit']
   border: 1px solid $gray_2_1
   overflow: scroll
 
-.animate_opst
-  position: relative
-  @include transition (top .1s linear 1s)
-  top: 150%
+.main_partial
+  opacity: 0
+  @include transition (opacity .4s linear)
   &.show
-    @include transition (top .1s linear 0s)
-    top: 0
-    &>div
-      opacity: 1
-  &>div
-    opacity: 0
-    @include transition (opacity .2s linear .1s)
+    opacity: 1
+
+.right_partial
+  @include transition (right .6s linear)
+  right: -100%
+  &.show
+    right: 0
 
 .animate_filter
   opacity: 0
@@ -88,12 +87,6 @@ input[type='submit']
     @include transition (opacity .2s linear 2s)
     opacity: 1
 
-.animate_rslide
-  @include transition (right .6s linear, opacity .2s linear)
-  right: -680px
-  opacity: 1
-  &.show
-    right: 0
 
 a, .link
   color: $link

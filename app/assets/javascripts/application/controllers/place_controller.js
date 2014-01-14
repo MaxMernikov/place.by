@@ -3,37 +3,40 @@ PlaceApp.controller(
   function ( $location, $scope, $http, $route, $rootScope, $routeParams, $templateCache, $cacheFactory ) {
     init_map();
     $scope.view_partial = {};
-    $scope.view_show = {};
+    $scope.view = {};
     map_changed = false;
 
     // сжатый или нет блок с картой
     sub_wrapper_class_set = function(){
-      if( !$scope.view_show.result && !$scope.view_show.detail){
+      if( !$scope.view.result && !$scope.view.detail){
         $scope.sub_wrapper_class = null
       }
     };
 
     // главная страница
     home_index = function(){
-      if(true) disableMovement(true);
-      $scope.view_show = hide_all_view($scope.view_show);
-      $scope.view_partial.index = getView('home#index');
-      $scope.view_show.index = true;
+      $scope.view = all_close($scope.view);
+      if(xs()) disableMovement(true);
+      $scope.view.index = 'show';
+      $scope.view_partial.index = 'home#index';
+
+
       map_changed = false;
     };
 
     categories_index = function(){
-      $scope.view_show = hide_all_view($scope.view_show, ['result']);
+      if(xs()) disableMovement(true);
+      $scope.view = all_close($scope.view, ['result']);
 
-      if($scope.view_show.result != true){
-        $scope.view_partial.result = getView('categories#index');
+      if($scope.view.result != true){
+        $scope.view_partial.result = 'categories#index';
 
         $http.get('/' + $route.current.params.categoryId + '.json').success(function(data) {
           $scope.places = data;
           $rootScope.maker_type = 'place';
           // $rootScope.map_markers = create_place_markers(data);
         });
-        $scope.view_show.result = true;
+        $scope.view.result = true;
       };
 
       // устанавливаем центр карты
@@ -73,19 +76,19 @@ PlaceApp.controller(
           map.panTo(new google.maps.LatLng(data.longitude, data.latitude));
         }
 
-        $scope.view_show.detail = true;
+        $scope.view.detail = true;
       });
 
-      if($scope.view_show.detail != true){
-        $scope.view_show.detail = true;
+      if($scope.view.detail != true){
+        $scope.view.detail = true;
         $scope.sub_wrapper_class = 'short';
       }
     };
 
     $scope.edit = function(){
       $scope.view_partial.detail = getView('place#edit');
-      // $scope.view_show.detail = false;
-      // $scope.view_show.detail = ;
+      // $scope.view.detail = false;
+      // $scope.view.detail = ;
       // $scope.$apply()
     }
 

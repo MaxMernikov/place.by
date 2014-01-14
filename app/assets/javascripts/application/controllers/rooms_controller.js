@@ -1,23 +1,23 @@
 PlaceApp.controller(
   'RoomsController',
   function( $locale, $http, $rootScope, $scope, $route, $routeParams, $filter ){
-    $scope.view_partial = {};
-    $scope.view_show = {};
+    $scope.partial = {};
+    $scope.view = {};
     $scope.room_filter = {};
     $scope.sub_wrapper_class = null;
     $scope.menu = {};
 
     hide_all = function(array){
       if(array == undefined){
-        _.each($scope.view_show, function(num, key){ $scope.view_show[key] = false; });
+        _.each($scope.view, function(num, key){ $scope.view[key] = false; });
       } else {
-        _.each($scope.view_show, function(num, key){ _.include(array, key) ? null : $scope.view_show[key] = false; });
+        _.each($scope.view, function(num, key){ _.include(array, key) ? null : $scope.view[key] = false; });
       }
     };
 
     // сжатый или нет блок с картой
     sub_wrapper_class_set = function(){
-      if( !$scope.view_show.result && !$scope.view_show.detail){
+      if( !$scope.view.result && !$scope.view.detail){
         $scope.sub_wrapper_class = null
       }
     };
@@ -39,25 +39,25 @@ PlaceApp.controller(
     // создание объявления
     rooms_new = function(){
       hide_all();
-      $scope.view_partial.main = getView('rooms#form');
-      $scope.view_show.main = true;
+      $scope.partial.main = getView('rooms#form');
+      $scope.view.main = true;
     };
 
 
     // все комнаты
     rooms_index = function(){
       hide_all(['result']);
-      if($scope.view_show.result != true){
-        $scope.view_partial.result = getView('rooms#index');
-        $scope.view_partial.filter = getView('rooms#filter');
+      if($scope.view.result != true){
+        $scope.partial.result = getView('rooms#index');
+        $scope.partial.filter = getView('rooms#filter');
 
         $http.get('/rooms.json').success(function(data) {
           $scope.rooms = $scope.filtered_rooms = data;
           create_markers(data);
         });
-        $scope.view_show.result = true;
+        $scope.view.result = true;
       };
-      $scope.view_show.filter = true;
+      $scope.view.filter = true;
       $scope.sub_wrapper_class = 'short';
 
       console.log( 'rooms ' + _.size($.cache) )
@@ -66,10 +66,10 @@ PlaceApp.controller(
     // одна комната
     rooms_show = function(){
       hide_all(['result']);
-      $scope.view_partial.detail = getView('rooms#show');
+      $scope.partial.detail = getView('rooms#show');
       $http.get('/rooms/'+ $routeParams.id + '.json').success(function(data) {
         $scope.room = data;
-        $scope.view_show.detail = true;
+        $scope.view.detail = true;
       });
     };
 

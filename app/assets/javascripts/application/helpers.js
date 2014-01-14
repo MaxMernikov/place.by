@@ -102,17 +102,23 @@ function disableMovement(disable) {
       draggable: false,
       scrollwheel: false,
       disableDoubleClickZoom: true,
-      zoomControl: false
+      zoomControl: false,
+      overviewMapControl: false
     };
   } else {
     mapOptions = {
       draggable: true,
       scrollwheel: true,
       disableDoubleClickZoom: false,
-      zoomControl: true
+      zoomControl: true,
+      overviewMapControl: true
     };
   }
   map.setOptions(mapOptions);
 };
+
+function xs() {
+  return $("#media_width").css("width") === "0px";
+}
 
 // (function(){var d=$(document.getElementsByTagName("body")),b=[],c=function(a){a.data().hasOwnProperty("$scope")&&angular.forEach(a.data().$scope.$$watchers,function(a){b.push(a)});angular.forEach(a.children(),function(a){c($(a))})};c(d);console.log(b.length)})();
