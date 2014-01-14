@@ -73,12 +73,17 @@ input[type='submit']
   @include transition (opacity .4s linear)
   &.show
     opacity: 1
+.animate
+  .main_partial
+    @include transition (opacity .4s linear)
 
 .right_partial
-  @include transition (right .6s linear)
   right: -100%
   &.show
     right: 0
+.animate
+  .right_partial
+    @include transition (right .6s linear)
 
 .animate_filter
   opacity: 0
@@ -90,9 +95,11 @@ input[type='submit']
 
 a, .link
   color: $link
-  @include transition (color .2s linear)
   &:hover
     color: #444
+.animate
+  a, .link
+    @include transition (color .2s linear)
 
 .main_wrap
   @include transition (left .2s linear, right .2s linear)

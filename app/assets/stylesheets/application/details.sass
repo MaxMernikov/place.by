@@ -26,10 +26,10 @@
   left: 0
   right: 0
 
+
 .rooms
-  border-collapse: collapse
+  // border-collapse: collapse
   position: relative
-  @include transition (background-color .2s linear)
   &:after
     background: #ddd
     content: ""
@@ -39,8 +39,7 @@
     position: absolute
     width: 200px
     bottom: 0
-  &:hover
-    background: #f8f8f8
+
   .grid
     &>a
     display: block
@@ -57,6 +56,13 @@
   .rooms_count
     color: #888
     font-size: 14px
+.animate
+  .rooms
+    @include transition (background-color .2s linear)
+.hover
+  .rooms
+    &:hover
+      background: #f8f8f8
 
 
 .link_to_room

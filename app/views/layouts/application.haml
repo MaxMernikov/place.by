@@ -7,4 +7,6 @@
     = javascript_include_tag "application"
     %meta{content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", name: "viewport"}
     = csrf_meta_tags
-  %body{ 'ng:include' =>'controller' }
+  %body
+    #media_width
+    %content{ 'ng:include' =>'controller' }

@@ -120,5 +120,21 @@ function disableMovement(disable) {
 function xs() {
   return $("#media_width").css("width") === "0px";
 }
+function sm() {
+  return $("#media_width").css("width") === "768px";
+}
+function md() {
+  return $("#media_width").css("width") === "992px";
+}
+
+function lg() {
+  return $("#media_width").css("width") === "1200px";
+}
+
+function addAnimateAndHover() {
+  console.log(lg() || md() || sm());
+  if ( lg() || md() || sm() ) $('body').addClass('animate')
+  if ( lg() || md() ) $('body').addClass('hover')
+};
 
 // (function(){var d=$(document.getElementsByTagName("body")),b=[],c=function(a){a.data().hasOwnProperty("$scope")&&angular.forEach(a.data().$scope.$$watchers,function(a){b.push(a)});angular.forEach(a.children(),function(a){c($(a))})};c(d);console.log(b.length)})();

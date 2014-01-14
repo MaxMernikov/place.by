@@ -13,6 +13,8 @@ PlaceApp.controller(
       }
     );
 
+    $scope.$on('$viewContentLoaded', addAnimateAndHover());
+
     $scope.translate = function(category){
       var result = translate(category);
       if(result != undefined ) return translate(category);
