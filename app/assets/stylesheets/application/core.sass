@@ -95,11 +95,13 @@ input[type='submit']
 
 a, .link
   color: $link
-  &:hover
-    color: #444
 .animate
   a, .link
     @include transition (color .2s linear)
+.hover
+  a, .link
+    &:hover
+      color: #444
 
 .main_wrap
   @include transition (left .2s linear, right .2s linear)
