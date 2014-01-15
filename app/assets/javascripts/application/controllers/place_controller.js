@@ -16,7 +16,7 @@ PlaceApp.controller(
     // главная страница
     home_index = function(){
       $scope.view = all_close($scope.view);
-      if(xs()) disableMovement(true);
+      // if(xs()) disableMovement(true);
       $scope.view.index = 'show';
       $scope.view_partial.index = 'home#index';
 
@@ -113,7 +113,7 @@ PlaceApp.controller(
     );
 
     $scope.$watch('sub_wrapper_class', function(){
-      initialize_center();
+      // initialize_center();
     });
 
     $scope.scroll_to_root = function(){
