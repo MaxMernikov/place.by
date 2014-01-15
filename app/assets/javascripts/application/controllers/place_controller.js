@@ -1,7 +1,6 @@
 PlaceApp.controller(
   'PlaceController',
   function ( $location, $scope, $http, $route, $rootScope, $routeParams, $templateCache, $cacheFactory ) {
-    // init_map();
     $scope.view_partial = {};
     $scope.view = {};
     map_changed = false;
@@ -16,7 +15,6 @@ PlaceApp.controller(
     // главная страница
     home_index = function(){
       $scope.view = all_close($scope.view);
-      // if(xs()) disableMovement(true);
       $scope.view.index = 'show';
       $scope.view_partial.index = 'home#index';
 
@@ -42,7 +40,7 @@ PlaceApp.controller(
       // устанавливаем центр карты
       // 1) пользователь пришел с главной или с иной категории (map_changed = false)
       if(!map_changed || $rootScope.view_from_map != true){
-        map_scroll_to_root();
+        // map_scroll_to_root();
 
       } else if($rootScope.view_from_map == true){
        $rootScope.view_from_map = false;
@@ -50,7 +48,7 @@ PlaceApp.controller(
 
       map_changed = true;
       $scope.sub_wrapper_class = 'short';
-      map.changed
+      // map.changed
     }
 
     // одна комната
@@ -116,9 +114,9 @@ PlaceApp.controller(
       // initialize_center();
     });
 
-    $scope.scroll_to_root = function(){
-      map_scroll_to_root();
-    }
+    // $scope.scroll_to_root = function(){
+    //   map_scroll_to_root();
+    // }
 
     // localize
     $scope.placeForms = {

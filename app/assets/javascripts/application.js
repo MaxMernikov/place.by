@@ -14,5 +14,6 @@
 
 //= require jquery.ui.slider
 
+//=  require_tree ./application/helpers
 //=  require_tree ./application
 

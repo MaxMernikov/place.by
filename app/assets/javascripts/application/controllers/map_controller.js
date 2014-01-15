@@ -9,7 +9,7 @@ PlaceApp.controller(
       gridSize: 55
     }
 
-    init_map();
+    // init_map();
 
     $rootScope.$watch('map_markers', function () {
       var markers = [];

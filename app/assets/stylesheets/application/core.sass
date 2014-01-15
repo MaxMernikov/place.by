@@ -125,12 +125,6 @@ a, .link
   width: 920px
   height: 100%
 
-.sub_wrapper
-  height: 100%
-  position: fixed
-  left: 0
-  right: 0
-
 .xs-show
   display: none !important
 .xs-hide
@@ -244,3 +238,25 @@ button.infogram
   @include transition (background-color .2s linear)
   &:hover
     background: #f8f8f8
+
+.fix_wrap
+  bottom: 0
+  height: 100%
+  position: fixed
+  top: 0
+  width: 100%
+
+.sub_wrapper
+  height: 100%
+  left: 0
+  position: absolute
+  right: 0
+
+map
+  bottom: 0
+  display: block
+  height: 100%
+  position: absolute !important
+  top: 0
+  width: 100%
+

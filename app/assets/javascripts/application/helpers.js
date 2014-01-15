@@ -14,70 +14,21 @@ hide_all = function(view_show, array){
   view_show
 };
 
-// инициалицация карты
 
-// стили для карты
-var myLoc = new google.maps.LatLng(53.9060089, 27.5550941);
-var styles = [
-  {
-  //   stylers: [
-  //     { hue: "#00ffe6" },
-  //     { saturation: -20 }
-  //   ]
-  // },{
-    featureType: "road",
-    elementType: "geometry",
-    stylers: [
-      { lightness: 100 },
-      { visibility: "simplified" }
-    ]
-  },{
-    featureType: 'landscape.natural',
-    elementType: 'geometry',
-    stylers: [
-      { color: '#e8eeee' }
-    ]
-  },{
-    featureType: "water",
-    stylers: [
-      { hue: "#00c3ff" },
-      { saturation: -42 }
-    ]
-  },{
-    featureType: "poi",
-    stylers: [
-      { visibility: "off" }
-    ]
-  }
-];
-
-var mapOptions = {
-  maxZoom: 17,
-  minZoom: 11,
-  zoom: 13,
-  center: myLoc,
-  zoomControlOptions: { style: 'SMALL' },
-  // overviewMapControl: false, вид
-  panControl :false,
-  scaleControl: false,
-  streetViewControl: false,
-  styles: styles
-};
-
-init_map = function(){
-  if(window.map == undefined){
-    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-  }
-  google.maps.event.addDomListener(window, "resize", function() {
-    initialize_center();
-  });
-}
+// init_map = function(){
+//   if(window.map == undefined){
+//     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+//     google.maps.event.addDomListener(window, "resize", function() {
+//       initialize_center();
+//     });
+//   }
+// }
 
 // сдвигаем все в центр
-map_scroll_to_root = function(){
-  map.panTo(new google.maps.LatLng(53.9060089, 27.5550941));
-  if(map.getZoom() != 12) map.setZoom(12);
-}
+// map_scroll_to_root = function(){
+//   map.panTo(new google.maps.LatLng(53.9060089, 27.5550941));
+//   if(map.getZoom() != 12) map.setZoom(12);
+// }
 
 // смещаем центр карты
 initialize_center = function(){
@@ -96,25 +47,25 @@ translate = function(category){
 };
 
 function disableMovement(disable) {
-  var mapOptions;
-  if (disable) {
-    mapOptions = {
-      draggable: false,
-      scrollwheel: false,
-      disableDoubleClickZoom: true,
-      zoomControl: false,
-      overviewMapControl: false
-    };
-  } else {
-    mapOptions = {
-      draggable: true,
-      scrollwheel: true,
-      disableDoubleClickZoom: false,
-      zoomControl: true,
-      overviewMapControl: true
-    };
-  }
-  map.setOptions(mapOptions);
+  // var mapOptions;
+  // if (disable) {
+  //   mapOptions = {
+  //     draggable: false,
+  //     scrollwheel: false,
+  //     disableDoubleClickZoom: true,
+  //     zoomControl: false,
+  //     overviewMapControl: false
+  //   };
+  // } else {
+  //   mapOptions = {
+  //     draggable: true,
+  //     scrollwheel: true,
+  //     disableDoubleClickZoom: false,
+  //     zoomControl: true,
+  //     overviewMapControl: true
+  //   };
+  // }
+  // map.setOptions(mapOptions);
 };
 
 function xs() {
