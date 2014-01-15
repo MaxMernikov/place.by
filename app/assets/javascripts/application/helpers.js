@@ -132,7 +132,6 @@ function lg() {
 }
 
 function addAnimateAndHover() {
-  console.log(lg() || md() || sm());
   if ( lg() || md() || sm() ) $('body').addClass('animate')
   if ( lg() || md() ) $('body').addClass('hover')
 };

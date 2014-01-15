@@ -1,7 +1,7 @@
 PlaceApp.controller(
   'PlaceController',
   function ( $location, $scope, $http, $route, $rootScope, $routeParams, $templateCache, $cacheFactory ) {
-    init_map();
+    // init_map();
     $scope.view_partial = {};
     $scope.view = {};
     map_changed = false;
