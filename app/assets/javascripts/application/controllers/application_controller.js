@@ -1,6 +1,9 @@
 PlaceApp.controller(
   'ApplicationController',
   function ($route, $scope, $routeParams) {
+    $scope.map_short = undefined;
+
+
     $scope.open_collapse = false;
     $scope.map_control = false;
 

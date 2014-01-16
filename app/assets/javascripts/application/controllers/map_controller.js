@@ -3,12 +3,6 @@ PlaceApp.controller(
   'MapController',
   function ($scope, $rootScope, $location) {
 
-    mcOptions = {
-      imagePath: {},
-      styles: [{ width: 57, height: 57}],
-      gridSize: 55
-    }
-
     // init_map();
 
     $rootScope.$watch('map_markers', function () {

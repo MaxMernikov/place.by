@@ -3,104 +3,95 @@ PlaceApp.controller(
   function ( $location, $scope, $http, $route, $rootScope, $routeParams, $templateCache, $cacheFactory ) {
     $scope.view_partial = {};
     $scope.view = {};
-    map_changed = false;
-
-    // сжатый или нет блок с картой
-    sub_wrapper_class_set = function(){
-      if( !$scope.view.result && !$scope.view.detail){
-        $scope.sub_wrapper_class = null
-      }
-    };
+    $rootScope.current_category = {};
+    $scope.current_position = {};
 
     // главная страница
     home_index = function(){
       $scope.view = all_close($scope.view);
       $scope.view.index = 'show';
       $scope.view_partial.index = 'home#index';
-
-
-      map_changed = false;
+      $scope.map_short = false;
     };
 
     categories_index = function(){
-      if(xs()) disableMovement(true);
       $scope.view = all_close($scope.view, ['result']);
+      $scope.map_short = true;
 
-      if($scope.view.result != true){
-        $scope.view_partial.result = 'categories#index';
+      if ($rootScope.current_category.slug == undefined || $scope.places.length < 2 || $rootScope.current_category.slug != $route.current.params.categoryId ) {
 
         $http.get('/' + $route.current.params.categoryId + '.json').success(function(data) {
-          $scope.places = data;
-          $rootScope.maker_type = 'place';
-          // $rootScope.map_markers = create_place_markers(data);
+          $rootScope.current_category = { title: data.title, slug: data.slug };
+          $scope.places = data.places;
         });
-        $scope.view.result = true;
-      };
+      }
+      $scope.view_partial.result = 'categories#index';
+      $scope.view.result = 'show';
+    };
+
+      // if($scope.view.result != true){
+      //   $scope.view_partial.result = 'categories#index';
+
+      //   $http.get('/' + $route.current.params.categoryId + '.json').success(function(data) {
+      //     // будет исспользоваться в хидере и для определения типа маркера
+      //     $rootScope.current_category = { title: data.title, slug: data.slug };
+      //     $scope.places = data.places;
+      //     // $rootScope.maker_type = 'place';
+      //     // $rootScope.map_markers = create_place_markers(data);
+      //   });
+      //   $scope.view.result = 'show';
+      // };
 
       // устанавливаем центр карты
       // 1) пользователь пришел с главной или с иной категории (map_changed = false)
-      if(!map_changed || $rootScope.view_from_map != true){
-        // map_scroll_to_root();
+      // if(!map_changed || $rootScope.view_from_map != true){
+      //   // map_scroll_to_root();
 
-      } else if($rootScope.view_from_map == true){
-       $rootScope.view_from_map = false;
-      }
+      // } else if($rootScope.view_from_map == true){
+      //  $rootScope.view_from_map = false;
+      // }
 
-      map_changed = true;
-      $scope.sub_wrapper_class = 'short';
+      // map_changed = true;
+      // $scope.sub_wrapper_class = 'short';
       // map.changed
-    }
 
     // одна комната
     place_show = function(){
-      hide_all(['result']);
-      $scope.view_partial.detail = getView('place#show');
-      // $http(getView('place#show')).then(function (result) {
-      //   $templateCache.put('my-dynamic-template', result);
-      // });
+      $scope.view = all_close($scope.view, ['result']);
+      $scope.view_partial.detail = 'place#show';
+      $scope.map_short = true;
 
       $http.get('/' + $routeParams.categoryId + '/'+ $routeParams.placeId + '.json').success(function(data) {
         $scope.place = data;
 
-        // действия если маркеров нет(случай перехода по прямой ссылке)
-        if($rootScope.map_markers == undefined){
-          $rootScope.maker_type = 'place';
-          $rootScope.map_markers = create_place_markers([data]);
-          map.setZoom(17);
-          map.panTo(new google.maps.LatLng(data.longitude, data.latitude));
+        if ($rootScope.current_category.slug == undefined) {
+          $rootScope.current_category = { title: data.category.title, slug: data.category.slug };
+          $scope.places = [data];
+        };
 
-        } else if($rootScope.view_from_map != true){
-          map.setZoom(17);
-          map.panTo(new google.maps.LatLng(data.longitude, data.latitude));
-        }
+        $scope.current_position.zoom = 17;
+        $scope.current_position.coordinate = [data.longitude, data.latitude]
 
-        $scope.view.detail = true;
       });
 
-      if($scope.view.detail != true){
-        $scope.view.detail = true;
-        $scope.sub_wrapper_class = 'short';
-      }
+      if ($scope.view.detail != 'show') $scope.view.detail = 'show';
+
     };
 
-    $scope.edit = function(){
-      $scope.view_partial.detail = getView('place#edit');
-      // $scope.view.detail = false;
-      // $scope.view.detail = ;
-      // $scope.$apply()
-    }
+    // $scope.edit = function(){
+    //   $scope.view_partial.detail = getView('place#edit');
+    //   // $scope.view.detail = false;
+    //   // $scope.view.detail = ;
+    //   // $scope.$apply()
+    // }
 
-    $scope.back = function(){
-      $scope.view_partial.detail = getView('place#show');
-    }
+    // $scope.back = function(){
+    //   $scope.view_partial.detail = getView('place#show');
+    // }
 
     // роутинг
     // http://www.sitepoint.com/call-javascript-function-string-without-using-eval/
-    changeRoute = function(){
-      window[$route.current.action]();
-      sub_wrapper_class_set();
-    }
-
+    function changeRoute() { window[$route.current.action]() }
     changeRoute();
 
     $scope.$on(
@@ -109,14 +100,6 @@ PlaceApp.controller(
         changeRoute();
       }
     );
-
-    $scope.$watch('sub_wrapper_class', function(){
-      // initialize_center();
-    });
-
-    // $scope.scroll_to_root = function(){
-    //   map_scroll_to_root();
-    // }
 
     // localize
     $scope.placeForms = {

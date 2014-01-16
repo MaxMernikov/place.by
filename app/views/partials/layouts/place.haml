@@ -1,19 +1,17 @@
 #media_width
 .we{'ng-controller' => 'PlaceController'}
-  / = render 'header'
+  = render 'header'
 
   .main_wrap.body{'ng-class' => '{open_menu: open_collapse}'}
     .fix_wrap
-      .sub_wrapper{ 'ng:class' => 'sub_wrapper_class' }
-        / = render 'map'
+      .sub_wrapper
         %map
 
     %section.main_partial{'partial' => '', template: 'index', 'ng-if' => 'view.index'}
 
     %section.right_partial.right.half{'partial' => '', template: 'result', 'ng-if' => 'view.result'}
-  /   %section.animate_rslide.right.half{ 'ng:include' =>'partial.result', 'ng:class' =>'{ show: view_show.result }' }
 
-  /   %section.animate_rslide.right.half{'partial' => '', template: 'partial.detail', 'ng-class' =>'{ show: view_show.detail }'}
+    %section.right_partial.right.half{'partial' => '', template: 'detail', 'ng-if' => 'view.detail'}
 
   / .map_control
   /   %span{'ng-class' =>'{ active: map_control }', 'ng-click' =>'mapControl()'} карта

@@ -38,7 +38,7 @@ var map_styles = [
 var mapOptions = {
   maxZoom: 17,
   minZoom: 11,
-  zoom: 13,
+  zoom: 12,
   center: map_center,
   zoomControlOptions: { style: 'SMALL' },
   // overviewMapControl: false, вид
@@ -48,4 +48,9 @@ var mapOptions = {
   styles: map_styles
 };
 
-
+// cтили для MarkerClusterer
+mcOptions = {
+  imagePath: {},
+  styles: [{ width: 57, height: 57}],
+  gridSize: 55
+}

@@ -130,30 +130,12 @@ a, .link
 .xs-hide
   display: inherit !important
 
-.half
-  float: left
-
 .map_control
   display: none
 
 @media screen and (min-width: 920px)
-  .full
-    width: 920px
-  .half
-    width: 460px
-  .sub_wrapper
-    &.short
-      right: 460px
 
 @media screen and (max-width: 920px)
-  .full
-    width: 640px
-  .half
-    width: 320px
-  .sub_wrapper
-    &.short
-      right: 320px
-
   .header
     .logo
       font-size: 28px !important
@@ -173,18 +155,13 @@ a, .link
     top: 0px
   .main
     width: 92%!important
-  .full
-    width: 100%
-  .half
-    width: 100%
+
   .xs-show
     display: inherit !important
   .xs-hide
     display: none !important
   .details.wrap.half
     top: -60px
-  .sub_wrapper.short
-    right: 0
 
   .map_control
     display: block
@@ -240,24 +217,28 @@ button.infogram
     background: #f8f8f8
 
 .fix_wrap
-  bottom: 0
-  height: 100%
   position: fixed
   top: 0
-  width: 100%
-  background: #fff
+  bottom: 0
+  left: 0
+  right: 0
 
 .sub_wrapper
   height: 100%
-  left: 0
   position: absolute
-  right: 0
+  width: 100%
 
 map
-  bottom: 0
-  display: block
-  height: 100%
   position: absolute !important
-  top: 0
-  width: 100%
+  display: block
+  bottom: 0
+  top: 40px
+  left: 0
+  right: 0
+
+.container.half.left
+  margin-left: 0
+
+.container.half.right
+  right: 0
 

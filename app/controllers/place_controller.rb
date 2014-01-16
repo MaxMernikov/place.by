@@ -13,7 +13,7 @@ class PlaceController < ApplicationController
     place = category.places.find params[:id]
     respond_to do |format|
       format.html { render :blank }
-      format.json { render json: place.to_json(methods: [:contacts]) }
+      format.json { render json: place.to_json(methods: [:contacts], include: { category: {only: [:title, :slug]} } ) }
     end
   end
 

@@ -1,22 +1,38 @@
 #media_width
   display: none
   width: 0px
+.half, .container.half
+  width: 100%
+.container
+  width: 92%
+
 @media (min-width: 768px)
   #media_width
     width: 768px
+  .half, .container.half
+    width: 320px
+  map
+    top: 60px
+  header
+    height: 60px
+
 @media (min-width: 992px)
   #media_width
     width: 992px
+  .half, .container.half
+    width: 460px
+  map
+    top: 60px
+  header
+    height: 60px
+
 @media (min-width: 1200px)
   #media_width
     width: 1200px
+  .half, .container.half
+    width: 460px
 
-.container
-  width: 92%
-  font-size: 150%
-
-@media (min-width: 768px)
-
-@media (min-width: 992px)
-
-@media (min-width: 1200px)
+  map
+    top: 80px
+  header
+    height: 80px

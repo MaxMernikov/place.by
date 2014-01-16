@@ -15,27 +15,11 @@ hide_all = function(view_show, array){
 };
 
 
-// init_map = function(){
-//   if(window.map == undefined){
-//     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-//     google.maps.event.addDomListener(window, "resize", function() {
-//       initialize_center();
-//     });
-//   }
-// }
-
 // сдвигаем все в центр
 // map_scroll_to_root = function(){
 //   map.panTo(new google.maps.LatLng(53.9060089, 27.5550941));
 //   if(map.getZoom() != 12) map.setZoom(12);
 // }
-
-// смещаем центр карты
-initialize_center = function(){
-  var center = map.getCenter();
-  google.maps.event.trigger(map, "resize");
-  map.setCenter(center)
-}
 
 // локализация меню
 translate = function(category){
@@ -68,19 +52,10 @@ function disableMovement(disable) {
   // map.setOptions(mapOptions);
 };
 
-function xs() {
-  return $("#media_width").css("width") === "0px";
-}
-function sm() {
-  return $("#media_width").css("width") === "768px";
-}
-function md() {
-  return $("#media_width").css("width") === "992px";
-}
-
-function lg() {
-  return $("#media_width").css("width") === "1200px";
-}
+function xs() { return $("#media_width").css("width") === "0px"; }
+function sm() { return $("#media_width").css("width") === "768px"; }
+function md() { return $("#media_width").css("width") === "992px"; }
+function lg() { return $("#media_width").css("width") === "1200px"; }
 
 function addAnimateAndHover() {
   if ( lg() || md() || sm() ) $('body').addClass('animate')

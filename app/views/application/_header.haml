@@ -1,50 +1,60 @@
-- link = "{{category}}"
-.shroud{'ng-click' => 'openCollapse()', 'ng-class' => '{show: open_collapse}'}
-.xs-show
-  .nav-bar{'ng-click' => 'openCollapse()'}
-  .navbar-collapse{'ng-class' => '{open: open_collapse}'}
-    .grid.half{'ng-click' => 'openCollapse()'}
-      .unit.w-1-1
-        .current_menu
-          = raw('<a ng-href="/' + link + '">{{translate(category)}}</a>')
-        %h1.logo
-          = link_to 'Place.by', root_path
-    .grid.half{'ng-click' => 'openCollapse()'}
-      = link_to root_path do
-        .unit.w-1-1 на главную
-      = link_to 'http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclusterer/1.0.2/examples/advanced_example.html' do
-        .unit.w-1-1 добавить место
-      = link_to '#' do
-        .unit.w-1-1 сообщить об ошибке
-.xs-hide
-  .main_wrap.header
-    .sub_wrapper.short
-      .grid.half
-        .unit.w-2-3
-          .current_menu
-            = raw('<a ng-href="/' + link + '">{{translate(category)}}</a>')
-          %h1.logo
-            = link_to 'Place.by', root_path
-    .second_header
-      / .grid.half
-      /   .unit.w-1-3.add_room
-      /     = link_to new_room_path, class: 'infogram' do
-      /       %i.big_icon
-      /       %span добавить объявление
-      /   .u
+%header
+  .container.half.left
+    .col-xs-8
+      .current_menu
+        123
+      %h1.logo
+        = link_to 'Place.by', root_path
 
-      .grid.half
-        .unit.w-1-3
-          = link_to new_room_path, class: 'infogram' do
-            %i.big_icon.add
-            %span.link добавить место
-        .unit.w-1-3
-          = link_to new_room_path, class: 'infogram' do
-            %i.big_icon
-            %span.link сообщить об ошибке
-        .unit.w-1-3
-          / Катя Петрова
-          / %br
-          / %ul
-          /   - %w[настройки выйти].each do |menu_info|
-          /     %li= link_to menu_info, '#'
+  .container.half.right
+    234
+  / - link = "{{category}}"
+  / .shroud{'ng-click' => 'openCollapse()', 'ng-class' => '{show: open_collapse}'}
+  / .xs-show
+  /   .nav-bar{'ng-click' => 'openCollapse()'}
+  /   .navbar-collapse{'ng-class' => '{open: open_collapse}'}
+  /     .grid.half{'ng-click' => 'openCollapse()'}
+  /       .unit.w-1-1
+  /         .current_menu
+  /           = raw('<a ng-href="/' + link + '">{{translate(category)}}</a>')
+  /         %h1.logo
+  /           = link_to 'Place.by', root_path
+  /     .grid.half{'ng-click' => 'openCollapse()'}
+  /       = link_to root_path do
+  /         .unit.w-1-1 на главную
+  /       = link_to 'http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclusterer/1.0.2/examples/advanced_example.html' do
+  /         .unit.w-1-1 добавить место
+  /       = link_to '#' do
+  /         .unit.w-1-1 сообщить об ошибке
+  / .xs-hide
+  /   .main_wrap.header
+  /     .sub_wrapper.short
+  /       .grid.half
+  /         .unit.w-2-3
+  /           .current_menu
+  /             = raw('<a ng-href="/' + link + '">{{translate(category)}}</a>')
+  /           %h1.logo
+  /             = link_to 'Place.by', root_path
+  /     .second_header
+  /       / .grid.half
+  /       /   .unit.w-1-3.add_room
+  /       /     = link_to new_room_path, class: 'infogram' do
+  /       /       %i.big_icon
+  /       /       %span добавить объявление
+  /       /   .u
+
+  /       .grid.half
+  /         .unit.w-1-3
+  /           = link_to new_room_path, class: 'infogram' do
+  /             %i.big_icon.add
+  /             %span.link добавить место
+  /         .unit.w-1-3
+  /           = link_to new_room_path, class: 'infogram' do
+  /             %i.big_icon
+  /             %span.link сообщить об ошибке
+  /         .unit.w-1-3
+  /           / Катя Петрова
+  /           / %br
+  /           / %ul
+  /           /   - %w[настройки выйти].each do |menu_info|
+  /           /     %li= link_to menu_info, '#'
