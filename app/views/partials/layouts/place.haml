@@ -1,11 +1,11 @@
 .we{'ng-controller' => 'PlaceController'}
-  = render 'header'
-
-  .main_wrap.body
+  = render 'mobile_menu'
+  .fix_wrap
+    .sub_wrapper
+      %map
+  .main_wrap{'ng-class' => '{menu_open: open_collapse}'}
+    = render 'header'
     #shroud{'ng-click' => 'openCollapse()', 'ng-if'=>'open_collapse'}
-    .fix_wrap
-      .sub_wrapper
-        %map
 
     %section.main_partial{'partial' => '', template: 'index', 'ng-if' => 'view.index'}
 
@@ -13,8 +13,6 @@
 
     %section.right_partial.right.half{'partial' => '', template: 'detail', 'ng-if' => 'view.detail'}
 
-  
- 
 
   / .map_control
   /   %span{'ng-class' =>'{ active: map_control }', 'ng-click' =>'mapControl()'} карта

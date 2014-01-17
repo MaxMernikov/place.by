@@ -36,8 +36,6 @@ header
 
 
 .nav-bar
-  &#two
-    left: 55px
   cursor: pointer
   width: 50px
   height: 40px
@@ -60,8 +58,14 @@ header
 .navbar-collapse
   top: 40px
   position: absolute
-  z-index: 2
   height: 100%
+  overflow: hidden
+
+  backface-visibility: hidden
+  transform: scale(0.8)
+  transition: all 0.2s ease 0s
+  &.menu_open
+    transform: scale(1)
   a
     .unit
       border-top: 1px solid $gray_2_1

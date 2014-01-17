@@ -117,8 +117,15 @@ a, .link
   left: 0
   position: absolute
   right: 0
-  &.body
-    top: 80px
+  z-index: 1
+  top: 40px
+  background-image: url('/assets/sprite.png')
+  &.menu_open
+    left: 250px
+    right: -250px
+    overflow: hidden
+
+
 .animate
   .main_wrap
     @include transition (left .2s linear, right .2s linear)

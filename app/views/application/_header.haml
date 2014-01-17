@@ -20,22 +20,7 @@
             %span.link сообщить об ошибке
   #mobile_header
     .nav-bar{'ng-click' => 'openCollapse()'}
-    .nav-bar#two
-    .navbar-collapse
-      %br
-      %br
-      %br
-      - 99.times do
-        .row
-          .col-xs-4
-            = link_to new_room_path, class: 'infogram' do
-              %i.big_icon.add
-              %span.link добавить место
-          .col-xs-4
-            = link_to new_room_path, class: 'infogram' do
-              %i.big_icon
-              %span.link сообщить об ошибке
-      Hi
+
   / - link = "{{category}}"
   / .xs-show
   /   .nav-bar{'ng-click' => 'openCollapse()'}
