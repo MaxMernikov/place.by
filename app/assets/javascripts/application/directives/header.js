@@ -29,6 +29,7 @@ PlaceApp.directive("header", [function () {
         if(scope.open_collapse) {
           main_wrap.style.left = '250px';
           main_wrap.style.right = '-250px';
+          main_wrap.style.overflow = 'hidden';
         } else {
           main_wrap.style.left = 0;
           main_wrap.style.right = 0;
