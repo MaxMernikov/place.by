@@ -1,15 +1,28 @@
 %header
-  .container.half.left
-    .col-xs-8
-      .current_menu
-        123
-      %h1.logo
-        = link_to 'Place.by', root_path
+  #shroud{'ng-click' => 'openCollapse()'}
+  #full_header
+    .container.half.pull_left
+      .row
+        .col-xs-8
+          .current_menu
+            %a{'ng-href'=>"/{{current_category.slug}}"}{{current_category.title}}
+          %h1.logo
+            = link_to 'Place.by', root_path
 
-  .container.half.right
-    234
+    .container.half.pull_right
+      .row
+        .col-xs-4
+          = link_to new_room_path, class: 'infogram' do
+            %i.big_icon.add
+            %span.link добавить место
+        .col-xs-4
+          = link_to new_room_path, class: 'infogram' do
+            %i.big_icon
+            %span.link сообщить об ошибке
+  #mobile_header
+    
+    .nav-bar{'ng-click' => 'openCollapse()'}
   / - link = "{{category}}"
-  / .shroud{'ng-click' => 'openCollapse()', 'ng-class' => '{show: open_collapse}'}
   / .xs-show
   /   .nav-bar{'ng-click' => 'openCollapse()'}
   /   .navbar-collapse{'ng-class' => '{open: open_collapse}'}

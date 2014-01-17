@@ -47,9 +47,9 @@ body {
 a {
   background: transparent;
 }
-a:focus {
+/*a:focus {
   outline: thin dotted;
-}
+}*/
 a:active,
 a:hover {
   outline: 0;
@@ -209,7 +209,7 @@ a {
   color: #428bca;
   text-decoration: none;
 }
-a:hover,
+/*a:hover,
 a:focus {
   color: #2a6496;
   text-decoration: underline;
@@ -218,7 +218,7 @@ a:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
-}
+}*/
 img {
   vertical-align: middle;
 }

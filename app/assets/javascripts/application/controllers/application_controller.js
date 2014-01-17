@@ -4,7 +4,6 @@ PlaceApp.controller(
     $scope.map_short = undefined;
 
 
-    $scope.open_collapse = false;
     $scope.map_control = false;
 
     $scope.$on(
@@ -23,9 +22,7 @@ PlaceApp.controller(
       if(result != undefined ) return translate(category);
     };
 
-    $scope.openCollapse = function(){
-      $scope.open_collapse = !$scope.open_collapse
-    }
+    
 
     $scope.mapControl = function(){
       $scope.map_control = !$scope.map_control

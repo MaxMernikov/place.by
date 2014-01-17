@@ -95,15 +95,20 @@ input[type='submit']
 
 a, .link
   color: $link
+  text-decoration: none !important
   &:active
-    color: #444
+    color: $main_text
+    // text-decoration: none
+  &:hover
+    color: $main_text
+    // text-decoration: none
+.hover
+  a, .link
+    &:active
+      color: $link !important
 .animate
   a, .link
     @include transition (color .2s linear)
-.hover
-  a, .link
-    &:hover
-      color: #444
 
 .main_wrap
   @include transition (left .2s linear, right .2s linear)
@@ -192,6 +197,8 @@ a, .link
   text-decoration: none
   &:hover
     border: 1px solid $gray_2_1
+    .link
+      color: $link
   i
     vertical-align: middle
   span
@@ -203,9 +210,6 @@ a, .link
     vertical-align: middle
     width: 72px
     text-align: left
-
-a.infogram
-  height: 32px
 
 button.infogram
   padding: 2px
@@ -236,9 +240,11 @@ map
   left: 0
   right: 0
 
-.container.half.left
-  margin-left: 0
+.container.half.pull_left
+  left: 0
+  position: absolute
 
-.container.half.right
+.container.half.pull_right
   right: 0
+  position: absolute
 
