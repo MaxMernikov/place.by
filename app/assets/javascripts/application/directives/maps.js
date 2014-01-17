@@ -46,7 +46,7 @@ PlaceApp.directive('map', [function () {
           else if (sm()) { element.css('right', 320) }
           else { element.css('right', 0) };
         } else { element.css('right', 0) };
-        initialize_center();
+        if(window.map != undefined) initialize_center();
       };
 
       // map_short_change - при инициализации old_value равен new_value делаю проверку на запрос после инициализации
