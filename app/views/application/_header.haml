@@ -1,5 +1,5 @@
+
 %header
-  #shroud{'ng-click' => 'openCollapse()'}
   #full_header
     .container.half.pull_left
       .row
@@ -20,8 +20,9 @@
             %i.big_icon
             %span.link сообщить об ошибке
   #mobile_header
-    
     .nav-bar{'ng-click' => 'openCollapse()'}
+    .navbar-collapse{'ng-if'=>'open_collapse'}
+      Hi
   / - link = "{{category}}"
   / .xs-show
   /   .nav-bar{'ng-click' => 'openCollapse()'}

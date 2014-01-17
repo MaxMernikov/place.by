@@ -3,6 +3,7 @@
   = render 'header'
 
   .main_wrap.body
+    #shroud{'ng-click' => 'openCollapse()', 'ng-if'=>'open_collapse'}
     .fix_wrap
       .sub_wrapper
         %map

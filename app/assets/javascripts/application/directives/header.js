@@ -5,6 +5,8 @@ PlaceApp.directive("header", [function () {
       scope.open_collapse = false;
       init_header();
 
+      console.log(scope.test);
+
       $(window).resize(function() {
         init_header()
       });
@@ -21,14 +23,13 @@ PlaceApp.directive("header", [function () {
 
       scope.openCollapse = function(){
         scope.open_collapse = !scope.open_collapse
+        console.log(scope.open_collapse)
         main_wrap = document.getElementsByClassName('main_wrap')[0]
 
         if(scope.open_collapse) {
-          document.getElementById('shroud').style.display = 'block'
           main_wrap.style.left = '250px';
           main_wrap.style.right = '-250px';
         } else {
-          document.getElementById('shroud').style.display = 'none'
           main_wrap.style.left = 0;
           main_wrap.style.right = 0;
         }

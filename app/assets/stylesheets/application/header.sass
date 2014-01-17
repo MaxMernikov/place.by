@@ -25,14 +25,16 @@ header
   .infogram
     margin-top: 10px
 
-
-.second_header
-  top: 16px
-  right: 0
+#shroud
+  background: red
   position: absolute
-  .add_room
-    left: -33.3332%
-    position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  z-index: 1
+
+
 
 .nav-bar
   cursor: pointer
@@ -58,13 +60,6 @@ header
   position: absolute
   z-index: 2
   height: 100%
-  left: -300px
-  @include transition (left .2s linear)
-  .grid
-    width: 300px
-    overflow: hidden
-  &.open
-    left: 0
   a
     .unit
       border-top: 1px solid $gray_2_1
