@@ -33,8 +33,6 @@ body
   margin: 0px
   padding: 0px
   cursor: default
-  section
-    border-spacing: 0 !important
 
 .check
   font-family: 'Open Sans', sans
@@ -119,16 +117,9 @@ a, .link
   right: 0
   z-index: 1
   top: 40px
-  background-image: url('/assets/sprite.png')
   &.menu_open
     left: 250px
     right: -250px
-    overflow: hidden
-
-
-.animate
-  .main_wrap
-    @include transition (left .2s linear, right .2s linear)
 
 .main
   left: 0
@@ -234,6 +225,11 @@ button.infogram
   bottom: 0
   left: 0
   right: 0
+  background-image: url('/assets/sprite.png')
+  @include transition (left .4s ease, right .4s ease)
+  &.menu_open
+    left: 250px
+    right: -250px
 
 .sub_wrapper
   height: 100%

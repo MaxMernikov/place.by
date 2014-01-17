@@ -6,8 +6,6 @@ PlaceApp.controller(
     $rootScope.current_category = {};
     $scope.current_position = {};
 
-    console.log($scope.test);
-
     // главная страница
     home_index = function(){
       $scope.view = all_close($scope.view);
