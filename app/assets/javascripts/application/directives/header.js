@@ -5,7 +5,9 @@ PlaceApp.directive("header", [function () {
       scope.open_collapse = false;
       init_header();
 
-      console.log(scope.test);
+      $('#two').click(function(){
+        alert('ds');
+      })
 
       $(window).resize(function() {
         init_header()
