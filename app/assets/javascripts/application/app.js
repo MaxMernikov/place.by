@@ -1,6 +1,6 @@
 var PlaceApp = angular.module('PlaceApp', [
   'ngRoute',
-  // 'ngTouch',
+  'ngTouch',
   'pasvaz.bindonce'
   // 'ngAnimate',
 ])

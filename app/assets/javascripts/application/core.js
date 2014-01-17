@@ -34,3 +34,4 @@ create_place_markers = function(data){
   });
   return maps_json;
 }
+
