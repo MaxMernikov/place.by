@@ -1,0 +1,15 @@
+.navbar-collapse{'ng-class' => '{menu_open: open_collapse}'}
+  %br
+  %br
+  %br
+  Hi
+  - 99.times do
+    .row
+      .col-xs-4
+        = link_to new_room_path, class: 'infogram' do
+          %i.big_icon.add
+          %span.link добавить место
+      .col-xs-4
+        = link_to new_room_path, class: 'infogram' do
+          %i.big_icon
+          %span.link сообщить об ошибке
