@@ -24,9 +24,9 @@ PlaceApp.directive("header", [function () {
 
         if(scope.open_collapse) {
           $('div').css('overflow', 'hidden' )
-          document.getElementsByTagName('body')[0].style.overflow = 'hidden';
+          // document.getElementsByTagName('body')[0].style.overflow = 'hidden';
         } else {
-          document.getElementsByTagName('body')[0].style.overflow = 'auto';
+          // document.getElementsByTagName('body')[0].style.overflow = 'auto';
         }
       }
     }
