@@ -5,7 +5,11 @@
     = stylesheet_link_tag    "application", media: "all"
     %script{ src: 'http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&language=ru' }
     = javascript_include_tag "application"
-    %meta{content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", name: "viewport"}
+    %meta{content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", name: "viewport"}
+    :css
+      body {
+      overflow-x:hidden;
+      }
 
     = csrf_meta_tags
   %body
