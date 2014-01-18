@@ -24,18 +24,11 @@ PlaceApp.directive("header", [function () {
 
         if(scope.open_collapse) {
           document.getElementsByTagName('body')[0].style.overflow = 'hidden';
-          // document.getElementsByTagName('body')[0].style.position = 'fixed';
-          document.addEventListener(
-'touchmove',
-function(e) {
-e.preventDefault();
-},
-false
-);
+          document.addEventListener('touchmove',function(e){e.preventDefault();},false);
           // $('div').css('overflow', 'hidden')
         } else {
-          // document.getElementsByTagName('html')[0].style.overflow = 'auto';
-          document.getElementsByTagName('body')[0].style.position = '';
+          document.getElementsByTagName('html')[0].style.overflow = '';
+           document.removeEventListener('touchmove', {})
         }
       }
     }
