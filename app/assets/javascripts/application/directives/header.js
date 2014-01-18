@@ -23,9 +23,9 @@ PlaceApp.directive("header", [function () {
         scope.open_collapse = !scope.open_collapse
 
         if(scope.open_collapse) {
-          document.getElementsByTagName('body')[0].style.overflow = 'hidden';
+          document.getElementsByTagName('html')[0].style.overflow = 'hidden';
         } else {
-          document.getElementsByTagName('body')[0].style.overflow = 'auto';
+          document.getElementsByTagName('html')[0].style.overflow = 'auto';
         }
       }
     }
