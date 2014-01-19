@@ -25,27 +25,16 @@ PlaceApp.directive("header", [function () {
 
         if(scope.open_collapse) {
           document.getElementsByTagName('body')[0].style.overflow = 'hidden';
-          // document.addEventListener('touchmove',function(e){e.preventDefault();},false);
-          document.addEventListener('touchmove', disabledTouchmove,false);
+          document.addEventListener('touchmove', disabledTouchmove, false);
 
-          // $('div').css('overflow', 'hidden')
         } else {
           document.getElementsByTagName('html')[0].style.overflow = '';
           document.removeEventListener('touchmove', disabledTouchmove, false);
         }
       }
 
-      // var lastX,
-      $display = $('#display');
       function disabledTouchmove(e){
-        $display.html(e)
-        // var currentX = e.originalEvent.touches ? e.originalEvent.touches[0].pageX : e.pageX;
-        // if (currentX != lastX) e.preventDefault();{
-        //     $display.html('moving right');
-        // } else {
-        //     $display.html('moving left');
-        // }
-        // lastX = currentX;
+        e.preventDefault()
       }
     }
   }
