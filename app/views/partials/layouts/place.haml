@@ -1,21 +1,34 @@
 .we{'ng-controller' => 'PlaceController'}
-  = render 'mobile_menu'
+  %nav#slide-menu
+    %ul
+      %li.timeline Timeline
+      %li.events Events
+      %li.calendar Calendar
+      %li.sep.settings Settings
+      %li.logout Logout
+
   #content
-    .menu-trigger
-    .fix_wrap{'ng-class' => '{menu_open: open_collapse}'}
-      .sub_wrapper
-        %map
-    .main_wrap{'ng-class' => '{menu_open: open_collapse}'}
-      = render 'header'
-      #shroud{'ng-click' => 'openCollapse()', 'ng-if'=>'open_collapse'}
+    .menu-trigger{ 'menu_trigger' => '' }
+    %h1 iOS style sliding menu
+    %p Here's an easy way to create an iOS style, side sliding menu.
 
-      %section.main_partial{'partial' => '', template: 'index', 'ng-if' => 'view.index'}
+  / = render 'mobile_menu'
+  / #content
+  /   .menu-trigger
+  /   .fix_wrap{'ng-class' => '{menu_open: open_collapse}'}
+  /     .sub_wrapper
+  /       %map
+  /   .main_wrap{'ng-class' => '{menu_open: open_collapse}'}
+  /     = render 'header'
+  /     #shroud{'ng-click' => 'openCollapse()', 'ng-if'=>'open_collapse'}
 
-      %section.right_partial.right.half{'partial' => '', template: 'result', 'ng-if' => 'view.result'}
+  /     %section.main_partial{'partial' => '', template: 'index', 'ng-if' => 'view.index'}
 
-      %section.right_partial.right.half{'partial' => '', template: 'detail', 'ng-if' => 'view.detail'}
+  /     %section.right_partial.right.half{'partial' => '', template: 'result', 'ng-if' => 'view.result'}
+
+  /     %section.right_partial.right.half{'partial' => '', template: 'detail', 'ng-if' => 'view.detail'}
 
 
-  / .map_control
-  /   %span{'ng-class' =>'{ active: map_control }', 'ng-click' =>'mapControl()'} карта
-  /   %span{'ng-class' =>'{ active: !map_control }', 'ng-click' =>'mapControl()'} инфо
+  / / .map_control
+  / /   %span{'ng-class' =>'{ active: map_control }', 'ng-click' =>'mapControl()'} карта
+  / /   %span{'ng-class' =>'{ active: !map_control }', 'ng-click' =>'mapControl()'} инфо

@@ -22,7 +22,9 @@ PlaceApp.controller(
       if(result != undefined ) return translate(category);
     };
 
-    
+    // (function() {
+
+    // }).call(this);
 
     $scope.mapControl = function(){
       $scope.map_control = !$scope.map_control
