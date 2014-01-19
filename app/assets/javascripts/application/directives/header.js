@@ -36,7 +36,8 @@ PlaceApp.directive("header", [function () {
       }
 
       function disabledTouchmove(e){
-        $('#test').body(e.clientX)
+        // e.originalEvent.touches[0].pageY
+        $('#test').html(e.clientX)
       }
     }
   }
