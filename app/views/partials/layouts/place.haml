@@ -2,23 +2,19 @@
   = render 'mobile_menu'
 
   #content
-    - 99.times do 
-      хуй
     .fix_wrap
       .sub_wrapper
         %map
     .main_wrap
       = render 'header'
+      %section.main_partial{'partial' => '', template: 'index', 'ng-if' => 'view.index'}
+
+      %section.right_partial.right.half{'partial' => '', template: 'result', 'ng-if' => 'view.result'}
+
+      %section.right_partial.right.half{'partial' => '', template: 'detail', 'ng-if' => 'view.detail'}
+    #shroud
     .menu-trigger{ 'menu_trigger' => '' }
 
-  / #content
-  /   .menu-trigger
-  /   .fix_wrap{'ng-class' => '{menu_open: open_collapse}'}
-  /     .sub_wrapper
-  /       %map
-  /   .main_wrap{'ng-class' => '{menu_open: open_collapse}'}
-  /     = render 'header'
-  /     #shroud{'ng-click' => 'openCollapse()', 'ng-if'=>'open_collapse'}
 
   /     %section.main_partial{'partial' => '', template: 'index', 'ng-if' => 'view.index'}
 

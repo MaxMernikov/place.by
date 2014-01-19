@@ -5,8 +5,8 @@ PlaceApp.directive('map', [function () {
       map_short_change = false;
       collection_change = false;
       position_change = false;
-
-      if(!xs()){ init_map() };
+init_map()
+      // if(!xs()){ init_map() };
 
       $(window).resize(function() {
         if(!xs()){ init_map() } else {
