@@ -35,16 +35,17 @@ PlaceApp.directive("header", [function () {
         }
       }
 
-      var lastX,
+      // var lastX,
       $display = $('#display');
       function disabledTouchmove(e){
-        var currentX = e.originalEvent.touches ? e.originalEvent.touches[0].pageX : e.pageX;
-        if (currentX > lastX) {
-            $display.html('moving right');
-        } else {
-            $display.html('moving left');
-        }
-        lastX = currentX;
+        $display.html(e)
+        // var currentX = e.originalEvent.touches ? e.originalEvent.touches[0].pageX : e.pageX;
+        // if (currentX != lastX) e.preventDefault();{
+        //     $display.html('moving right');
+        // } else {
+        //     $display.html('moving left');
+        // }
+        // lastX = currentX;
       }
     }
   }
