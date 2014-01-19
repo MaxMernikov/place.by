@@ -4,11 +4,14 @@
 header
   background: none repeat scroll 0 0 $main
   height: 40px
-  left: 0
   position: fixed
-  right: 0
   top: 0
   z-index: 1
+  left: 0
+  width: 100%
+  overflow: scroll
+  @include box-sizing (border-box)
+  @include transition (all .3s)
 
   .current_menu
     text-transform: uppercase

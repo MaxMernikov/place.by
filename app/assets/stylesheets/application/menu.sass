@@ -36,7 +36,6 @@ div#content
   width: 100%
   height: 100%
   overflow: scroll
-  border-radius: 0
   @include box-sizing (border-box)
   @include transition (all .3s)
 
@@ -50,8 +49,11 @@ div#content
   cursor: pointer
   border-radius: 5px
   @include transition (all .3s)
+  z-index: 3
 
 body.menu-active div#content
   left: 284px
   .menu-trigger
     left: 294px
+  .fix_wrap, header
+    left: 284px

@@ -1,18 +1,16 @@
 .we{'ng-controller' => 'PlaceController'}
-  %nav#slide-menu
-    %ul
-      %li.timeline Timeline
-      %li.events Events
-      %li.calendar Calendar
-      %li.sep.settings Settings
-      %li.logout Logout
+  = render 'mobile_menu'
 
   #content
+    - 99.times do 
+      хуй
+    .fix_wrap
+      .sub_wrapper
+        %map
+    .main_wrap
+      = render 'header'
     .menu-trigger{ 'menu_trigger' => '' }
-    %h1 iOS style sliding menu
-    %p Here's an easy way to create an iOS style, side sliding menu.
 
-  / = render 'mobile_menu'
   / #content
   /   .menu-trigger
   /   .fix_wrap{'ng-class' => '{menu_open: open_collapse}'}

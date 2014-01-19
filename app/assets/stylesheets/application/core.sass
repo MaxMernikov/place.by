@@ -223,12 +223,13 @@ button.infogram
   top: 0
   bottom: 0
   left: 0
-  right: 0
+  // right: 0
   background-image: url('/assets/sprite.png')
-  @include transition (left .2s ease, right .2s ease)
-  &.menu_open
-    left: 250px
-    right: -250px
+  @include transition (all .3s)
+
+  overflow: scroll
+  @include box-sizing (border-box)
+  width: 100%
 
 .sub_wrapper
   height: 100%
