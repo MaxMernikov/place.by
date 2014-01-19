@@ -2,11 +2,25 @@
 %html{'ng-app' => 'PlaceApp', 'ng:controller' => 'ApplicationController'}
   %head
     %title PlaceBy
-    = stylesheet_link_tag    "application", media: "all"
-    %script{ src: 'http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&language=ru' }
-    = javascript_include_tag "application"
+    = render 'css'
+    / = stylesheet_link_tag    "application", media: "all"
+    / %script{ src: 'http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&language=ru' }
     %meta{content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", name: "viewport"}
     = csrf_meta_tags
   %body
-    #media_width
-    %content{ 'ng:include' =>'controller' }
+    / #media_width
+    / %content{ 'ng:include' =>'controller' }
+    / Navigation
+    %nav#slide-menu
+      %ul
+        %li.timeline Timeline
+        %li.events Events
+        %li.calendar Calendar
+        %li.sep.settings Settings
+        %li.logout Logout
+    / Content panel
+    #content
+      .menu-trigger
+      %h1 iOS style sliding menu
+      %p Here's an easy way to create an iOS style, side sliding menu.
+    = render 'js'
