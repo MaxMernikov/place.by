@@ -1,253 +1,253 @@
-// @import 'bourbon'
-// @import 'variable.sass'
+@import 'bourbon'
+@import 'variable.sass'
 
-// // @import url(http://fonts.googleapis.com/css?family=PT+Serif&subset=latin,cyrillic)
-// @font-face
-//   font-family: 'PT Serif'
-//   font-style: normal
-//   font-weight: 400
-//   src: local('PT Serif'), local('PTSerif-Regular'), url(http://themes.googleusercontent.com/static/fonts/ptserif/v5/Sh5y9ATXtXKFxn1y2pIqd3YhjbSpvc47ee6xR_80Hnw.woff) format('woff')
+// @import url(http://fonts.googleapis.com/css?family=PT+Serif&subset=latin,cyrillic)
+@font-face
+  font-family: 'PT Serif'
+  font-style: normal
+  font-weight: 400
+  src: local('PT Serif'), local('PTSerif-Regular'), url(http://themes.googleusercontent.com/static/fonts/ptserif/v5/Sh5y9ATXtXKFxn1y2pIqd3YhjbSpvc47ee6xR_80Hnw.woff) format('woff')
 
 
-// // @import url(http://fonts.googleapis.com/css?family=PT+Sans&subset=latin,cyrillic)
-// @font-face
-//   font-family: 'PT Sans'
-//   font-style: normal
-//   font-weight: 400
-//   src: local('PT Sans'), local('PTSans-Regular'), url(http://themes.googleusercontent.com/static/fonts/ptsans/v5/oOt0DNfso2UXZt7DYCiN2gLUuEpTyoUstqEm5AMlJo4.woff) format('woff')
+// @import url(http://fonts.googleapis.com/css?family=PT+Sans&subset=latin,cyrillic)
+@font-face
+  font-family: 'PT Sans'
+  font-style: normal
+  font-weight: 400
+  src: local('PT Sans'), local('PTSans-Regular'), url(http://themes.googleusercontent.com/static/fonts/ptsans/v5/oOt0DNfso2UXZt7DYCiN2gLUuEpTyoUstqEm5AMlJo4.woff) format('woff')
 
-// // http://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin,cyrillic-ext
-// @font-face
-//   font-family: 'Open Sans'
-//   font-style: normal
-//   font-weight: 300
-//   src: local('Open Sans Light'), local('OpenSans-Light'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/DXI1ORHCpsQm3Vp6mXoaTVMBBrntOh5tSEdJ1aeglyY.woff) format('woff')
+// http://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin,cyrillic-ext
+@font-face
+  font-family: 'Open Sans'
+  font-style: normal
+  font-weight: 300
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/DXI1ORHCpsQm3Vp6mXoaTVMBBrntOh5tSEdJ1aeglyY.woff) format('woff')
 
-// body
-//   font-family: 'PT Serif', Georgia, 'Times New Roman', Times, serif
-//   // font-size: 14px
-//   // line-height: 20px
-//   color: #444
-//   height: 100%
-//   margin: 0px
-//   padding: 0px
-//   cursor: default
+body
+  font-family: 'PT Serif', Georgia, 'Times New Roman', Times, serif
+  // font-size: 14px
+  // line-height: 20px
+  color: #444
+  height: 100%
+  margin: 0px
+  padding: 0px
+  cursor: default
 
-// .check
-//   font-family: 'Open Sans', sans
-//   // font-size: 13px
+.check
+  font-family: 'Open Sans', sans
+  // font-size: 13px
 
-// h1, h2, h3
-//   font-family: 'PT Sans', sans
-//   font-weight: 300
+h1, h2, h3
+  font-family: 'PT Sans', sans
+  font-weight: 300
 
-// input, textarea
-//   font-size: 14px
-//   font-family: 'PT Serif', Georgia, 'Times New Roman', Times, serif
-//   padding: 4px 8px
-//   border: 1px solid #b6b8b7
-//   background: 0
-//   border-radius: 2px
-//   box-sizing:border-box
-//   -moz-box-sizing:border-box
+input, textarea
+  font-size: 14px
+  font-family: 'PT Serif', Georgia, 'Times New Roman', Times, serif
+  padding: 4px 8px
+  border: 1px solid #b6b8b7
+  background: 0
+  border-radius: 2px
+  box-sizing:border-box
+  -moz-box-sizing:border-box
 
-// input[type='text'], textarea
-//   width: 100%
+input[type='text'], textarea
+  width: 100%
 
-// input[type='submit']
-//   cursor: pointer
-//   text-transform: uppercase
-//   &:hover
-//     color: #888
+input[type='submit']
+  cursor: pointer
+  text-transform: uppercase
+  &:hover
+    color: #888
 
-// .block
-//   background: $main
-//   border: 1px solid $gray_2_1
-//   overflow: scroll
+.block
+  background: $main
+  border: 1px solid $gray_2_1
+  overflow: scroll
 
-// .main_partial
-//   opacity: 0
-//   @include transition (opacity .4s linear)
-//   &.show
-//     opacity: 1
+.main_partial
+  opacity: 0
+  @include transition (opacity .4s linear)
+  &.show
+    opacity: 1
+.animate
+  .main_partial
+    @include transition (opacity .4s linear)
+
+.right_partial
+  right: -100%
+  @include transition (right .6s ease)
+  &.show
+    right: 0
 // .animate
-//   .main_partial
-//     @include transition (opacity .4s linear)
+//   .right_partial
+//     @include transition (right .6s linear)
 
-// .right_partial
-//   right: -100%
-//   @include transition (right .6s ease)
-//   &.show
-//     right: 0
-// // .animate
-// //   .right_partial
-// //     @include transition (right .6s linear)
-
-// .animate_filter
-//   opacity: 0
-//   @include transition (opacity .2s linear .1s)
-//   &.show
-//     @include transition (opacity .2s linear 2s)
-//     opacity: 1
+.animate_filter
+  opacity: 0
+  @include transition (opacity .2s linear .1s)
+  &.show
+    @include transition (opacity .2s linear 2s)
+    opacity: 1
 
 
-// a, .link
-//   color: $link
-//   text-decoration: none !important
-//   &:active
-//     color: $main_text
-//     // text-decoration: none
-//   &:hover
-//     color: $main_text
-//     // text-decoration: none
-// .hover
-//   a, .link
-//     &:active
-//       color: $link !important
-// .animate
-//   a, .link
-//     @include transition (color .2s linear)
+a, .link
+  color: $link
+  text-decoration: none !important
+  &:active
+    color: $main_text
+    // text-decoration: none
+  &:hover
+    color: $main_text
+    // text-decoration: none
+.hover
+  a, .link
+    &:active
+      color: $link !important
+.animate
+  a, .link
+    @include transition (color .2s linear)
 
-// .main_wrap
-//   @include transition (left .2s ease, right .2s ease)
-//   bottom: 0px
-//   left: 0
-//   position: absolute
-//   right: 0
-//   z-index: 1
-//   top: 40px
-//   &.menu_open
-//     left: 250px
-//     right: -250px
+.main_wrap
+  @include transition (left .2s ease, right .2s ease)
+  bottom: 0px
+  left: 0
+  position: absolute
+  right: 0
+  z-index: 1
+  top: 40px
+  &.menu_open
+    left: 250px
+    right: -250px
 
-// .main
-//   left: 0
-//   margin: 0 auto
-//   position: absolute
-//   right: 0
-//   width: 920px
-//   height: 100%
+.main
+  left: 0
+  margin: 0 auto
+  position: absolute
+  right: 0
+  width: 920px
+  height: 100%
 
-// .xs-show
-//   display: none !important
-// .xs-hide
-//   display: inherit !important
+.xs-show
+  display: none !important
+.xs-hide
+  display: inherit !important
 
-// .map_control
-//   display: none
+.map_control
+  display: none
 
-// @media screen and (min-width: 920px)
+@media screen and (min-width: 920px)
 
-// @media screen and (max-width: 920px)
-//   .header
-//     .logo
-//       font-size: 28px !important
-//       margin-top: 0 !important
-//   .second_header
-//     top: 0 !important
+@media screen and (max-width: 920px)
+  .header
+    .logo
+      font-size: 28px !important
+      margin-top: 0 !important
+  .second_header
+    top: 0 !important
 
-//   .big_icon
-//     display: none !important
+  .big_icon
+    display: none !important
 
-//   .main_wrap.body
-//     top: 60px
+  .main_wrap.body
+    top: 60px
 
-// @media screen and (max-device-width : 640px), screen and (max-width: 640px)
+@media screen and (max-device-width : 640px), screen and (max-width: 640px)
 
-//   .main_wrap.body
-//     top: 0px
-//   .main
-//     width: 92%!important
+  .main_wrap.body
+    top: 0px
+  .main
+    width: 92%!important
 
-//   .xs-show
-//     display: inherit !important
-//   .xs-hide
-//     display: none !important
-//   .details.wrap.half
-//     top: -60px
+  .xs-show
+    display: inherit !important
+  .xs-hide
+    display: none !important
+  .details.wrap.half
+    top: -60px
 
-//   .map_control
-//     display: block
-//     position: fixed
-//     background: $contrast
-//     color: $main
-//     bottom: 0
-//     right: 0
-//     span
-//       cursor: pointer
-//       padding: 16px
-//       display: inline-block
-//       @include transition (background .2s linear)
-//       &.active
-//         background: $contrast_2
-//       &:hover
-//         background: $contrast_2
+  .map_control
+    display: block
+    position: fixed
+    background: $contrast
+    color: $main
+    bottom: 0
+    right: 0
+    span
+      cursor: pointer
+      padding: 16px
+      display: inline-block
+      @include transition (background .2s linear)
+      &.active
+        background: $contrast_2
+      &:hover
+        background: $contrast_2
 
-// .infogram
-//   @include transition (border-color .35s linear)
-//   border: 1px solid $main
-//   font-family: 'Open Sans', sans
-//   border-radius: 2px
-//   color: #444444
-//   cursor: pointer
-//   display: inline-block
-//   padding: 4px
-//   text-decoration: none
-//   &:hover
-//     border: 1px solid $gray_2_1
-//     .link
-//       color: $link
-//   i
-//     vertical-align: middle
-//   span
-//     display: inline-block
-//     font-size: 9px
-//     line-height: 14px
-//     padding-left: 4px
-//     text-transform: uppercase
-//     vertical-align: middle
-//     width: 72px
-//     text-align: left
+.infogram
+  @include transition (border-color .35s linear)
+  border: 1px solid $main
+  font-family: 'Open Sans', sans
+  border-radius: 2px
+  color: #444444
+  cursor: pointer
+  display: inline-block
+  padding: 4px
+  text-decoration: none
+  &:hover
+    border: 1px solid $gray_2_1
+    .link
+      color: $link
+  i
+    vertical-align: middle
+  span
+    display: inline-block
+    font-size: 9px
+    line-height: 14px
+    padding-left: 4px
+    text-transform: uppercase
+    vertical-align: middle
+    width: 72px
+    text-align: left
 
-// button.infogram
-//   padding: 2px
-//   background: none repeat scroll 0 0 rgba(0, 0, 0, 0)
+button.infogram
+  padding: 2px
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0)
 
-// .h_an
-//   @include transition (background-color .2s linear)
-//   &:hover
-//     background: #f8f8f8
+.h_an
+  @include transition (background-color .2s linear)
+  &:hover
+    background: #f8f8f8
 
-// .fix_wrap
-//   position: fixed
-//   top: 0
-//   bottom: 0
-//   left: 0
-//   right: 0
-//   background-image: url('/assets/sprite.png')
-//   @include transition (left .2s ease, right .2s ease)
-//   &.menu_open
-//     left: 250px
-//     right: -250px
+.fix_wrap
+  position: fixed
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  background-image: url('/assets/sprite.png')
+  @include transition (left .2s ease, right .2s ease)
+  &.menu_open
+    left: 250px
+    right: -250px
 
-// .sub_wrapper
-//   height: 100%
-//   position: absolute
-//   width: 100%
+.sub_wrapper
+  height: 100%
+  position: absolute
+  width: 100%
 
-// map
-//   position: absolute !important
-//   display: block
-//   bottom: 0
-//   top: 40px
-//   left: 0
-//   right: 0
+map
+  position: absolute !important
+  display: block
+  bottom: 0
+  top: 40px
+  left: 0
+  right: 0
 
-// .container.half.pull_left
-//   left: 0
-//   position: absolute
+.container.half.pull_left
+  left: 0
+  position: absolute
 
-// .container.half.pull_right
-//   right: 0
-//   position: absolute
+.container.half.pull_right
+  right: 0
+  position: absolute
 
