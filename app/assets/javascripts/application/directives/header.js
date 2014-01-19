@@ -36,6 +36,7 @@ PlaceApp.directive("header", [function () {
       }
 
       function disabledTouchmove(e){
+        
         var lastX,
     $display = $('#display');
 $(document).bind('touchmove mousemove', function (e) {
