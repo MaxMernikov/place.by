@@ -19,17 +19,24 @@ PlaceApp.directive("header", [function () {
         };
       }
 
+
       scope.openCollapse = function(){
         scope.open_collapse = !scope.open_collapse
 
         if(scope.open_collapse) {
           document.getElementsByTagName('body')[0].style.overflow = 'hidden';
-          document.addEventListener('touchmove',function(e){e.preventDefault();},false);
+          // document.addEventListener('touchmove',function(e){e.preventDefault();},false);
+          document.addEventListener('touchmove', disabledTouchmove,false);
+
           // $('div').css('overflow', 'hidden')
         } else {
           document.getElementsByTagName('html')[0].style.overflow = '';
-           document.removeEventListener('touchmove', {})
+          document.removeEventListener('touchmove', disabledTouchmove, false);
         }
+      }
+
+      function disabledTouchmove(e){
+        $('#test').body(e.clientX)
       }
     }
   }
