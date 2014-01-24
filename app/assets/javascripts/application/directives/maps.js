@@ -1,10 +1,10 @@
-PlaceApp.directive('map', [function () {
+PlaceApp.directive('map', ['$location', function ($location) {
   return {
     restrict: 'E',
     link: function(scope, element, attrs) {
       map_short_change = false;
       collection_change = false;
-      position_change = false;
+      // position_change = false;
 
       scope.map_show = !xs();
       $(window).resize(function() {
@@ -51,8 +51,10 @@ PlaceApp.directive('map', [function () {
       scope.$watch('map_show', function (value) {
         if(value){
           if(window.map == undefined){
-            map_init()
+            map_init();
           };
+          set_positon();
+          set_markers();
         };
       });
 
@@ -70,12 +72,6 @@ PlaceApp.directive('map', [function () {
         map.setCenter(center)
       }
 
-      // // сдвигаем все в центр
-      // function map_scroll_to_root () {
-      //   map.panTo(new google.maps.LatLng(53.9060089, 27.5550941));
-      //   if(map.getZoom() != 12) map.setZoom(12);
-      // }
-
       // установка ширины карты
       function set_map_short() {
         element[0].className = (scope.map_short)? 'short' : '';
@@ -90,63 +86,64 @@ PlaceApp.directive('map', [function () {
 
       // отмечаем что коллекция была изменена и что можно рендерить на карту при необходимости
       scope.$watch('places', function (value) {
-        collection_change = true;
-        set_markers();
-      });
+        if(!xs() && !_.isEmpty(value)){
+          set_markers();
+        }
+      }, true);
 
       function set_markers() {
-        if (!xs()) {
-          var markers = [];
-          _.each(scope.places, function (place) {
-            marker = new MarkerWithLabel({
-              position: new google.maps.LatLng(place.longitude, place.latitude),
-              labelContent: '<a href="/pool/' + place.id + '"class = " marker room"></a>',
-              labelAnchor: new google.maps.Point(20, 20),
-              labelClass: 'place_label2',
-              icon: {}
-            });
-
-            // google.maps.event.addListener(marker, "click", function (e) {
-            //   $('a.marker[href="' + e.target.pathname + '"]').parent().addClass('show');
-            //   $location.path(e.target.pathname);
-            //   $rootScope.view_from_map = true;
-            //   $scope.$apply()
-            // });
-
-            // google.maps.event.addListener(marker, 'mouseover', function (e) {
-            //   $('a.marker[href="' + e.target.pathname + '"]').parent().addClass('hover')
-            // });
-
-            // google.maps.event.addListener(marker, 'mouseout', function (e) {
-            //   $('a.marker[href="' + e.target.pathname + '"]').parent().removeClass('hover')
-            // });
-
-            markers.push(marker);
+        var markers = [];
+        _.each(scope.places, function (place) {
+          marker = new MarkerWithLabel({
+            position: new google.maps.LatLng(place.longitude, place.latitude),
+            labelContent: '<a href="/pool/' + place.id + '"class = " marker room"></a>',
+            labelAnchor: new google.maps.Point(20, 20),
+            labelClass: 'place_label2',
+            icon: {}
           });
 
-          markerCluster = new MarkerClusterer(map, markers, mcOptions);
-        }
+          google.maps.event.addListener(marker, "click", function (e) {
+            console.log($('.place_label2.show'));
+            $('.place_label2.active').removeClass('active').addClass('show');
+            $('a.marker[href="' + e.target.pathname + '"]').parent().addClass('active');
+            $location.path(e.target.pathname);
+            // указываем что переход произведен при клике на карте, а значит карту не перерисовывать
+            scope.$apply(function () {
+              scope.view_from_map = true;
+            });
+          });
+
+          google.maps.event.addListener(marker, 'mouseover', function (e) {
+            $('a.marker[href="' + e.target.pathname + '"]').parent().addClass('hover')
+          });
+
+          google.maps.event.addListener(marker, 'mouseout', function (e) {
+            $('a.marker[href="' + e.target.pathname + '"]').parent().removeClass('hover')
+          });
+
+          markers.push(marker);
+        });
+
+        markerCluster = new MarkerClusterer(map, markers, mcOptions);
       };
 
+
+      // отмечаем что расположение было изменено и что можно рендерить на карту при необходимости
       scope.$watch('current_position', function (value) {
-        if(!_.isEmpty(value)){
-          console.log(value)
-          position_change = true;
+        if(!xs() && !_.isEmpty(value)){
           set_positon();
         }
       }, true);
 
       function set_positon() {
-        if(!xs()){
-          if (scope.current_position.zoom != undefined)
-            { map.setZoom(scope.current_position.zoom); }
-          if (scope.current_position.coordinate != undefined){
-            map.panTo(new google.maps.LatLng(
-              scope.current_position.coordinate[0],
-              scope.current_position.coordinate[1]
-            ));
-          };
-        }
+        if (scope.current_position.zoom != undefined)
+          { map.setZoom(scope.current_position.zoom); }
+        if (scope.current_position.coordinate != undefined){
+          map.panTo(new google.maps.LatLng(
+            scope.current_position.coordinate[0],
+            scope.current_position.coordinate[1]
+          ));
+        };
       }
 
     }

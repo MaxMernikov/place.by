@@ -27,13 +27,12 @@
     display: inline-block
     overflow: visible !important
     border-radius: 20px
-    line-height: 32px
+    line-height: 2.8
     text-align: center
     &:after
       content: ''
       @include transition (width .2s linear, height .2s linear)
-      // background: $gray_border_color
-      background: #34cae0
+      background: $gray_border_color
       border-radius: 16px
       display: inline-block
       height: 20px
@@ -49,6 +48,10 @@
     a
       &:after
         background: rgba( 211, 216, 219, 0.8)
+  &.active
+    a
+      &:after
+        background: #34cae0
 
 .cluster
   @include transition (background-color .2s linear)

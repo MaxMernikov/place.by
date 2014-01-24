@@ -1,5 +1,7 @@
 // стили для карты
-var map_center = new google.maps.LatLng(53.9060089, 27.5550941);
+var root_coordinate = [53.9060089, 27.5550941],
+    root_zoom = 12,
+    map_center = new google.maps.LatLng(53.9060089, 27.5550941);
 
 // инициалицация карты
 var map_styles = [

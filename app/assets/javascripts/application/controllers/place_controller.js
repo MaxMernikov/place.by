@@ -5,6 +5,7 @@ PlaceApp.controller(
     $scope.view = {};
     $rootScope.current_category = {};
     $scope.current_position = {};
+    $scope.view_from_map = false; //переход на страницу по клику на маркер
 
     // главная страница
     home_index = function(){
@@ -27,41 +28,21 @@ PlaceApp.controller(
           $scope.places = data.places;
         });
       }
+
+      // двигаем карту на центр
+      $scope.current_position.zoom = root_zoom;
+      $scope.current_position.coordinate = root_coordinate;
+
       $scope.view_partial.result = 'categories#index';
       $scope.view.result = 'show';
     };
 
-      // if($scope.view.result != true){
-      //   $scope.view_partial.result = 'categories#index';
-
-      //   $http.get('/' + $route.current.params.categoryId + '.json').success(function(data) {
-      //     // будет исспользоваться в хидере и для определения типа маркера
-      //     $rootScope.current_category = { title: data.title, slug: data.slug };
-      //     $scope.places = data.places;
-      //     // $rootScope.maker_type = 'place';
-      //     // $rootScope.map_markers = create_place_markers(data);
-      //   });
-      //   $scope.view.result = 'show';
-      // };
-
-      // устанавливаем центр карты
-      // 1) пользователь пришел с главной или с иной категории (map_changed = false)
-      // if(!map_changed || $rootScope.view_from_map != true){
-      //   // map_scroll_to_root();
-
-      // } else if($rootScope.view_from_map == true){
-      //  $rootScope.view_from_map = false;
-      // }
-
-      // map_changed = true;
-      // $scope.sub_wrapper_class = 'short';
-      // map.changed
-
-    // одна комната
+    // детали места
     place_show = function(){
       $scope.view = all_close($scope.view, ['result']);
       $scope.view_partial.detail = 'place#show';
       $scope.map_short = true;
+      $scope.visible_show_map = true;
 
       $http.get('/' + $routeParams.categoryId + '/'+ $routeParams.placeId + '.json').success(function(data) {
         $scope.place = data;
@@ -71,8 +52,11 @@ PlaceApp.controller(
           $scope.places = [data];
         };
 
-        $scope.current_position.zoom = 17;
-        $scope.current_position.coordinate = [data.longitude, data.latitude]
+        if ($scope.view_from_map == true) {$scope.view_from_map = false}
+        else{
+          $scope.current_position.zoom = 17;
+          $scope.current_position.coordinate = [data.longitude, data.latitude]
+        }
 
       });
 
