@@ -124,7 +124,14 @@ PlaceApp.directive('map', ['$location', function ($location) {
           markers.push(marker);
         });
 
-        markerCluster = new MarkerClusterer(map, markers, mcOptions);
+        if(xs()){
+          _.each(markers, function (marker) {
+            marker.setMap(map);
+          })
+        } else {
+          markerCluster = new MarkerClusterer(map, markers, mcOptions);
+        }
+
       };
 
 
