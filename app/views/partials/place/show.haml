@@ -1,39 +1,38 @@
-= link_to '', '/{{category}}', class: 'link_to_room xs-hide'
-.wrap.block.details.half.place
-  .grid.menu.half
-    .unit.w-1-3
-      = link_to '', '/{{category}}', class: 'link_to_room_xs xs-show'
-    .unit.w-1-3
-      %button.infogram
-        %i.big_icon.favorite
-        %span.link Добавить в закладки
-    .unit.w-1-3
-      %button.infogram{'ng-click'=>'edit()'}
-        %i.big_icon.edit
-        %span.link Изменить данные
-  .grid.after_menu
-    .unit.w-1-1
-      .hint {{place.address}}
-      .title
-        %span {{place.title}}
-  .grid{'ng-show' => '!!place.address_comment'}
-    .unit.w-1-1
-      .hint
-        .subtitle Точное расположение:
-        .check {{place.address_comment}}
+= link_to '', '/{{category}}', class: 'link_to_room uk-hidden-small'
+= link_to '', '/{{category}}', class: 'link_to_room_xs menu_button primary uk-visible-small'
+.block.details.place
+  .uk-grid
+    .uk-width-1-2.uk-text-center
+      %a.uk-button.uk-button-chameleon
+        Добавить в закладки
+    .uk-width-1-2.uk-text-center
+      %a.uk-button.uk-button-chameleon
+        Редактировать
 
-  .grid{'ng-show' => '!!place.description'}
-    .unit.w-1-1
-      .check {{place.description}}
+  .uk-grid
+    .uk-width-1-1
+      %h3.uk-article-lead.uk-margin-bottom-remove
+        {{place.address}}
+      %h1.uk-article-title.uk-margin-top-remove
+        {{place.title}}
+      .uk-text-info{'ng-if' => '!!place.address_comment'}
+        .uk-article-lead Точное расположение:
+        {{place.address_comment}}
 
-  .grid{'ng-show' => '!!place.time_work'}
-    .unit.w-1-1
-      .subtitle Время работы:
-      .check {{place.time_work}}
-  .grid{'ng-show' => 'place.contacts.length > 1'}
-    .unit.w-1-1
-      .subtitle Контакты:
+  .uk-grid{'ng-if' => '!!place.description'}
+    .uk-width-1-1
+      {{place.description}}
+
+  .uk-grid{'ng-if' => '!!place.time_work'}
+    .uk-width-1-1
+      .uk-article-lead Время работы:
+      {{place.time_work}}
+
+  .uk-grid{'ng-if' => 'place.contacts.length > 1'}
+    .uk-width-1-1
+      .uk-article-lead Контакты:
       .div.check{'ng-repeat' => 'contact in place.contacts'}
         %span {{contact.contact_type}}:
         %span {{contact.num}}
         %span {{contact.comment}}
+  .uk-margin-bottom

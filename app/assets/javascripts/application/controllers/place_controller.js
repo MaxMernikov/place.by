@@ -12,11 +12,13 @@ PlaceApp.controller(
       $scope.view.index = 'show';
       $scope.view_partial.index = 'home#index';
       $scope.map_short = false;
+      $scope.visible_show_map = false;
     };
 
     categories_index = function(){
       $scope.view = all_close($scope.view, ['result']);
       $scope.map_short = true;
+      $scope.visible_show_map = true;
 
       if ($rootScope.current_category.slug == undefined || $scope.places.length < 2 || $rootScope.current_category.slug != $route.current.params.categoryId ) {
 

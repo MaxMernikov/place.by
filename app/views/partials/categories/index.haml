@@ -1,20 +1,19 @@
-.wrap.results.block.half
-  .grid.menu.xs-hide
-    = link_to '/', class: 'first' do
-      .unit.w-1-3 на главную
-    .unit.w-1-3{'ng-click' => 'scroll_to_root()'}
-      %h2
-        %ng-pluralize{ count: "places.length", when: "placeForms"}
+.results.block
+  .uk-width-1-1.menu
+    .uk-hidden-small.uk-vertical-align.uk-text-center
+      = link_to '/', class: 'uk-width-1-3 uk-vertical-align-middle' do
+        на главную
+      .uk-width-1-3.uk-vertical-align-middle{'ng-click' => 'scroll_to_root()'}
+        %h3.uk-text-uppercase.uk-margin-top
+          %ng-pluralize{ count: "places.length", when: "placeForms"}
+      .uk-width-1-3.uk-vertical-align-middle
+        -# f
     / = link_to '/', class: 'last' do
     /   .unit.w-1-3 закладки
 
-  .rooms{ "bindonce" => "", 'ng-repeat' => 'place in places' }
+  .result_items{ "bindonce" => "", 'ng-repeat' => 'place in places' }
     %a{ "bo-href" => "'/' + category + '/' + place.id" }
-      .grid
-        .unit.w-5-6
-          .rooms_count
-            %span{ "bo-text" => "place.address" }
-          .address.link
-            %span{ "bo-text" => "place.title" }
-        .unit.w-1-6
-          / .big_icon.favorite{ title: 'добавить в закладки'}
+      .uk-grid
+        .uk-width-1-1
+          .uk-text-info{ "bo-text" => "place.address" }
+          .uk-text-large{ "bo-text" => "place.title" }

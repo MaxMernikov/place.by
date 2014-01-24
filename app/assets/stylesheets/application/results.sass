@@ -4,36 +4,29 @@
 .results
   .menu
     background: $contrast
-    .unit
-      background: $contrast
+    a, h3
       color: $main
-      cursor: pointer
-      font-size: 12px
-      line-height: 14px
-      text-transform: uppercase
-      font-family: "Open Sans", sans
 
-    .first
-      text-align: left
-      .unit
-        padding-bottom: 23px
-        padding-top: 23px
-    .last
-      text-align: right
-      padding-top: 26px
-      .unit
-        padding-bottom: 23px
-        padding-top: 23px
-    a
-      text-decoration: none
+.result_items
+  @include transition (background-color .2s linear)
+  position: relative
+  &:active
+    background: #f8f8f8
 
-    h2
-      text-align: center
-      font-size: 16px
-      margin-bottom: 13px
+  &:after
+    background: #ddd
+    content: ""
+    height: 1px
+    position: absolute
+    left: 50%
+    margin-left: -150px
+    width: 300px
+
+  &>a
+    display: block
+    padding: 12px 8px
 
 .hover
-  .results
-    .menu
-      .unit:hover
-        background: $contrast_2
+  .result_items
+    &:hover
+      background: #f8f8f8

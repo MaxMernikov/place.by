@@ -24,21 +24,16 @@
   src: local('Open Sans Light'), local('OpenSans-Light'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/DXI1ORHCpsQm3Vp6mXoaTVMBBrntOh5tSEdJ1aeglyY.woff) format('woff')
 
 body
-  font-family: 'PT Serif', Georgia, 'Times New Roman', Times, serif
-  // font-size: 14px
-  // line-height: 20px
-  color: #444
-  height: 100%
-  margin: 0px
-  padding: 0px
   cursor: default
+  font-weight: 300
+  // font-family: 'Open Sans', sans
 
-.check
-  font-family: 'Open Sans', sans
-  // font-size: 13px
+h1, h2, h3, h4, h5, h6
+  font-weight: 300
 
-h1, h2, h3
-  font-family: 'PT Sans', sans
+.uk-text-uppercase
+  text-transform: uppercase
+.uk-article-lead
   font-weight: 300
 
 input, textarea
@@ -65,23 +60,21 @@ input[type='submit']
   border: 1px solid $gray_2_1
   overflow: scroll
 
+  // border-right: 0
+  @include box-sizing(border-box)
+  padding: 8px
+
 .main_partial
   opacity: 0
   @include transition (opacity .4s linear)
   &.show
     opacity: 1
-.animate
-  .main_partial
-    @include transition (opacity .4s linear)
 
 .right_partial
   right: -100%
   @include transition (right .6s ease)
   &.show
-    right: 0
-// .animate
-//   .right_partial
-//     @include transition (right .6s linear)
+    right: 2px
 
 .animate_filter
   opacity: 0
@@ -94,6 +87,7 @@ input[type='submit']
 a, .link
   color: $link
   text-decoration: none !important
+  @include transition (color .2s ease)
   &:active
     color: $main_text
     // text-decoration: none
@@ -104,16 +98,14 @@ a, .link
   a, .link
     &:active
       color: $link !important
-.animate
-  a, .link
-    @include transition (color .2s linear)
 
 .main_wrap
   @include transition (left .2s ease, right .2s ease)
   bottom: 0px
   position: absolute
   right: 0
-  z-index: 1
+  // left: 400px
+  // z-index: 1
   top: 40px
   &.menu_open
     left: 250px
@@ -127,16 +119,6 @@ a, .link
   width: 920px
   height: 100%
 
-.xs-show
-  display: none !important
-.xs-hide
-  display: inherit !important
-
-.map_control
-  display: none
-
-@media screen and (min-width: 920px)
-
 @media screen and (max-width: 920px)
   .header
     .logo
@@ -144,9 +126,6 @@ a, .link
       margin-top: 0 !important
   .second_header
     top: 0 !important
-
-  .big_icon
-    display: none !important
 
   .main_wrap.body
     top: 60px
@@ -158,64 +137,9 @@ a, .link
   .main
     width: 92%!important
 
-  .xs-show
-    display: inherit !important
-  .xs-hide
-    display: none !important
   .details.wrap.half
     top: -60px
 
-  .map_control
-    display: block
-    position: fixed
-    background: $contrast
-    color: $main
-    bottom: 0
-    right: 0
-    span
-      cursor: pointer
-      padding: 16px
-      display: inline-block
-      @include transition (background .2s linear)
-      &.active
-        background: $contrast_2
-      &:hover
-        background: $contrast_2
-
-.infogram
-  @include transition (border-color .35s linear)
-  border: 1px solid $main
-  font-family: 'Open Sans', sans
-  border-radius: 2px
-  color: #444444
-  cursor: pointer
-  display: inline-block
-  padding: 4px
-  text-decoration: none
-  &:hover
-    border: 1px solid $gray_2_1
-    .link
-      color: $link
-  i
-    vertical-align: middle
-  span
-    display: inline-block
-    font-size: 9px
-    line-height: 14px
-    padding-left: 4px
-    text-transform: uppercase
-    vertical-align: middle
-    width: 72px
-    text-align: left
-
-button.infogram
-  padding: 2px
-  background: none repeat scroll 0 0 rgba(0, 0, 0, 0)
-
-.h_an
-  @include transition (background-color .2s linear)
-  &:hover
-    background: #f8f8f8
 
 .fix_wrap
   position: fixed
@@ -229,6 +153,9 @@ button.infogram
   overflow: scroll
   @include box-sizing (border-box)
   width: 100%
+  opacity: 0
+  &.show
+    opacity: 1
 
 .sub_wrapper
   height: 100%
@@ -243,11 +170,12 @@ map
   left: 0
   right: 0
 
-.container.half.pull_left
-  left: 0
-  position: absolute
-
-.container.half.pull_right
-  right: 0
-  position: absolute
-
+.uk-button
+  span
+    display: inline-block
+    line-height: 16px
+    margin: 5px 0
+  &.uk-button-large
+    span
+      line-height: 18px
+      margin: 8px 0

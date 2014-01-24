@@ -1,12 +1,6 @@
 @import 'bourbon'
 @import 'variable.sass'
 
-.rooms_form
-  position: absolute
-  top: 20px
-  bottom: 20px
-  box-shadow: 0 0 18px #DDDDDD
-
 .results
   position: absolute
   top: 0
@@ -25,47 +19,6 @@
   bottom: 0
   left: 0
   right: 0
-
-
-.rooms
-  // border-collapse: collapse
-  position: relative
-  &:active
-    background: #f8f8f8
-
-  &:after
-    background: #ddd
-    content: ""
-    height: 1px
-    left: 50%
-    margin-left: -100px
-    position: absolute
-    width: 200px
-    bottom: 0
-
-  .grid
-    &>a
-    display: block
-    padding: 8px 0
-
-
-  .price
-    font-size: 18px
-    color: #444
-
-  .address
-    font-size: 18px
-
-  .rooms_count
-    color: #888
-    font-size: 14px
-.animate
-  .rooms
-    @include transition (background-color .2s linear)
-.hover
-  .rooms
-    &:hover
-      background: #f8f8f8
 
 
 .link_to_room
@@ -91,77 +44,34 @@
     margin-top: -16px
 
 .link_to_room_xs
-  top: 0
-  left: 60px
-  width: 60px
-  height: 60px
-  display: block
+  top: -40px
+  left: 49px
+  width: 24px
   position: absolute
-  background: $gray_2_1
-  @include transition (background-color .2s linear)
-  &:hover
-    background: $gray_2_2
+  z-index: 3
   &:after
     background: url("/assets/sprite.png") repeat scroll -32px -32px rgba(0, 0, 0, 0)
     content: ""
     display: block
     height: 32px
-    left: 12px
+    left: -3px
     position: relative
-    top: 12px
+    top: 4px
     width: 32px
 
 .details
-  color: #444
   bottom: 0
   position: absolute
   top: 0
+  width: 100%
 
-  .menu
-    border-bottom: 1px solid $gray_2_1
-    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.95)
-    position: fixed
-    height: 60px
+  .uk-article-title
+    font-size: 32px
+    font-weight: 300
+    line-height: 37px
 
-  .after_menu
-    margin-top: 68px
-
-  .title
-    font-size: 22px
-  .subtitle
-    text-transform: uppercase
-  .hint
-    color: #888
-
-  &.place
-    .grid
-      margin-bottom: 12px
-
-  &.room
-    .price
-      font-size: 22px
-      margin-top: 8px
-    .features
-      padding-left: 10px
-      .unit
-        i
-          display: inline-block
-          vertical-align: middle
-        span
-          padding-left: 4px
-          width: 78px
-          display: inline-block
-          font-size: 9px
-          line-height: 14px
-          text-transform: uppercase
-          vertical-align: middle
-          &.subtitle
-            width: auto
-            padding: 0
-
-button
-  &.unstyle
-    background: none
-    border: none
-    padding: 0
-
+  .tm-article-subtitle
+    border-left: 3px solid $contrast
+    font-size: 16px
+    line-height: 16px
+    padding-left: 6px

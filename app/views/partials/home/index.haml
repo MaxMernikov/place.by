@@ -9,37 +9,19 @@
 /     Location: {{coordinate}}
 /     = link_to 'rooms', '/rooms'
 /     = link_to 'add room', '/rooms/new'
-.home_index
-  .container
-    .row
-      .col-xs-12.mn
-        В каталоге
-        = Place.count
-        = I18n.t(:places, count: Place.count)
-    .row.check
-      .col-xs-12.promo
-        Мы собрали для вас наиболее полезные места оказания услуг и времяпрепровождения
-    .row
-      - 30.times do
-        - Category.roots.each do |category|
-          .col-sm-12.col-md-6.col-lg-3.mn
-            .title= category.title
-            - category.children.each do |sub_category|
-              = link_to sub_category.title, category_path(sub_category.slug), class: 'subtitle'
-
-/ .block.index
-/   .grid.head
-/     .unit.w-1-1
-/       В каталоге
-/       = Place.count
-/       = I18n.t(:places, count: Place.count)
-/   .grid.promo.check
-/     .unit.w-1-1
-/       Мы собрали для вас наиболее полезные места оказания услуг и времяпрепровождения
-/   .grid.list_styled
-/     .q
-/     - Category.roots.each do |category|
-/       .unit.w-main
-/         .title= category.title
-/         - category.children.each do |sub_category|
-/           = link_to sub_category.title, category_path(sub_category.slug), class: 'subtitle'
+.home_index.uk-container-center.uk-width-5-6.block
+  .uk-grid
+    .uk-width-1-1.uk-text-large
+      В каталоге
+      = Place.count
+      = I18n.t(:places, count: Place.count)
+  .uk-grid
+    .uk-width-1-1.promo
+      .uk-text-large Мы собрали для вас наиболее полезные места оказания услуг и времяпрепровождения
+  .uk-grid.categories
+    - 30.times do
+      - Category.roots.each do |category|
+        .uk-width-small-1-1.uk-width-medium-1-2.uk-width-large-1-4
+          %h2= category.title
+          - category.children.each do |sub_category|
+            = link_to sub_category.title, category_path(sub_category.slug), class: 'subtitle'

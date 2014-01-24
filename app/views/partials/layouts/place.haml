@@ -2,18 +2,18 @@
   = render 'mobile_menu'
 
   #content
-    .fix_wrap
+    .fix_wrap{'ng-class' => '{show : (!xs || map_show)}'}
       .sub_wrapper
         %map
-    .main_wrap
-      = render 'header'
+    .main_wrap{'ng-show' => '(!xs || !map_show)'}
       %section.main_partial{'partial' => '', template: 'index', 'ng-if' => 'view.index'}
 
       %section.right_partial.right.half{'partial' => '', template: 'result', 'ng-if' => 'view.result'}
 
       %section.right_partial.right.half{'partial' => '', template: 'detail', 'ng-if' => 'view.detail'}
+    = render 'header'
     #shroud
-    .menu-trigger{ 'menu_trigger' => '' }
+    %button.menu-trigger.menu_button.primary.uk-visible-small{ 'menu_trigger' => '' }
 
 
   /     %section.main_partial{'partial' => '', template: 'index', 'ng-if' => 'view.index'}

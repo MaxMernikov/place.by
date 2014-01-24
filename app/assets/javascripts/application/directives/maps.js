@@ -5,26 +5,63 @@ PlaceApp.directive('map', [function () {
       map_short_change = false;
       collection_change = false;
       position_change = false;
-init_map()
+
+      scope.map_show = !xs();
+      $(window).resize(function() {
+        scope.$apply(function () {
+          scope.map_show = !xs();
+        });
+        // console.log('start map ' + scope.map_show)
+      });
+
+
       // if(!xs()){ init_map() };
 
       $(window).resize(function() {
-        if(!xs()){ init_map() } else {
-          google.maps.event.clearListeners(window, 'resize');
-          delete(map);
-          element.html('').attr('style', '')
-        };
-        set_map_short();
+        // if(xs()){
+        //   scope.map_show = false;
+        //   // map_compile(false);
+        // } else {
+        //   scope.map_show = true;
+        //   // map_compile(true);
+        // }
+        // console.log(scope.map_show)
+        // if(!xs()){ init_map() } else {
+        //   google.maps.event.clearListeners(window, 'resize');
+        //   delete(map);
+        //   element.html('').attr('style', '')
+        // };
+        // set_map_short();
       });
 
+      // function init_map () {
+      //   if(window.map == undefined){
+      //     map = new google.maps.Map(element[0], mapOptions);
+      //     google.maps.event.addDomListener(window, 'resize', function() {
+      //       initialize_center();
+      //     });
+      //   };
+      // };
+
       function init_map () {
-        if(window.map == undefined){
-          map = new google.maps.Map(element[0], mapOptions);
-          google.maps.event.addDomListener(window, 'resize', function() {
-            initialize_center();
-          });
+        // scope.map_show = true;
+        // map_compile(true)
+      }
+
+      scope.$watch('map_show', function (value) {
+        if(value){
+          if(window.map == undefined){
+            map_init()
+          };
         };
-      };
+      });
+
+      function map_init(){
+        map = new google.maps.Map(element[0], mapOptions);
+        google.maps.event.addDomListener(window, 'resize', function() {
+          initialize_center();
+        });
+      }
 
       // смещаем центр карты
       function initialize_center (){
@@ -41,11 +78,7 @@ init_map()
 
       // установка ширины карты
       function set_map_short() {
-        if (scope.map_short){
-          if ( lg() || md()) { element.css('right', 460) }
-          else if (sm()) { element.css('right', 320) }
-          else { element.css('right', 0) };
-        } else { element.css('right', 0) };
+        element[0].className = (scope.map_short)? 'short' : '';
         if(window.map != undefined) initialize_center();
       };
 
@@ -60,7 +93,6 @@ init_map()
         collection_change = true;
         set_markers();
       });
-
 
       function set_markers() {
         if (!xs()) {
@@ -108,7 +140,7 @@ init_map()
         if(!xs()){
           if (scope.current_position.zoom != undefined)
             { map.setZoom(scope.current_position.zoom); }
-          if (scope.current_position.coordinate != undefined){ 
+          if (scope.current_position.coordinate != undefined){
             map.panTo(new google.maps.LatLng(
               scope.current_position.coordinate[0],
               scope.current_position.coordinate[1]

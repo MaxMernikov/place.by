@@ -1,75 +1,27 @@
 %header
-  .menu-trigger
   #full_header
-    .container.half.pull_left
-      .row
-        .col-xs-8
-          .current_menu
-            %a{'ng-href'=>"/{{current_category.slug}}"}{{current_category.title}}
-          %h1.logo
-            = link_to 'Place.by', root_path
+    .half.first_menu
+      .uk-width-1-2
+        %a.category_info{'ng-href'=>"/{{current_category.slug}}"}{{current_category.title}}
+        .logo= link_to 'Place.by', root_path, class: 'uk-text-info'
+    .half.second_menu
+      .uk-grid
+        .uk-width-1-3
+          %a.uk-button.uk-button-chameleon{href: 'df'}
+            %span добавить место
+        .uk-width-1-3
+          %a.uk-button.uk-button-chameleon{href: 'df'}
+            %span сообщить об ошибке
 
-    .container.half.pull_right
-      .row
-        .col-xs-4
-          = link_to new_room_path, class: 'infogram' do
-            %i.big_icon.add
-            %span.link добавить место
-        .col-xs-4
-          = link_to new_room_path, class: 'infogram' do
-            %i.big_icon
-            %span.link сообщить об ошибке
+
   #mobile_header
-    - 20.times do
-      привет
-  /   .nav-bar{'ng-click' => 'openCollapse()'}
+    .results_info.uk-text-uppercase{ 'ng-if' => 'places.length' }
+      %ng-pluralize{ count: "places.length", when: "placeForms"}
+      %br
+      %small
+        в категории
+        {{current_category.title}}
 
-  / - link = "{{category}}"
-  / .xs-show
-  /   .nav-bar{'ng-click' => 'openCollapse()'}
-  /   .navbar-collapse{'ng-class' => '{open: open_collapse}'}
-  /     .grid.half{'ng-click' => 'openCollapse()'}
-  /       .unit.w-1-1
-  /         .current_menu
-  /           = raw('<a ng-href="/' + link + '">{{translate(category)}}</a>')
-  /         %h1.logo
-  /           = link_to 'Place.by', root_path
-  /     .grid.half{'ng-click' => 'openCollapse()'}
-  /       = link_to root_path do
-  /         .unit.w-1-1 на главную
-  /       = link_to 'http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclusterer/1.0.2/examples/advanced_example.html' do
-  /         .unit.w-1-1 добавить место
-  /       = link_to '#' do
-  /         .unit.w-1-1 сообщить об ошибке
-  / .xs-hide
-  /   .main_wrap.header
-  /     .sub_wrapper.short
-  /       .grid.half
-  /         .unit.w-2-3
-  /           .current_menu
-  /             = raw('<a ng-href="/' + link + '">{{translate(category)}}</a>')
-  /           %h1.logo
-  /             = link_to 'Place.by', root_path
-  /     .second_header
-  /       / .grid.half
-  /       /   .unit.w-1-3.add_room
-  /       /     = link_to new_room_path, class: 'infogram' do
-  /       /       %i.big_icon
-  /       /       %span добавить объявление
-  /       /   .u
-
-  /       .grid.half
-  /         .unit.w-1-3
-  /           = link_to new_room_path, class: 'infogram' do
-  /             %i.big_icon.add
-  /             %span.link добавить место
-  /         .unit.w-1-3
-  /           = link_to new_room_path, class: 'infogram' do
-  /             %i.big_icon
-  /             %span.link сообщить об ошибке
-  /         .unit.w-1-3
-  /           / Катя Петрова
-  /           / %br
-  /           / %ul
-  /           /   - %w[настройки выйти].each do |menu_info|
-  /           /     %li= link_to menu_info, '#'
+    .map_trigger{'map-trigger' => '', 'ng-show' => 'visible_show_map'}
+      %button.menu_button.secondary{'ng-click' => "changeShowMap('map')" } карта
+      %button.menu_button.secondary.active{'ng-click' => "changeShowMap('info')" } инфо.

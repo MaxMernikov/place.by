@@ -1,47 +1,68 @@
-body
-  font-size: 1.5em
+// Only desktops
+@media (min-width: 960px)
+  #media_width
+    width: 992px
+  .half, .container.half
+    width: 460px
+  map, .main_wrap
+    top: 80px
+  map.short
+    right: 460px
+  header
+    height: 80px
+    #full_header
+      top: 10px
+      position: relative
 
-#media_width
-  display: none
-  width: 0px
-.half, .container.half
-  width: 100%
-.container
-  width: 92%
+  .main_wrap
+    width: auto
 
-@media (min-width: 768px)
-  body
-    font-size: 1.0em
+  .uk-button-chameleon
+    min-height: 40px
+    padding: 0 15px
+    line-height: 38px
+    font-size: 16px
+    border-radius: 5px
+
+// Only tablets portrait
+@media (min-width: 768px) and (max-width: 959px)
+  .uk-button-chameleon
+    min-height: 25px
+    padding: 0 10px
+    line-height: 23px
+    font-size: 12px
+
   #media_width
     width: 768px
   .half, .container.half
     width: 320px
   map, .main_wrap
     top: 60px
+  map.short
+    right: 320px
   header
     height: 60px
+  .main_wrap
+    width: auto
 
-@media (min-width: 992px)
-  body
-    font-size: 1.0em
-  #media_width
-    width: 992px
-  .half, .container.half
-    width: 460px
-  map, .main_wrap
-    top: 60px
-  header
-    height: 60px
+// Only phones
+@media (max-width: 767px)
+  .uk-button-chameleon
+    min-height: 20px
+    padding: 0 6px
+    line-height: 18px
+    font-size: 11px
 
-@media (min-width: 1200px)
-  body
-    font-size: 1.0em
   #media_width
-    width: 1200px
+    display: none
+    width: 0px
   .half, .container.half
-    width: 460px
-  map, .main_wrap
-    top: 80px
-  header
-    padding-top: 10px
-    height: 80px
+    width: 100%
+  .container
+    width: 92%
+  .main_wrap
+    width: 100%
+
+
+
+
