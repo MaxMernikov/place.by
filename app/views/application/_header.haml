@@ -23,5 +23,5 @@
         {{current_category.title}}
 
     .map_trigger{'map-trigger' => '', 'ng-show' => 'visible_show_map'}
-      %button.menu_button.secondary{'ng-click' => "changeShowMap('map')" } карта
-      %button.menu_button.secondary.active{'ng-click' => "changeShowMap('info')" } инфо.
+      %button.menu_button.secondary{'ng-click' => "changeShowMap('map')", 'ng-class' => '{active : map_show}' } карта
+      %button.menu_button.secondary.active{'ng-click' => "changeShowMap('info')", 'ng-class' => '{active : !map_show}' } инфо.

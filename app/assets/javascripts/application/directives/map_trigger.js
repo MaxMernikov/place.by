@@ -6,12 +6,12 @@ PlaceApp.directive("mapTrigger", [function () {
       scope.changeShowMap = function(type) {
         if(type == 'map'){
           scope.map_show = true;
-          $("[ng-click=\"changeShowMap('map')\"]").addClass('active');
-          $("[ng-click=\"changeShowMap('info')\"]").removeClass('active');
+          // $("[ng-click=\"changeShowMap('map')\"]").addClass('active');
+          // $("[ng-click=\"changeShowMap('info')\"]").removeClass('active');
         }else{
           scope.map_show = false;
-          $("[ng-click=\"changeShowMap('map')\"]").removeClass('active')
-          $("[ng-click=\"changeShowMap('info')\"]").addClass('active')
+          // $("[ng-click=\"changeShowMap('map')\"]").removeClass('active')
+          // $("[ng-click=\"changeShowMap('info')\"]").addClass('active')
         }
       };
 

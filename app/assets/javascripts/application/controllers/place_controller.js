@@ -58,9 +58,12 @@ PlaceApp.controller(
           $scope.current_position.coordinate = [data.longitude, data.latitude]
         }
 
+        // делаем инфу видимой если клиент мобильный
+        if(xs()) $scope.map_show = false;
       });
 
       if ($scope.view.detail != 'show') $scope.view.detail = 'show';
+
 
     };
 

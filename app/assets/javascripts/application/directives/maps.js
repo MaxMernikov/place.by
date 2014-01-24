@@ -3,16 +3,16 @@ PlaceApp.directive('map', ['$location', function ($location) {
     restrict: 'E',
     link: function(scope, element, attrs) {
       map_short_change = false;
-      collection_change = false;
+      // collection_change = false;
       // position_change = false;
 
-      scope.map_show = !xs();
-      $(window).resize(function() {
-        scope.$apply(function () {
-          scope.map_show = !xs();
-        });
-        // console.log('start map ' + scope.map_show)
-      });
+      // scope.map_show = !xs();
+      // $(window).resize(function() {
+      //   scope.$apply(function () {
+      //     scope.map_show = !xs();
+      //   });
+      //   // console.log('start map ' + scope.map_show)
+      // });
 
 
       // if(!xs()){ init_map() };
@@ -43,16 +43,17 @@ PlaceApp.directive('map', ['$location', function ($location) {
       //   };
       // };
 
-      function init_map () {
-        // scope.map_show = true;
-        // map_compile(true)
-      }
+      // function init_map () {
+      //   // scope.map_show = true;
+      //   // map_compile(true)
+      // }
 
       scope.$watch('map_show', function (value) {
         if(value){
           if(window.map == undefined){
             map_init();
           };
+          console.log('render map');
           set_positon();
           set_markers();
         };
@@ -113,13 +114,16 @@ PlaceApp.directive('map', ['$location', function ($location) {
             });
           });
 
-          google.maps.event.addListener(marker, 'mouseover', function (e) {
-            $('a.marker[href="' + e.target.pathname + '"]').parent().addClass('hover')
-          });
+          // анимация при наведении
+          if(!xs()){
+            google.maps.event.addListener(marker, 'mouseover', function (e) {
+              $('a.marker[href="' + e.target.pathname + '"]').parent().addClass('hover')
+            });
 
-          google.maps.event.addListener(marker, 'mouseout', function (e) {
-            $('a.marker[href="' + e.target.pathname + '"]').parent().removeClass('hover')
-          });
+            google.maps.event.addListener(marker, 'mouseout', function (e) {
+              $('a.marker[href="' + e.target.pathname + '"]').parent().removeClass('hover')
+            });
+          };
 
           markers.push(marker);
         });
