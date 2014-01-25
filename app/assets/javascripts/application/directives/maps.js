@@ -6,7 +6,7 @@ PlaceApp.directive('map', ['$location', function ($location) {
       // collection_change = false;
       // position_change = false;
 
-      // scope.map_show = !xs();
+      scope.map_show = !xs();
       // $(window).resize(function() {
       //   scope.$apply(function () {
       //     scope.map_show = !xs();
@@ -15,7 +15,7 @@ PlaceApp.directive('map', ['$location', function ($location) {
       // });
 
 
-      // if(!xs()){ init_map() };
+      // if(!xs()){ map_init() };
 
       $(window).resize(function() {
         // if(xs()){
@@ -53,17 +53,22 @@ PlaceApp.directive('map', ['$location', function ($location) {
           if(window.map == undefined){
             map_init();
           };
-          console.log('render map');
           set_positon();
           set_markers();
         };
+        console.log(scope.current_position.zoom);
       });
+
+      function showMarkers() {
+        var bounds = map.getBounds();
+      };
 
       function map_init(){
         map = new google.maps.Map(element[0], mapOptions);
         google.maps.event.addDomListener(window, 'resize', function() {
           initialize_center();
         });
+        google.maps.event.addListener(map, 'idle', showMarkers);
       }
 
       // смещаем центр карты

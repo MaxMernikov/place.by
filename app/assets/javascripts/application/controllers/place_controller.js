@@ -52,7 +52,7 @@ PlaceApp.controller(
           $scope.places = [data];
         };
 
-        if ($scope.view_from_map == true) {$scope.view_from_map = false}
+        if ($scope.view_from_map == true && !xs()) {$scope.view_from_map = false}
         else{
           $scope.current_position.zoom = 17;
           $scope.current_position.coordinate = [data.longitude, data.latitude]
