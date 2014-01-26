@@ -33,11 +33,19 @@ class PlaceController < ApplicationController
 
   def update
     @place = Place.find params[:id]
-    @place.update_attributes(place_params)
-    redirect_to @place
+
+    if @place.update_attributes(update_place_params)
+      render text: 'ok'
+    else
+      render text: 'уккщу'
+    end
   end
 
 private
+  def update_place_params
+    params.require(:place).permit(:address, :title, :address_comment, :description, :time_work)
+  end
+
   def place_params
     params.require(:place).permit(
       :title,

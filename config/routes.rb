@@ -30,7 +30,7 @@ PlaceBy::Application.routes.draw do
   get 'partials/:model/:view' => 'partial#show', as: :partial
 
   resources :categories, path: '', only: [:show] do
-    resources :place, path: '', only: [:show]
+    resources :place, path: '', only: [:show, :update]
   end
 
 

@@ -20,6 +20,13 @@ ru:
         dishwasher: Посудомоечная машина
         air_conditioning: Кондиционер
 
+      place:
+        address: Адрес
+        title: Название объекта
+        address_comment: Точное расположение
+        description: Описание
+        time_work: Время работы
+
   places:
     one: место
     few: места

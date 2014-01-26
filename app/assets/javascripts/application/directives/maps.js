@@ -3,8 +3,6 @@ PlaceApp.directive('map', ['$location', function ($location) {
     restrict: 'E',
     link: function(scope, element, attrs) {
       map_short_change = false;
-      // collection_change = false;
-      // position_change = false;
 
       scope.map_show = !xs();
       // $(window).resize(function() {
@@ -17,37 +15,6 @@ PlaceApp.directive('map', ['$location', function ($location) {
 
       // if(!xs()){ map_init() };
 
-      $(window).resize(function() {
-        // if(xs()){
-        //   scope.map_show = false;
-        //   // map_compile(false);
-        // } else {
-        //   scope.map_show = true;
-        //   // map_compile(true);
-        // }
-        // console.log(scope.map_show)
-        // if(!xs()){ init_map() } else {
-        //   google.maps.event.clearListeners(window, 'resize');
-        //   delete(map);
-        //   element.html('').attr('style', '')
-        // };
-        // set_map_short();
-      });
-
-      // function init_map () {
-      //   if(window.map == undefined){
-      //     map = new google.maps.Map(element[0], mapOptions);
-      //     google.maps.event.addDomListener(window, 'resize', function() {
-      //       initialize_center();
-      //     });
-      //   };
-      // };
-
-      // function init_map () {
-      //   // scope.map_show = true;
-      //   // map_compile(true)
-      // }
-
       scope.$watch('map_show', function (value) {
         if(value){
           if(window.map == undefined){
@@ -56,7 +23,6 @@ PlaceApp.directive('map', ['$location', function ($location) {
           set_positon();
           set_markers();
         };
-        console.log(scope.current_position.zoom);
       });
 
       function showMarkers() {

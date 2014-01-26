@@ -40,7 +40,9 @@ PlaceApp.controller(
     // детали места
     place_show = function(){
       $scope.view = all_close($scope.view, ['result']);
-      $scope.view_partial.detail = 'place#show';
+      // $scope.view_partial.detail = 'place#show';
+          $scope.view_partial.detail = 'place#success_update';
+      
       $scope.map_short = true;
       $scope.visible_show_map = true;
 
@@ -67,16 +69,23 @@ PlaceApp.controller(
 
     };
 
-    // $scope.edit = function(){
-    //   $scope.view_partial.detail = getView('place#edit');
-    //   // $scope.view.detail = false;
-    //   // $scope.view.detail = ;
-    //   // $scope.$apply()
-    // }
+    $scope.edit = function () {
+      $scope.view_partial.detail = 'place#edit';
+      $scope.edit_place = angular.copy($scope.place);
+    }
 
-    // $scope.back = function(){
-    //   $scope.view_partial.detail = getView('place#show');
-    // }
+    $scope.cancelEdit = function () {
+      $scope.view_partial.detail = 'place#show';
+    }
+
+    $scope.placeUpdate = function () {
+      $http.put('/' + $routeParams.categoryId + '/'+ $routeParams.placeId, $scope.edit_place).success(function(data){
+        if(data == 'ok'){
+          $scope.view_partial.detail = 'place#success_update';
+        }
+        console.log(data);
+      });
+    }
 
     // роутинг
     // http://www.sitepoint.com/call-javascript-function-string-without-using-eval/
