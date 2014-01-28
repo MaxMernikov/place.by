@@ -1,0 +1,36 @@
+= form_for obj, url: admin_version_draft_path(@version), method: :put, html: { class: 'uk-form' } do |f|
+  %fieldset
+    %legend= title
+
+    .uk-form-row
+      = f.label :address
+      .uk-form-controls
+        = f.text_field :address, class: 'uk-form-blank uk-width-1-1'
+
+    .uk-form-row
+      = f.label :title
+      .uk-form-controls
+        = f.text_field :title, class: 'uk-form-blank uk-width-1-1'
+
+    .uk-form-row
+      = f.label :address_comment
+      .uk-form-controls
+        = f.text_area :address_comment, class: 'uk-form-blank uk-width-1-1'
+
+    .uk-form-row
+      = f.label :description
+      .uk-form-controls
+        = f.text_area :description, class: 'uk-form-blank uk-width-1-1'
+
+    .uk-form-row
+      = f.label :time_work
+      .uk-form-controls
+        = f.text_field :time_work, class: 'uk-form-blank uk-width-1-1'
+
+    - if save
+      .uk-grid.uk-text-center
+        = f.submit 'Добавить', class: 'uk-button uk-button-chameleon'
+
+        = link_to 'Отклонить', admin_version_draft_path(@version), method: :delete, confirm: 'Подтвердите удаление версии', class: 'uk-button'
+
+        = link_to 'Отмена', admin_version_drafts_path, class: 'uk-button'

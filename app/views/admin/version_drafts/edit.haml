@@ -1,0 +1,27 @@
+.uk-container.uk-container-center.uk-margin-bottom
+  - if @new_version.errors.any?
+    .uk-grid.uk-margin-top
+      .uk-width-1-1
+        .uk-panel-box.uk-panel
+          .uk-panel-title Допущенны следующие ошибки:
+          %ul.uk-list.uk-list-line
+            - @new_version.errors.full_messages.each do |msg|
+              %li= msg
+
+  .uk-grid
+    .uk-width-2-5
+      %article.uk-article
+        = render 'form', obj: @current_version, title: 'Исходный объект', save: false
+    .uk-width-2-5
+      %article.uk-article
+        = render 'form', obj: @new_version, title: 'Предлагаемые изменения', save: true
+    .uk-width-1-5
+      %ul.uk-list.uk-list-line
+        %li
+          Изменение внесено:
+          %br
+          = time_tag(@version.created_at)
+        %li
+          Еще изменений для модерации по объекту:
+          %br
+          = version_count(@version.item_type, @version.item_id)

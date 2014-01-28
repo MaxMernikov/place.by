@@ -1,0 +1,21 @@
+.uk-container.uk-container-center
+  .uk-grid
+    .uk-width-1-1
+      %table.uk-table
+        %caption ...
+        %thead
+          %tr
+            %th ...
+            %td ...
+        %tfoot
+          %tr
+            %td ...
+            %td ...
+        %tbody
+          - @versions.each do |version|
+            %tr
+              %td= version.inspect
+              %td
+                -# = link_to 'Show', place
+                = link_to 'Edit', edit_admin_version_draft_path(version)
+                = link_to 'Destroy', admin_version_draft_path(version), method: :delete, data: { confirm: 'Are you sure?' }
