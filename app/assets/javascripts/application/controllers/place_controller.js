@@ -40,9 +40,8 @@ PlaceApp.controller(
     // детали места
     place_show = function(){
       $scope.view = all_close($scope.view, ['result']);
-      // $scope.view_partial.detail = 'place#show';
-          $scope.view_partial.detail = 'place#success_update';
-      
+      $scope.view_partial.detail = 'place#show';
+
       $scope.map_short = true;
       $scope.visible_show_map = true;
 

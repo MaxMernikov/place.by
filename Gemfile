@@ -11,6 +11,7 @@ gem 'diffy'                   # выявление изменений
 gem 'nokogiri'
 gem 'ancestry', '~> 2.0.0'
 gem 'cocoon'
+# gem 'paper_trail', '~> 3.0.0'
 
 # assets
 gem 'haml'

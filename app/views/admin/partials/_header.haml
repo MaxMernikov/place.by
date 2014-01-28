@@ -1,33 +1,12 @@
-.navbar.navbar-default.navbar-fixed-top{role: "navigation"}
-  .container
-    .navbar-header
-      = link_to 'Place.by', root_path, class: 'navbar-brand'
-    .navbar-collapse.collapse
-      %ul.nav.navbar-nav
-        %li{ class: active_menu('admin/dashboards') }= link_to 'Dashboard', admin_dashboards_path
-        %li{ class: active_menu('admin/categories') }= link_to 'Категории', admin_categories_path
-        %li{ class: active_menu('admin/places') }= link_to 'Места', admin_places_path
-        %li.dropdown
-          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-            Dropdown
-            %b.caret
-          %ul.dropdown-menu
-            %li
-              %a{href: "#"} Action
-            %li
-              %a{href: "#"} Another action
-            %li
-              %a{href: "#"} Something else here
-            %li.divider
-            %li.dropdown-header Nav header
-            %li
-              %a{href: "#"} Separated link
-            %li
-              %a{href: "#"} One more separated link
-      %ul.nav.navbar-nav.navbar-right
-        %li
-          %a{href: "#"} Link
-        %li
-          %a{href: "#"} Link
-        %li
-          %a{href: "#"} Link
+%nav.uk-navbar
+  = link_to 'Place.by', root_path, class: 'uk-navbar-brand'
+  %ul.uk-navbar-nav
+    %li{ class: active_menu('admin/dashboards') }
+      = link_to 'Dashboard', admin_dashboards_path
+    %li{ class: active_menu('admin/categories') }
+      = link_to 'Категории', admin_categories_path
+    %li{ class: active_menu('admin/places') }
+      = link_to 'Места', admin_places_path
+    %li{ class: active_menu('admin/version_drafts') }
+      = link_to 'Изменения', admin_version_drafts_path
+

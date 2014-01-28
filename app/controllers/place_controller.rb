@@ -9,8 +9,10 @@ class PlaceController < ApplicationController
   end
 
   def show
-    category = Category.find_by(slug: params[:category_id])
-    place = category.places.find params[:id]
+    place = Place.find(params[:id])
+
+    # category = Category.find_by(slug: params[:category_id])
+    # place = category.places.find params[:id]
     respond_to do |format|
       format.html { render :blank }
       format.json { render json: place.to_json(methods: [:contacts], include: { category: {only: [:title, :slug]} } ) }
@@ -34,7 +36,9 @@ class PlaceController < ApplicationController
   def update
     @place = Place.find params[:id]
 
-    if @place.update_attributes(update_place_params)
+
+    # if @place.update_attributes(update_place_params)
+    if @place.version_drafts.create(object: update_place_params)
       render text: 'ok'
     else
       render text: 'уккщу'

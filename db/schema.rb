@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131231121244) do
+ActiveRecord::Schema.define(version: 20140126162826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,5 +107,15 @@ ActiveRecord::Schema.define(version: 20131231121244) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "version_drafts", force: true do |t|
+    t.string   "item_type",                  null: false
+    t.integer  "item_id",                    null: false
+    t.text     "object"
+    t.datetime "created_at"
+    t.boolean  "approved",   default: false
+  end
+
+  add_index "version_drafts", ["item_type", "item_id"], name: "index_version_drafts_on_item_type_and_item_id", using: :btree
 
 end

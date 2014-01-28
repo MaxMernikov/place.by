@@ -1,5 +1,7 @@
 class Room < ActiveRecord::Base
   require 'open-uri'
+  # has_many :version_drafts, as: :item
+
   # при изменении адреса делается запрос на получение координат
   after_validation :set_geocode, if: :address_changed?
 

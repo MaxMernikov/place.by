@@ -5,6 +5,7 @@ PlaceBy::Application.routes.draw do
     resources :dashboards, path: '', except: [:show]
     resources :categories
     resources :places
+    resources :version_drafts
   end
 
   get '/search' => 'place#search'
