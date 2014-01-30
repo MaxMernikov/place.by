@@ -35,6 +35,17 @@ GEM
       sass (>= 3.2.0)
       thor
     builder (3.1.4)
+    capistrano (3.0.1)
+      i18n
+      rake (>= 10.0.0)
+      sshkit (>= 0.0.23)
+    capistrano-bundler (1.0.0)
+      capistrano (>= 3.0.0.pre)
+    capistrano-rails (1.1.0)
+      capistrano (>= 3.0.0)
+      capistrano-bundler (>= 1.0.0)
+    capistrano-rvm (0.0.3)
+      capistrano
     cocoon (1.2.1)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -78,6 +89,9 @@ GEM
     multi_json (1.8.2)
     multi_logger (0.1.0)
       railties
+    net-scp (1.1.2)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.7.0)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     pg (0.17.1)
@@ -122,6 +136,12 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    sshkit (1.3.0)
+      net-scp (>= 1.1.2)
+      net-ssh
+      term-ansicolor
+    term-ansicolor (1.2.2)
+      tins (~> 0.8)
     thin (1.6.1)
       daemons (>= 1.0.9)
       eventmachine (>= 1.0.0)
@@ -130,6 +150,7 @@ GEM
     thread_safe (0.1.3)
       atomic
     tilt (1.4.1)
+    tins (0.13.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -145,6 +166,10 @@ DEPENDENCIES
   ancestry (~> 2.0.0)
   bootstrap-sass (~> 3.0.3.0)
   bourbon
+  capistrano (~> 3.0.1)
+  capistrano-bundler (~> 1.0.0)
+  capistrano-rails (~> 1.1.0)
+  capistrano-rvm (~> 0.0.3)
   cocoon
   coffee-rails (~> 4.0.0)
   concerned_with

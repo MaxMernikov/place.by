@@ -11,7 +11,6 @@ gem 'diffy'                   # выявление изменений
 gem 'nokogiri'
 gem 'ancestry', '~> 2.0.0'
 gem 'cocoon'
-# gem 'paper_trail', '~> 3.0.0'
 gem 'rack-offline'
 
 # assets
@@ -39,6 +38,13 @@ gem 'jbuilder', '~> 1.2'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
+end
+
+group :development do
+  gem 'capistrano', '~> 3.0.1'
+  gem 'capistrano-rvm', '~> 0.0.3'
+  gem 'capistrano-bundler', '~> 1.0.0'
+  gem 'capistrano-rails', '~> 1.1.0'
 end
 
 # Use ActiveModel has_secure_password
