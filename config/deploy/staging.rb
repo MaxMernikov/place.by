@@ -1,7 +1,7 @@
-set :stage, :staging
+set :stage, :production
 set :branch, 'develop'
 set :deploy_to, '/var/www/plce.by'
-set :rails_env, 'staging'
+set :rails_env, 'production'
 
 role :app, %w{root@82.196.1.8}
 role :web, %w{root@82.196.1.8}
