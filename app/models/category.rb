@@ -12,4 +12,12 @@ class Category < ActiveRecord::Base
   def set_ancestry
     self.parent = Category.find(ancestry_id) if ancestry_id.present?
   end
+
+  def hash
+    rand(9999)
+  end
+
+  def elements_count
+    places.size
+  end
 end

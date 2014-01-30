@@ -26,6 +26,7 @@ PlaceApp.controller(
         $http.get('/' + $route.current.params.categoryId + '.json').success(function(data) {
           $rootScope.current_category = { title: data.title, slug: data.slug };
           $scope.places = data.places;
+          $scope.place_hash = data.hash;
         });
       }
 

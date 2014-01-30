@@ -83,6 +83,7 @@ GEM
     pg (0.17.1)
     polyglot (0.3.3)
     rack (1.5.2)
+    rack-offline (0.6.4)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.0)
@@ -158,6 +159,7 @@ DEPENDENCIES
   multi_logger
   nokogiri
   pg
+  rack-offline
   rails (= 4.0.0)
   redcarpet
   russian

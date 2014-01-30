@@ -3,6 +3,7 @@ PlaceApp.directive('map', ['$location', function ($location) {
     restrict: 'E',
     link: function(scope, element, attrs) {
       map_short_change = false;
+      place_hash = null;
 
       scope.map_show = !xs();
       // $(window).resize(function() {
@@ -64,49 +65,62 @@ PlaceApp.directive('map', ['$location', function ($location) {
       }, true);
 
       function set_markers() {
-        var markers = [];
-        _.each(scope.places, function (place) {
-          marker = new MarkerWithLabel({
-            position: new google.maps.LatLng(place.longitude, place.latitude),
-            labelContent: '<a href="/pool/' + place.id + '"class = " marker room"></a>',
-            labelAnchor: new google.maps.Point(20, 20),
-            labelClass: 'place_label2',
-            icon: {}
+        if(place_hash != scope.place_hash){
+          var markers = [];
+          _.each(scope.places, function (place) {
+            marker = new MarkerWithLabel({
+              position: new google.maps.LatLng(place.longitude, place.latitude),
+              labelContent: '<a href="/pool/' + place.id + '"class = " marker room"></a>',
+              labelAnchor: new google.maps.Point(20, 20),
+              labelClass: 'place_label2',
+              icon: {}
+            });
+
+            google.maps.event.addListener(marker, "click", function (e) {
+              console.log($('.place_label2.show'));
+              $('.place_label2.active').removeClass('active').addClass('show');
+              $('a.marker[href="' + e.target.pathname + '"]').parent().addClass('active');
+              $location.path(e.target.pathname);
+              // указываем что переход произведен при клике на карте, а значит карту не перерисовывать
+              scope.$apply(function () {
+                scope.view_from_map = true;
+              });
+            });
+
+            // анимация при наведении
+            if(!xs()){
+              google.maps.event.addListener(marker, 'mouseover', function (e) {
+                $('a.marker[href="' + e.target.pathname + '"]').parent().addClass('hover')
+              });
+
+              google.maps.event.addListener(marker, 'mouseout', function (e) {
+                $('a.marker[href="' + e.target.pathname + '"]').parent().removeClass('hover')
+              });
+            };
+
+            markers.push(marker);
           });
 
-          google.maps.event.addListener(marker, "click", function (e) {
-            console.log($('.place_label2.show'));
-            $('.place_label2.active').removeClass('active').addClass('show');
-            $('a.marker[href="' + e.target.pathname + '"]').parent().addClass('active');
-            $location.path(e.target.pathname);
-            // указываем что переход произведен при клике на карте, а значит карту не перерисовывать
-            scope.$apply(function () {
-              scope.view_from_map = true;
-            });
-          });
+          if(xs()){
+            if(window.mgr == undefined){
+              mgr = new MarkerManager(map);
+              google.maps.event.addListener(mgr, 'loaded', function() {
+                mgr.addMarkers(markers, 0);
+                mgr.refresh();
+              });
+            }else{
+              mgr.clearMarkers();
+              mgr.addMarkers(markers, 0);
+              mgr.refresh();
+            };
 
-          // анимация при наведении
-          if(!xs()){
-            google.maps.event.addListener(marker, 'mouseover', function (e) {
-              $('a.marker[href="' + e.target.pathname + '"]').parent().addClass('hover')
-            });
+          } else {
+            markerCluster = new MarkerClusterer(map, markers, mcOptions);
+          }
 
-            google.maps.event.addListener(marker, 'mouseout', function (e) {
-              $('a.marker[href="' + e.target.pathname + '"]').parent().removeClass('hover')
-            });
-          };
+          place_hash = scope.place_hash;
 
-          markers.push(marker);
-        });
-
-        if(xs()){
-          _.each(markers, function (marker) {
-            marker.setMap(map);
-          })
-        } else {
-          markerCluster = new MarkerClusterer(map, markers, mcOptions);
-        }
-
+        };
       };
 
 
