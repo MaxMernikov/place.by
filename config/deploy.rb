@@ -18,3 +18,24 @@ set :bundle_flags, '--deployment --quiet'
 set :bundle_without, %w{development test}.join(' ')
 set :bundle_binstubs, -> { shared_path.join('bin') }
 set :bundle_roles, :all
+
+namespace :deploy do
+
+  desc 'Restart application'
+  task :restart do
+    on roles(:app) do
+      within fetch(:deploy_to) + '/current' do
+        # with rails_env: fetch(:stage) do
+          # rake 'resque:restart_workers'
+          execute "thin restart -p 3000 -s1 -e production"
+        # end
+      end
+    end
+
+    # on roles(:app), in: :sequence, wait: 5 do
+    #   within release_path do
+    #     execute "thin restart -p 3000 -s1 -e production"
+    #   end
+    # end
+  end
+end
