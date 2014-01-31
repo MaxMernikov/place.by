@@ -9,7 +9,7 @@
 /     Location: {{coordinate}}
 /     = link_to 'rooms', '/rooms'
 /     = link_to 'add room', '/rooms/new'
-.home_index.uk-container-center.uk-width-5-6.block
+.home_index.uk-container-center.uk-width-small-1-1.uk-width-medium-5-6.uk-width-large-5-6.block
   .uk-grid
     .uk-width-1-1.uk-text-large
       В каталоге
@@ -19,9 +19,8 @@
     .uk-width-1-1.promo
       .uk-text-large Мы собрали для вас наиболее полезные места оказания услуг и времяпрепровождения
   .uk-grid.categories
-    - 30.times do
-      - Category.roots.each do |category|
-        .uk-width-small-1-1.uk-width-medium-1-2.uk-width-large-1-4
-          %h2= category.title
-          - category.children.each do |sub_category|
-            = link_to sub_category.title, category_path(sub_category.slug), class: 'subtitle'
+    - Category.roots.each do |category|
+      .uk-width-small-1-1.uk-width-medium-1-2.uk-width-large-1-4
+        %h2= category.title
+        - category.children.each do |sub_category|
+          = link_to sub_category.title, category_path(sub_category.slug), class: 'subtitle'

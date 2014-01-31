@@ -24,7 +24,7 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:app) do
-      within fetch(:deploy_to) + '/current' do
+      within release_path do
         # with rails_env: fetch(:stage) do
           # rake 'resque:restart_workers'
           execute "thin restart -p 3000 -s1 -e production"
