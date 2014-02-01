@@ -1,11 +1,11 @@
-set :application, 'plce'
+set :application, 'plce.by'
 set :repo_url, 'git@github.com:MaxMernikov/place.by.git'
 
-set :deploy_to, '/var/www/plce.by'
+set :deploy_to, '/www/plce.by'
 set :scm, :git
 set :user, 'root'
 set :ssh_options, { :forward_agent => true }
-set :rails_env, 'staging'
+# set :rails_env, 'staging'
 set :deploy_via, :copy
 
 set :keep_releases, 5
@@ -27,7 +27,7 @@ namespace :deploy do
       within release_path do
         # with rails_env: fetch(:stage) do
           # rake 'resque:restart_workers'
-          execute "thin restart -p 3000 -s1 -e production"
+          # execute "thin restart -p 3000 -s1 -e production"
         # end
       end
     end
