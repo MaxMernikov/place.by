@@ -20,12 +20,12 @@ ActiveRecord::Schema.define(version: 20140126162826) do
   create_table "categories", force: true do |t|
     t.string   "title"
     t.string   "slug"
-    t.decimal  "pos",        precision: 3, scale: 0
+    t.integer  "pos"
     t.hstore   "detail"
     t.boolean  "show"
+    t.string   "ancestry"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "ancestry"
   end
 
   add_index "categories", ["ancestry"], name: "index_categories_on_ancestry", using: :btree
@@ -98,12 +98,6 @@ ActiveRecord::Schema.define(version: 20140126162826) do
     t.string   "title"
     t.integer  "cost"
     t.integer  "place_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "temps", force: true do |t|
-    t.hstore   "detail"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
