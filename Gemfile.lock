@@ -96,6 +96,8 @@ GEM
       mini_portile (~> 0.5.0)
     pg (0.17.1)
     polyglot (0.3.3)
+    puma (2.7.1)
+      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-offline (0.6.4)
     rack-test (0.6.2)
@@ -184,6 +186,7 @@ DEPENDENCIES
   multi_logger
   nokogiri
   pg
+  puma
   rack-offline
   rails (= 4.0.0)
   redcarpet

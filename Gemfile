@@ -31,6 +31,7 @@ gem 'hstore_attribute_support'
 gem 'concerned_with'              # разделение моделей на части
 gem 'multi_logger'                # логирование действий
 gem 'thin'
+gem 'puma'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
