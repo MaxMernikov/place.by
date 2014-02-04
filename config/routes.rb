@@ -1,6 +1,7 @@
 PlaceBy::Application.routes.draw do
+  devise_for :admins, skip: [:registrations, :passwords]
   namespace :admin do
-    resources :dashboards, path: '', except: [:show]
+    resources :dashboards, path: '', only: [:index]
     resources :categories
     resources :places
     resources :version_drafts

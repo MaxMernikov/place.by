@@ -1,4 +1,5 @@
 class Admin::VersionDraftsController < ApplicationController
+  load_and_authorize_resource
   layout 'admin'
   before_action :set_version, only: [:edit, :update, :destroy]
 

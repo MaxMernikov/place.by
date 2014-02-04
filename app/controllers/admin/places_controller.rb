@@ -1,4 +1,5 @@
 class Admin::PlacesController < ApplicationController
+  load_and_authorize_resource
   layout 'admin'
   before_action :set_place, only: [:show, :edit, :update, :destroy]
 
