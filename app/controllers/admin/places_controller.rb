@@ -1,5 +1,5 @@
 class Admin::PlacesController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:create]
   layout 'admin'
   before_action :set_place, only: [:show, :edit, :update, :destroy]
 
@@ -18,6 +18,7 @@ class Admin::PlacesController < ApplicationController
   end
 
   def create
+    authorize! :manage, :all
     @place = Place.new(place_params)
 
     if @place.save
