@@ -1,8 +1,9 @@
 class Admin::DashboardsController < ApplicationController
-
-  load_and_authorize_resource
   layout 'admin'
 
   def index
+    unless current_admin.present?
+      redirect_to new_admin_session_path
+    end
   end
 end

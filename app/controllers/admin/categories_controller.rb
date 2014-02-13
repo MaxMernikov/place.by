@@ -1,5 +1,5 @@
 class Admin::CategoriesController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:create]
   layout 'admin'
   before_action :set_category, only: [:edit, :update, :destroy]
 
@@ -15,6 +15,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def create
+    authorize! :manage, :all
     @category = Category.new(category_params)
 
     if @category.save

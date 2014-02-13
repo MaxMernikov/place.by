@@ -1,5 +1,6 @@
 class Category < ActiveRecord::Base
   has_ancestry
+
   attr_accessor :ancestry_id
   has_many :places
 
