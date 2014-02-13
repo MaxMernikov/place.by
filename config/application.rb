@@ -22,8 +22,6 @@ module PlaceBy
     config.i18n.default_locale = :ru
     I18n.enforce_available_locales = false
 
-    config.assets.precompile += %w( admin.js )
-
     config.to_prepare do
       Devise::SessionsController.layout 'admin'
     end
