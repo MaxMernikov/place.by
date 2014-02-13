@@ -6,7 +6,6 @@ PlaceBy::Application.routes.draw do
     resources :categories
     resources :places
     resources :version_drafts
-    resources :pops
   end
 
   get 'partials/:model/:view' => 'partial#show', as: :partial
