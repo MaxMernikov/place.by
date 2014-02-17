@@ -21,9 +21,52 @@
         Мы собрали для вас места оказания услуг
         %br
         и расположили все по категориям и подкатегориям.
-  .uk-grid.categories
-    - Category.roots.each do |category|
-      .uk-width-small-1-1.uk-width-medium-1-2.uk-width-large-1-4
-        %h2= category.title
-        - category.children.each do |sub_category|
-          = link_to sub_category.title, category_path(sub_category.slug), class: 'subtitle'
+  .uk-grid
+    - 2.times do
+      .uk-width-medium-1-2.index_category
+        .uk-thumbnail
+          .uk-grid
+            .uk-width-1-1
+              %h2 Предприятия питания
+              = link_to 'Банкоматы', '#'
+              = link_to 'Ветеринарная служба', '#'
+            .uk-width-1-1
+              .image_set
+                = image_tag 'http://bbcont.ru/uploads/images/default/2649_kak_vybrat_restoran_dlya_pokupki.jpg', class: 'img'
+                = image_tag 'http://barmenam.com/images/uploads/38b3b1547d9abe389ef90c4eb606c915.JPG', class: 'img'
+                = image_tag 'http://bbcont.ru/uploads/images/default/2649_kak_vybrat_restoran_dlya_pokupki.jpg', class: 'img'
+
+      .uk-width-medium-1-2.index_category
+        .uk-thumbnail
+          .uk-grid
+            .uk-width-1-1
+              %h2 Бизнес и финансы
+              = link_to 'Банкоматы', '#'
+              = link_to 'Отделения банков', '#'
+            .uk-width-1-1
+              .image_set
+                = image_tag 'http://bbcont.ru/uploads/images/default/2649_kak_vybrat_restoran_dlya_pokupki.jpg', class: 'img'
+                = image_tag 'http://new.tlt.ru/uploads/2011/01/c70a0e8e812a185d14fddb98a154b1a3_x1024.jpg', class: 'img'
+                = image_tag 'http://bbcont.ru/uploads/images/default/2649_kak_vybrat_restoran_dlya_pokupki.jpg', class: 'img'
+
+      .uk-width-medium-1-2.index_category
+        .uk-thumbnail
+          .uk-grid
+            .uk-width-1-1
+              %h2 Предприятия питания
+              = link_to 'Банкоматы', '#'
+              = link_to 'Отделения банков', '#'
+            .uk-width-1-1
+              .image_set
+                = image_tag 'http://bbcont.ru/uploads/images/default/2649_kak_vybrat_restoran_dlya_pokupki.jpg', class: 'img'
+                = image_tag 'http://barmenam.com/images/uploads/38b3b1547d9abe389ef90c4eb606c915.JPG', class: 'img'
+                = image_tag 'http://bbcont.ru/uploads/images/default/2649_kak_vybrat_restoran_dlya_pokupki.jpg', class: 'img'
+
+  .uk-grid.categories#categories{ 'index_blocks' => '' }
+    - 4.times do
+      - Category.roots.each do |category|
+        .uk-width-small-1-1.uk-width-medium-1-2.uk-width-large-1-4.block__
+          %h2= category.title
+          - 2.times do
+            - category.children.each do |sub_category|
+              = link_to sub_category.title, category_path(sub_category.slug), class: 'subtitle'
